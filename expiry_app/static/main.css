@@ -1,0 +1,97 @@
+/* Add this to your main.css file */
+
+body {
+  background: #fefefe;
+  color: #202a25;
+  margin-top: 5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #202a25;
+}
+
+.bg-steel {
+  background-color: beige;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #202a25;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: beige;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+/* Add this to your main.css file */
+
+.site-header .navbar-brand {
+  color: #202a25;
+  font-size: 40; /* Brand (Journal) text color */
+}
+
+/* .site-header .navbar-toggler-icon {
+    background-color: black; /* Navbar toggle icon color */
+*/ .site-header .navbar-nav .nav-link {
+  color: #26f0f1; /* Navbar links color */
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #26f0f1; /* Navbar links hover color */
+}
+
+.site-header .navbar-nav .nav-item.active .nav-link {
+  font-weight: bold; /* Active link font weight */
+}
+
+.content-section {
+  background: beige;
+  padding: 20px;
+  border: 1px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 1px;
+}
+
+.form-control-label {
+  color: #202a25;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fefefe;
+  color: #202a25;
+  border: 1px solid #c4ebc8;
+  border-radius: 5px;
+}
+
+.form-control::placeholder {
+  color: #5f4bb6;
+}
+
+.btn-outline-info {
+  color: #5f4bb6;
+  border-color: #5f4bb6;
+}
+
+.btn-outline-info:hover {
+  background-color: #26f0f1;
+  color: #202a25;
+}
+
+.padding-container {
+  padding: 3em;
+}

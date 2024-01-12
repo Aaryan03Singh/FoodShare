@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Home Page</h1>
+
+{% if current_user.is_authenticated %}
+<div>
+  <h1>{{ current_user.name}}</h1>
+  <h2>{{ current_user.location}}</h2>
+  <h2>{{current_user.contact_number}}</h2>
+  <h2>{{current_user.id}}</h2>
+</div>
+
+{% endif %} {% endblock content %}
