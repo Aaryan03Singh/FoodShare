@@ -2,10 +2,10 @@
 
 After cloning the repository go to cmd line and open python in the same directory then run the following commands in python
 
-from expiry_app import app,db
-app.app_context().push()
-db.create_all()
-exit()
+from expiry_app import app,db<br>
+app.app_context().push()<br>
+db.create_all()<br>
+exit()<br>
 
 this will create a local database for testing later we will shift to a postgresql for deployment
 
