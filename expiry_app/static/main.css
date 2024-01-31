@@ -3,7 +3,7 @@
 body {
   background: #fefefe;
   color: #202a25;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 h1,
@@ -33,8 +33,7 @@ h6 {
 /* Add this to your main.css file */
 
 .site-header .navbar-brand {
-  color: #202a25;
-  font-size: 40; /* Brand (Journal) text color */
+  color: #202a25; /* Brand (Journal) text color */
 }
 
 /* .site-header .navbar-toggler-icon {

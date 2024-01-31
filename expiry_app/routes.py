@@ -12,7 +12,72 @@ from datetime import datetime, timedelta
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-     return render_template("home.html",title='Home')
+    #  sample data replace with backend call
+    shop_data = [
+        {
+            'name': 'Shop 1',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_0.png',
+        },
+        {
+            'name': 'Shop 2',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_1.png',
+        },
+        {
+            'name': 'Shop 3',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_2.png',
+        },
+        {
+            'name': 'Shop 4',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_3.png',
+        },
+        {
+            'name': 'Shop 5',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_4.png',
+        },
+        {
+            'name': 'Shop 6',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_5.png',
+        },
+        {
+            'name': 'Shop 7',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_6.png',
+        },
+        {
+            'name': 'Shop 8',
+            'address': '123 Samplestreet',
+            'image_path': 'images/sample_shop_images/img_0.png',
+        },
+    ]
+    stuff = [
+        {
+           'name': 'Spaghetti',
+           'exp_date': '07/11/2024',
+           'image_path': 'images/sample_shop_images/img_8.png',
+        },
+        {
+            'name': 'Flour',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_7.png',
+        },
+        {
+            'name': 'Soda',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_9.png',
+        },
+        {
+            'name': 'Spaghetti',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_8.png',
+        }
+    ]
+    return render_template("home.html",title='Home',  shop_data=shop_data, stuff=stuff)
     
 
 

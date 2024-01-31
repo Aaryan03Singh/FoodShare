@@ -1,6 +1,52 @@
-{% extends "layout.html" %} {% block content %}
-<h1>Home Page</h1>
-
+{% extends 'layout.html' %}
+{% block content %}
+        <img src="{{ url_for('static', filename='./images/img.png') }}" alt="icon" class="image-container">
+    <h4 style="display: flex; justify-content: center; padding-top: 10px;">It's too good to go</h4>
+    <ul class="shop-list">
+       {% for shop in shop_data %}
+        <li>
+            <div class="card shop-list-item" >
+                <img class="card-img-top" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ shop.name }}</h6>
+                    <div class="shop-text">
+                        <img src="{{ url_for('static', filename='./images/location_pin.png') }}" width="15" height="15">
+                        <p class="card-text" style="font-size: smaller">{{ shop.address }}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="info-container">
+        <img src="{{ url_for('static', filename='./images/sample_shop_images/info_image.png') }}" alt="Card image cap" class="info-card-image">
+        <div class="right-text">
+            <h5>Information</h5>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+            <a href="#" class="btn btn-primary info-card-button">Read More</a>
+        </div>
+    </div>
+    <div class="card-deck">
+       <ul class="shop-list">
+       {% for item in stuff %}
+        <li>
+            <div class="card shop-list-item" style="border-radius: 15px">
+                <img class="card-img-top" src="{{ url_for('static', filename=item.image_path) }}" alt="Card image cap">
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ item.name }}</h6>
+                    <div class="shop-text">
+                        <p class="card-text" style="font-size: smaller">ED: {{ item.exp_date }}</p>
+                        <img src="{{ url_for('static', filename='./images/cart.png') }}" width="15" height="15">
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% if current_user.is_authenticated %}
 <div>
   <h1>{{ current_user.name}}</h1>
@@ -9,4 +55,5 @@
   <h2>{{current_user.id}}</h2>
 </div>
 
-{% endif %} {% endblock content %}
+{% endif %}
+{% endblock content %}
