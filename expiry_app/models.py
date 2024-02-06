@@ -8,21 +8,21 @@ def load_user(user_id):
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     role = db.Column(db.String(20), nullable=False)
     name = db.Column(db.String(100),unique=True,nullable=False)
-    location = db.Column(db.String(250),nullable=False)
     contact_number = db.Column(db.String(15),unique=True,nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='logo.png')
-    product = db.relationship('Inventory',backref='store',lazy=True)
+    product = db.relationship('Inventory',backref='product',lazy=True)
+    req = db.relationship('Requests',backref='req',lazy=True)
+    location = db.relationship('Locations',backref='location', lazy=True)
 
     
     # store = db.relationship('Store',backref='user',lazy=True)
 
     def __repr__(self):         
-        return f"User('{self.username}')"
+        return f"User('{self.name}')"
     
 class Requests(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -36,30 +36,30 @@ class Requests(db.Model):
         return f"Request('{self.status}','{self.product_id}')"
 
     
-
-    
-# class Store(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(100),unique=True,nullable=False)
-#     location = db.Column(db.String(250),nullable=False)
-#     contact_number = db.Column(db.String(15),unique=True,nullable=False)
-#     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False) 
-#     product = db.relationship('Inventory',backref='store',lazy=True)
-
-#     def __repr__(self):
-#         return f"Store('{self.name}','{self.user_id}')"
-    
 class Inventory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    item_name = db.Column(db.String(100),nullable=False)
-    item_type = db.Column(db.String(100),nullable=False)
+    name = db.Column(db.String(100),nullable=False)
+    category = db.Column(db.String(100),nullable=False)
+    desc = db.Column(db.String(1000),nullable=False)
     expiry_date = db.Column(db.Date, nullable=False)
+    brand = db.Column(db.String(100),nullable=False)
     quantity = db.Column(db.Integer,nullable=False)
     status = db.Column(db.String(30),nullable=False)
     image_file = db.Column(db.String(100), nullable=False, default='logo.png')
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    requests = db.relationship('Requests',backref='requests',lazy=False)
+    req = db.relationship('Requests',backref='request',lazy=False)
 
     def __repr__(self):
         return f"Product('{self.item_name}','{self.expiry_date}')"
+    
+class Locations(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100),nullable=False)
+    city = db.Column(db.String(100),nullable=False)
+    state = db.Column(db.String(100),nullable=False)
+    country = db.Column(db.String(100),nullable=False)
+    landmark = db.Column(db.String(100),nullable=False)
+    zip_code = db.Column(db.String(100),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+
     

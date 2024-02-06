@@ -1,12 +1,14 @@
 {% extends "layout.html" %} {% block content %}
 
-<h1>{{product.item_name}}</h1>
-<h2>{{product.item_type}}</h2>
-<h2>{{product.quantity}}</h2>
-<h2>{{product.expiry_date}}</h2>
-<h2>{{product.status}}</h2>
-<h2>{{product.user_id}}</h2>
-<h3>{{current_user.id}}</h3>
+<h1>Name - {{product.name}}</h1>
+<h2>Category - {{product.category}}</h2>
+<h2>Quantity - {{product.quantity}}</h2>
+<h2>Expiry Date - {{product.expiry_date}}</h2>
+<h2>Status - {{product.status}}</h2>
+<h2>Brand - {{product.brand}}</h2>
+<h2>Description - {{product.desc}}</h2>
+<h2>User_id - {{product.user_id}}</h2>
+<h3>Current user - {{current_user.id}}</h3>
 
 <br />
 <br />

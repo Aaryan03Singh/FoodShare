@@ -58,10 +58,10 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = Users(username=form.username.data, email=form.email.data, password=hashed_password,role=form.role.data,name=form.name.data,location=form.location.data,contact_number=form.contact_number.data)
+        user = Users( email=form.email.data, password=hashed_password,role=form.role.data,name=form.name.data,contact_number=form.contact_number.data)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data} now you can login!', 'success')
+        flash(f'Account created for {form.name.data} now you can login!', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -71,7 +71,7 @@ def inventory():
      form = InventoryForm()
      if form.validate_on_submit():
           u_id = current_user.id
-          product = Inventory(item_name=form.item_name.data,item_type=form.item_type.data,expiry_date=form.expiry_date.data,quantity=form.quantity.data,user_id=u_id,status='InStock')
+          product = Inventory(name=form.name.data,category=form.category.data,expiry_date=form.expiry_date.data,quantity=form.quantity.data,user_id=u_id,status='InStock',desc=form.desc.data,brand=form.brand.data)
           db.session.add(product)
           db.session.commit()
           flash(f'Inventory details were submitted successfully','success')
@@ -81,7 +81,7 @@ def inventory():
 @app.route('/inventory/<int:inventory_id>')
 def product(inventory_id):
      product = Inventory.query.get_or_404(inventory_id)
-     return render_template('product.html',title=product.item_name,product=product)
+     return render_template('product.html',title=product.name,product=product)
 
 @app.route('/delete/<int:inventory_id>',methods=['GET','POST'])
 def delete(inventory_id):
