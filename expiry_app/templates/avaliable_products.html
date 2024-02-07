@@ -10,16 +10,20 @@
         <th>Item Type</th>
         <th>Expiry Date</th>
         <th>Quantity</th>
+        <th>Brand</th>
+        <th>Desc</th>
       </tr>
     </thead>
     <tbody>
       {% for x in inventory %}
       <tr>
         <td>{{x.user_id}}</td>
-        <td>{{ x.item_name }}</td>
-        <td>{{ x.item_type }}</td>
+        <td>{{ x.name }}</td>
+        <td>{{ x.category }}</td>
         <td>{{ x.expiry_date }}</td>
         <td>{{ x.quantity }}</td>
+        <td>{{x.brand}}</td>
+        <td>{{x.desc}}</td>
       </tr>
       {% endfor %}
     </tbody>

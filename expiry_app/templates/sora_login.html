@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Screen</title>
+    <link rel="stylesheet" href="../static/sora_style.css">
+    <link rel="icon" href="image/FoodShare_1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+      <title></title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="" />
+    
+</head>
+<body>
+  
+<div class="Container">
+    <div class="form-box">
+      <h2>SustainLink</h2>
+      <img src="../static/images/logo.png" alt="" width="1" height="2">
+        <div class="button-box"></div>
+       <h1 id="title">Sign In</h1>
+          <form method="POST" action="">
+            <div class="input-group">
+              <div class="input-field" id="nameField">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Name">
+              </div>
+
+              <div class="input-field">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" placeholder="Email">
+              </div>
+
+              <div class="input-field">
+                <i class="fa-solid fa-address-card"></i>
+                <input type="password" placeholder="Password">
+              </div>
+          
+            </div>
+            <div class="btn-field">
+              <button type="button" id="signinBtn">Sign In</button>
+              <button type="button" id="signupBtn"class="disable">Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+
+<script>
+
+  let signupBtn = document.getElementById("signupBtn");
+  let signinBtn = document.getElementById("signinBtn");
+  let nameField = document.getElementById("nameField");
+  let fpassword = document.getElementById("fpassword")
+  let title = document.getElementById("title");
+
+  nameField.style.maxHeight = "0";
+
+signinBtn.onclick = function(){
+    nameField.style.maxHeight = "0";
+    fpassword.style.maxHeight = "60px";
+    title.innerHTML = "Sign In";
+    signinBtn.classList.remove("disable");
+    signupBtn.classList.add("disable");
+}
+
+signupBtn.onclick = function(){
+  nameField.style.maxHeight = "60px";
+  fpassword.style.maxHeight = "0";
+  title.innerHTML = "Sign Up";
+  signupBtn.classList.remove("disable");
+  signinBtn.classList.add("disable");
+}
+
+
+
+</script>
+</body>
+</html>

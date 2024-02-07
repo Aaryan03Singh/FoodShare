@@ -30,3 +30,10 @@ Add custom images that are inputed from the user
 Add request and accpet functionalites for the products
 Implement the UI to the flask project
 Add update store/organization info page
+
+
+
+from expiry_app import app,db
+with app.app_context().push()
+db.create_all()
+db.drop_all()

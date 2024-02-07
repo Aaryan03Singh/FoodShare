@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Screen</title>
+    <link rel="icon" href="../static/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/sora_register.css">
+</head>
+<body>
+<div class="Container">
+    <div class="form-box">
+      <h2>SustainLink</h2>
+      <img src="../static/images/logo.png" alt="" width="0" height="0">
+        <div class="button-box"></div>
+       <h1 id="title">Register</h1>
+          <form>
+            <div class="input-group">
+
+              <img src="../static/images/logo.png" alt="" id="Icon" width="150px" height="150px">
+
+              <div class="input-field" id="nameField">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Username">
+              </div>
+
+              <div class="input-field" id="Email">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" placeholder="Email">
+              </div>
+
+              <div class="input-field" id="Name">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Name">
+              </div>
+
+              <div class="input-field" id="Location">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" placeholder="Location">
+              </div>
+
+              <div class="input-field" id="Phone">
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" placeholder="Contact_Number">
+              </div>
+
+              <div class="input-field" id="password">
+                <i class="fa-solid fa-address-card"></i>
+                <input type="password" placeholder="Password">
+              </div>
+
+              <div class="input-field" id="cpassword">
+                <i class="fa-solid fa-address-card"></i>
+                <input type="password" placeholder="Confirm Password">
+              </div>
+
+              <div class="input-field" id="Role">
+                <i class="fa-regular fa-address-book"></i>
+                <input type="text" placeholder="Role">
+              </div>
+
+              <div class="Fpassword" id="fpassword">
+                <a href="Reset_Password.html">Forgot Password?</a>
+              </div>
+    
+
+            </div>
+            <div class="btn-field">
+                <button type="button" id="signupBtn">Sign Up</button>
+                <button type="button" id="signinBtn"class="disable">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+
+<script>
+
+  let signupBtn = document.getElementById("signupBtn");
+  let signinBtn = document.getElementById("signinBtn");
+  let nameField = document.getElementById("nameField");
+  let fpassword = document.getElementById("fpassword");
+  let cpassword = document.getElementById("cpassword");
+  let password = document.getElementById("password");
+  let Email = document.getElementById("Email");
+  let Location = document.getElementById("Location");
+  let Name = document.getElementById("Name");
+  let Role = document.getElementById("Role");
+  let Phone = document.getElementById("Phone")
+  let title = document.getElementById("title");
+  let Icon = document.getElementById("Icon")
+
+
+signinBtn.onclick = function(){
+    nameField.style.maxHeight = "0";
+    fpassword.style.maxHeight = "60px";
+    Phone.style.maxHeight = "0";
+    Name.style.maxHeight = "0";
+    Location.style.maxHeight = "0";
+    cpassword.style.maxHeight = "0";
+    Role.style.maxHeight = "60px";
+    Email.style.maxHeight = "60px";
+    password.style.maxHeight = "60px";
+    Icon.style.maxHeight = "180px";
+    title.innerHTML = "Login";
+    signinBtn.classList.remove("disable");
+    signupBtn.classList.add("disable");
+}
+
+signupBtn.onclick = function(){
+    nameField.style.maxHeight = "40px";
+    fpassword.style.maxHeight = "0";
+    Phone.style.maxHeight = "40px";
+    Name.style.maxHeight = "40px";
+    Location.style.maxHeight = "40px";
+    cpassword.style.maxHeight = "40px";
+    Email.style.maxHeight = "40px";
+    password.style.maxHeight = "40px";
+    Role.style.maxHeight = "40px";
+    Icon.style.maxHeight = "0";
+    fpassword.style.maxHeight = "0";
+    title.innerHTML = "Register";
+    signupBtn.classList.remove("disable");
+    signinBtn.classList.add("disable");
+}
+
+fpassword.style.maxHeight = "0";
+Icon.style.maxHeight = "0";
+
+</script>
+</body>
+</html>

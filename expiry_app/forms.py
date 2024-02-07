@@ -6,8 +6,6 @@ from flask_login import current_user
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username',
-                           validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -15,12 +13,11 @@ class RegistrationForm(FlaskForm):
                                      validators=[DataRequired(), EqualTo('password')])
     role = StringField('Role', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired(), Length(min=2,max=100)])
-    location = StringField('Location', validators=[DataRequired()])
     contact_number = StringField('Contact_number',validators=[DataRequired()])
     submit = SubmitField('Sign Up')
 
-    def validate_username(self, username):
-        user = Users.query.filter_by(username=username.data).first()
+    def validate_username(self, name):
+        user = Users.query.filter_by(name=name.data).first()
         if user:
             raise ValidationError('Please use a different username.')
     
@@ -42,10 +39,12 @@ class RegistrationForm(FlaskForm):
 
 
 class InventoryForm(FlaskForm):
-    item_name = StringField('Name',validators=[DataRequired()])
-    item_type = StringField('Type',validators=[DataRequired()])
+    name = StringField('Name',validators=[DataRequired()])
+    category = StringField('Type',validators=[DataRequired()])
     expiry_date = DateField('Expiry Date',validators=[DataRequired()])
     quantity = IntegerField('Quantity',validators=[DataRequired()])
+    desc = StringField('Description',validators=[DataRequired()])
+    brand = StringField('Brand',validators=[DataRequired()])
     submit = SubmitField('Submit')
 
                                  
