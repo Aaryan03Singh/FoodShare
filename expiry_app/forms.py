@@ -36,7 +36,16 @@ class RegistrationForm(FlaskForm):
 #     location = StringField('Location', validators=[DataRequired()])
 #     contact_number = StringField('Contact_number',validators=[DataRequired()])
 #     submit = SubmitField('Submit')
-
+class CheckoutForm(FlaskForm):
+    name=StringField('name', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired()])
+    mobile = StringField('mobile', validators=[DataRequired()])
+    street = StringField('street', validators=[DataRequired()])
+    house_number = StringField('house_number', validators=[DataRequired()])
+    zip_code = StringField('zip_code', validators=[DataRequired()])
+    city_name = StringField('city_name', validators=[DataRequired()])
+    country = StringField('country', validators=[DataRequired()])
+    submit = SubmitField('Proceed to Payment')
 
 class InventoryForm(FlaskForm):
     name = StringField('Name',validators=[DataRequired()])

@@ -1,12 +1,43 @@
-from flask import  render_template, url_for, flash, redirect, request, abort
-from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify
+from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm, CheckoutForm
 from expiry_app.models import Users, Inventory 
 from expiry_app import app, db, bcrypt
 from flask_login import login_user,current_user ,logout_user, login_required
 from sqlalchemy import func
 from datetime import datetime, timedelta
 
-
+stuff = [
+        {
+           'name': 'Spaghetti',
+           'exp_date': '07/11/2024',
+           'image_path': 'images/sample_shop_images/img_8.png',
+        },
+        {
+            'name': 'Flour',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_7.png',
+        },
+        {
+            'name': 'Soda',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_9.png',
+        },
+        {
+            'name': 'Spaghetti',
+            'exp_date': '07/11/2024',
+            'image_path': 'images/sample_shop_images/img_8.png',
+        },
+    {
+        'name': 'Flour',
+        'exp_date': '07/11/2024',
+        'image_path': 'images/sample_shop_images/img_7.png',
+    },
+    {
+        'name': 'Soda',
+        'exp_date': '07/11/2024',
+        'image_path': 'images/sample_shop_images/img_9.png',
+    },
+    ]
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -55,29 +86,8 @@ def home():
             'image_path': 'images/sample_shop_images/img_0.png',
         },
     ]
-    stuff = [
-        {
-           'name': 'Spaghetti',
-           'exp_date': '07/11/2024',
-           'image_path': 'images/sample_shop_images/img_8.png',
-        },
-        {
-            'name': 'Flour',
-            'exp_date': '07/11/2024',
-            'image_path': 'images/sample_shop_images/img_7.png',
-        },
-        {
-            'name': 'Soda',
-            'exp_date': '07/11/2024',
-            'image_path': 'images/sample_shop_images/img_9.png',
-        },
-        {
-            'name': 'Spaghetti',
-            'exp_date': '07/11/2024',
-            'image_path': 'images/sample_shop_images/img_8.png',
-        }
-    ]
-    return render_template("home.html",title='Home',  shop_data=shop_data, stuff=stuff)
+
+    return render_template("home.html",title='Home',  shop_data=shop_data, stuff= stuff)
     
 
 
@@ -182,4 +192,63 @@ def login():
 def logout():
      logout_user()
      return redirect(url_for('home'))
-     
+
+@app.route("/profile", methods=['GET'])
+def profile():
+    if request.method == 'GET':
+        shop_data = request.args.to_dict()
+        return jsonify(shop_data)
+    else:
+        # Handle other HTTP methods if needed
+        return jsonify({'error': 'Method not allowed'}), 405
+
+
+@app.route("/checkout")
+def checkout():
+    shop_data = {
+        'name': 'Shop 1',
+        'address': '123 Samplestreet 400001 Samplecity',
+        'image_path': 'images/sample_shop_images/img_0.png',
+        'reward_level': 4,
+        'points': 233,
+    }
+    order_data = [
+            {
+                'name': 'Oranges',
+                'amount': 10,
+                'cost': 5
+            },
+        {
+            'name': 'Spaghetti',
+            'amount': 10,
+            'cost': 15
+        },
+        {
+            'name': 'Flour',
+            'amount': 3,
+            'cost': 20
+        },
+        ]
+    form = CheckoutForm()
+    if form.validate_on_submit():
+        print('success')
+    if current_user.is_authenticated:
+        return render_template('checkout.html', user= current_user, shop_data=shop_data, order_data=order_data,
+                               cost=calculate_final_amount(order_data), stuff=stuff)
+    else:
+        return redirect(url_for('home'))
+
+
+def calculate_final_amount(order_data):
+
+    total_cost = {
+        'cost': 0,
+        'tax': 0,
+        'shipping': 4.99,
+        'final_amount': 0
+    }
+    for entry in order_data:
+        total_cost['cost'] += entry['cost']
+    total_cost['tax'] = total_cost['cost'] * 0.19
+    total_cost['final_amount'] = "%0.2f" % (total_cost['cost'] + total_cost['tax'] + total_cost['shipping'])
+    return total_cost

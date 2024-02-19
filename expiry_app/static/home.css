@@ -7,7 +7,7 @@
     flex-direction: row;
     list-style:none;
     padding: 5px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .shop-list-item{
     width: 10rem;

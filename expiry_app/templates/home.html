@@ -5,7 +5,7 @@
     <ul class="shop-list">
        {% for shop in shop_data %}
         <li>
-            <div class="card shop-list-item" >
+            <div class="card shop-list-item" data-shop="{{ shop | tojson | safe }}">
                 <img class="card-img-top" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ shop.name }}</h6>
@@ -38,7 +38,7 @@
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ item.name }}</h6>
                     <div class="shop-text">
-                        <p class="card-text" style="font-size: smaller">ED: {{ item.exp_date }}</p>
+                        <div class="card-text" style="font-size: smaller">ED: {{ item.exp_date }}</div>
                         <img src="{{ url_for('static', filename='./images/cart.png') }}" width="15" height="15">
                     </div>
                 </div>
@@ -47,6 +47,27 @@
         {% endfor %}
     </ul>
 </div>
+    <script>
+    $(document).ready(function() {
+        $('.shop-list-item').click(function() {
+            const shopData = $(this).data('shop');
+            console.log(shopData); // Log the data to see if it's correct
+            $.ajax({
+                type: 'GET',
+                url: '/profile',
+                data: shopData,
+                success: function(response) {
+                    // Handle success response if needed
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response if needed
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 {% if current_user.is_authenticated %}
 <div>
   <h1>{{ current_user.name}}</h1>

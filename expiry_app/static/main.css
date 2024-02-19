@@ -3,7 +3,6 @@
 body {
   background: #fefefe;
   color: #202a25;
-  margin-top: 3rem;
 }
 
 h1,
@@ -38,12 +37,11 @@ h6 {
 
 /* .site-header .navbar-toggler-icon {
     background-color: black; /* Navbar toggle icon color */
-*/ .site-header .navbar-nav .nav-link {
-  color: #26f0f1; /* Navbar links color */
+ .site-header .navbar-nav .nav-link { /* Navbar links color */
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #26f0f1; /* Navbar links hover color */
+ /* Navbar links hover color */
 }
 
 .site-header .navbar-nav .nav-item.active .nav-link {
@@ -93,4 +91,10 @@ h6 {
 
 .padding-container {
   padding: 3em;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+.navbar-styling{
+  display:flex;
 }
