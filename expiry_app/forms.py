@@ -56,3 +56,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class RequestForm(FlaskForm):
+    desc = TextAreaField('Description')
+    quantity = IntegerField('Quantity',validators=[DataRequired()])
+    submit = SubmitField('Send Request')

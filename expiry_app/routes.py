@@ -1,6 +1,6 @@
 from flask import  render_template, url_for, flash, redirect, request, abort
-from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm
-from expiry_app.models import Users, Inventory 
+from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm, RequestForm
+from expiry_app.models import Users, Inventory, Requests
 from expiry_app import app, db, bcrypt
 from flask_login import login_user,current_user ,logout_user, login_required
 from sqlalchemy import func
@@ -78,10 +78,19 @@ def inventory():
      return render_template('inventory.html',title='Inventory',form=form)
 
 
-@app.route('/inventory/<int:inventory_id>')
+@app.route('/inventory/<int:inventory_id>',methods=['GET','POST'])
 def product(inventory_id):
      product = Inventory.query.get_or_404(inventory_id)
-     return render_template('product.html',title=product.name,product=product)
+     product_requests = product.req
+     form = RequestForm()
+     if form.validate_on_submit():
+          request = Requests(status='Requested',product_id=inventory_id,desc=form.desc.data,user_id=current_user.id,quantity=form.quantity.data)
+          db.session.add(request)
+          db.session.commit()
+          flash(f'The request was  successfully added')
+          return render_template('home.html',title='Home')
+
+     return render_template('product.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
 @app.route('/delete/<int:inventory_id>',methods=['GET','POST'])
 def delete(inventory_id):
@@ -93,6 +102,31 @@ def delete(inventory_id):
      flash('Product was successfully deleted','success') 
      return render_template('home.html',title='Home')
 
+# @app.route('/req/<int:inventory_id>',methods=['GET','POST'])
+# def req(inventory_id):
+#      form = RequestForm()
+#      product = Inventory.query.get_or_404(inventory_id)
+#      if product.user_id == current_user.id:
+#           abort(404)
+#      if form.validate_on_submit():
+#           request = Requests(status='Requested',product_id=inventory_id,desc=form.desc.data,user_id=current_user.id,quantity=form.quantity.data)
+#           db.session.add(request)
+#           db.session.commit()
+#           flash(f'The request was  successfully added')
+#      return render_template('home.html',title='Home')
+
+@app.route('/manage_req/<int:request_id>/<int:action>',methods=['GET','POST'])
+def manage_req(request_id,action):
+     req = Requests.query.get(request_id)
+     if action == 1:
+          req.status = 'Accepted'
+          db.session.commit()
+     else:
+          req.status = 'Declined'
+          db.session.commit()
+
+     return render_template('home.html',title='Home')
+          
      
 
      
