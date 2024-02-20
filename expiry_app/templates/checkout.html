@@ -1,121 +1,168 @@
-{% extends 'layout.html' %}
-{% block content %}
-    <div class="profile-header">Checkout</div>
-    <form method="POST" action="">
-    <div class="checkout-top-row">
-        <div class="checkout-left-container">
-            <div style="font-weight: bold; font-size: large">
-                Personal Information
-            </div>
-            <div class="input-box">
-                <div style="font-weight: bold; font-size: smaller">Name</div>
-                <label id="name">
-                    <input class="input-field" style="width:70%" value={{ user.name}}>
-                </label>
-            </div>
-            <div class="input-box">
-                <div style="font-weight: bold; font-size: smaller">E-Mail</div>
-                <label id="name">
-                    <input class="input-field" style="width:70%" value={{ user.email}}>
-                </label>
-            </div>
-            <div class="input-box">
-                <div style="font-weight: bold; font-size: smaller">Mobile Number</div>
-                <label id="name">
-                    <input class="input-field" style="width:70%" >
-                </label>
-            </div>
-             <div style="font-weight: bold;">
-                Address
-            </div>
-            <div style="display: flex; flex-direction:row; ">
-                 <div class="input-box">
-                <div>Street</div>
-                <label id="name">
-                    <input class="input-field">
-                </label>
-            </div>
-                 <div class="input-box">
-                    <div>No</div>
-                    <label id="name">
-                        <input class="input-field" style="width: 4vw">
-                    </label>
-            </div>
-            </div>
-            <div style="display: flex; flex-direction:row; ">
-                 <div class="input-box">
-                <div>ZIP</div>
-                <label id="name">
-                    <input class="input-field" style="width: 5vw">
-                </label>
-            </div>
-                 <div class="input-box" >
-                    <div>Country</div>
-                    <label id="name">
-                        <input class="input-field" style="width: 15vw ">
-                    </label>
-            </div>
-            </div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Checkout.css">
+    <title>Checkout</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#"><img src="Project/image/FoodShare_Icon_1.png" alt="" width="60" height="60"></a>
         </div>
-        <div class="checkout-right-container">
-            <div class="checkout-top-right-container">
-                <div style="font-weight: bold;font-size: large">
-                Order Details
+        <div class="menu">
+            <li><a href="">Onlineshop</a></li>
+            <li><a href="">Donations</a></li>
+        </div>
+        <div class="search">
+          <form action="" class="search-bar">
+            <li><a href="" i class="fa-solid fa-search"></a></li>
+            <input type="text" placeholder="Search" name="search">
+          </form>
+        </div>
+
+        <div class="account">
+            <li><a href="" i class="fa-solid fa-user"></a></li>
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+    </nav>
+    <div class="Checkout">
+        <img src="Project/image/pic_cover (1).png" alt="" width="100%" height="350vh">
+        <h1>Checkout</h1>
+    </div>
+    <div class="container1">
+        <h1>Personal Information</h1>
+        <div class="Firstname">
+            <h3>Firstname</h3>
+            <input type="text">
+        </div>
+
+        <div class="Lastname">
+            <h3>Lastname</h3>
+            <input type="text">
+        </div>
+
+        <div class="Email">
+            <h3>E-mail</h3>
+            <input type="text">
+        </div>
+
+        <div class="Mobile">
+            <h3>Mobile</h3>
+            <input type="text">
+        </div>
+
+        <div class="Address">
+            <h1>Address</h1>
+        </div>
+        <div class="Street">
+            <h3>Street</h3>
+            <input type="text">
+        </div>
+
+        <div class="Number">
+            <h3>Number</h3>
+            <input type="text">
+        </div>
+
+        <div class="zip">
+            <h3>ZIP</h3>
+            <input type="text">
+        </div>
+
+        <div class="Location">
+            <h3>Location</h3>
+            <input type="text">
+        </div>
+
+        <div class="save">
+            <input type="radio" id="save" name="save" value="save">
+            <label for="save">Save billing address</label>
+        </div>
+    </div>
+
+    <div class="container2">
+        <h1>Cart Details</h1>
+        <div class="first-item">
+            <p>10 x <span>Oadad Orange - Limonade</span><h5>0.00</h5></p>
+        </div>
+        <div class="second-item">
+            <p>10 x <span>Spaggetti</span> <h5>0.00</h5></p>
+        </div>
+        <div class="third-item">
+            <p>10 x <span>Flour</span> <h5>0.00</h5></p>
+        </div>
+        <div class="line1"><hr></div>
+        <div class="Subtotal">
+            <h3>Subtotal</h3><h5>0.00</h5>
+        </div>
+        <div class="Shipping">
+            <span>Shipping</span><h5>0.00</h5>
+        </div>
+        <div class="Tax">
+            <span>Tax</span> <h5>0.00</h5>
+        </div>
+        <div class="line2"><hr></div>
+        <div class="Total">
+            <h3>Total</h3><h5>0.00</h5>
+        </div>
+    </div>
+
+    <div class="container3">
+        <h1>Shopinformation</h1>
+        <h3>Shopname1</h3>
+        <p>123 Street</p>
+        <span>1000000 City</span>
+        <h4>Reward Level: 4</h4>
+    </div>
+
+    <div class="order-btn">
+        <button>place order</button>
+    </div>
+
+    <div class="end">
+        <div class="info">
+            <h1>Information</h1>
+            <div class="info-a">
+            <a href="">career</a>
+            <a href="">about us</a>
+            <a href="">privacy policy</a>
+            <a href="">terms of use</a>
+            <a href="">accessibility</a>
+            <a href="">contentrules & regulations</a>  
             </div>
-                <ul class="checkout-item-list">
-                   {% for item in order_data %}
-                    <li class="item-summary">
-                           <div>
-                               {{ item.amount }} x
-                           </div>
-                           <div>
-                               {{ item.name }}
-                           </div>
-                           <div>
-                               {{ item.cost }} $
-                           </div>
-                    </li>
-                    {% endfor %}
-                    <li>
-                        <div style="background-color:#000000; height:2px; width:100%; border-radius:10px; margin-top: 5px"></div>
-                    </li>
-                    <li class="item-summary" style="font-weight: bold; margin-top: 5px">
-                        <span>Subtotal</span>
-                        {{ cost.cost }} $
-                    </li>
-                    <li class="item-summary">
-                        <span>Tax</span>
-                        {{ cost.tax }} $
-                    </li>
-                    <li class="item-summary">
-                        <span>Shipping</span>
-                        {{ cost.shipping }} $
-                    </li>
-                    <li>
-                        <div style="background-color:#000000; height:2px; width:100%; border-radius:10px; margin-top: 5px"></div>
-                    </li>
-                    <li class="item-summary" style="font-weight: bold">
-                        <span>Total</span>
-                        {{ cost.final_amount }} $
-                    </li>
-                </ul>
+        </div>
+        
+        <div class="help">
+            <h1>Help</h1>
+            <div class="help-a">
+            <a href="">FAQ</a>
+            <a href="">News</a>
             </div>
-            <div class="checkout-bottom-right-container">
-                <div style="font-weight: bold;font-size: large">
-                Store Details
-                </div>
-                    <div style="font-weight: bold; font-size: smaller">{{ shop_data.name }}</div>
-                    <div class="profile-info-text">
-                        <div>Address: </div>
-                        <div>{{ shop_data.address }}</div>
-                    </div>
-                    <div class="profile-info-text">
-                        <div>Reward Level: </div>
-                        <div>{{ shop_data.reward_level }}</div>
-                    </div>
+        </div>
+
+        <div class="contact">
+            <h1>Contact</h1>
+            <div class="contact-p1">
+            <p>123 street</p>
+            <p>123456 city</p>
+            </div>
+            <div class="contact-p2">
+            <p>+91234567890</p>
+            <p>info@foodshare.com</p>
+            </div>
+        </div>
+
+        <div class="social">
+            <h1>Social Media</h1>
+            <div class="social-icon">
+            <li><a href="" class="fa-brands fa-instagram"></a></li>
+            <li><a href="" class="fa-brands fa-square-facebook"></a></li> 
+            <li><a href="" class="fa-brands fa-youtube"></a></li>
             </div>
         </div>
     </div>
-    </form>
-{% endblock %}
+</body>
+</html>

@@ -1,15 +1,16 @@
-* {
+*{
   margin: 0;
   padding: 0;
-  font-family: Cursive;
+  font-family: 'Bahnschrift';
   box-sizing: border-box;
 }
 
-.logo {
+.logo{
   margin-left: 20px;
+  display: flex;
 }
 
-nav {
+nav{
   display: flex;
   justify-content: space-between;
   background-color: #ffffff;
@@ -21,7 +22,7 @@ nav {
   border-color: rgb(199, 201, 201);
 }
 
-.menu {
+.menu{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -29,23 +30,23 @@ nav {
   text-decoration: none;
 }
 
-.menu li {
+.menu li{
   list-style: none;
   margin-left: 120px;
   padding-left: -220px;
 }
 
-.menu li a {
+.menu li a{
   padding-left: 20px;
   text-decoration: none;
   color: black;
 }
 
-.menu a:hover {
+.menu a:hover{
   color: rgb(136, 249, 162);
 }
 
-.search {
+.search{
   width: 40%;
   min-height: 100vh;
   padding: 5%;
@@ -57,7 +58,7 @@ nav {
   flex-wrap: wrap;
 }
 
-.search-bar {
+.search-bar{
   width: 80%;
   height: 30px;
   background: rgba(255, 255, 255, 0.71);
@@ -69,18 +70,18 @@ nav {
   border-color: rgb(199, 199, 199);
 }
 
-.search-bar li {
+.search-bar li{
   list-style: none;
   display: flex;
 }
 
-.search-bar li a {
+.search-bar li a{
   text-decoration: none;
   padding-right: 10px;
   color: rgb(188, 188, 188);
 }
 
-.search-bar input {
+.search-bar input{
   background: transparent;
   flex: 1;
   border: 0;
@@ -91,25 +92,26 @@ nav {
   color: #bbbaba(44, 44, 44);
 }
 
-.account {
+.account{
   display: flex;
 }
 
-.account li {
+.account li{
   margin: 0 5px;
   margin-right: 30px;
   list-style: none;
 }
 
-.account li a {
+.account li a{
   color: black;
+  text-decoration: none;
 }
 
-.shop img {
+.shop img{
   margin: 20px;
 }
 
-.shop {
+.shop{
   display: flex;
   margin: 0;
   height: 400px;
@@ -117,23 +119,21 @@ nav {
   border-radius: 30px;
 }
 
-.shop h1 {
+.shop h1{
   margin-top: 15px;
 }
 
-.shop p {
+.shop p{
   margin-top: 80px;
   margin-left: -160px;
 }
 
-h3 {
+h3{
   margin: 20px 30px;
   font-size: 30px;
 }
 
-.container,
-.container2,
-.container3 {
+.container, .container, .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -171,12 +171,12 @@ h3 {
 
 .product-details {
   padding: 20px;
-  margin-top: -0px;
+  margin-top:-0px;
   font-size: 12px;
   text-align: center;
 }
 
-.Card-info {
+.Card-info{
   font-size: 16px;
   padding-top: 10px;
   margin-top: -20px;
@@ -186,23 +186,140 @@ h3 {
   display: flex;
 }
 
-.Card-info li {
+.Card-info li{
   list-style: none;
+  
 }
 
-.Card-info li a {
+.Card-info li a{
   text-decoration: none;
   color: black;
 }
 
-.end {
-  height: 200px;
+.Card-info a:hover{
+  color: #dff64d;
+}
+
+.end{
+  background-color: #c6c6c6;
+  height: 250px;
   width: 100%;
-  background-color: rgb(195, 195, 195);
-  margin-top: 100px;
+  margin-top: 150px;
+  display: flex;
   border-radius: 20px;
 }
 
-body {
+.info{
+  position: relative;
+  display: grid;
+  margin: 20px;
+  margin-left: 60px;
+}
+
+.info h1{
+  margin-top: 10px;
+  margin-bottom: -30px;
+  font-size: 26px;
+}
+
+.info-a{
+  margin-top: 20px;
+}
+
+.info-a :hover{
+  color: #ffffff;
+}
+
+.info-a a{
+  list-style: none;
+  text-decoration: none;
+  margin-top: 5px;
+  display: grid;
+  color: #000;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.help{
+  margin-left: 120px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.help h1{
+  font-size: 26px;
+}
+
+.help-a{
+  margin-top: -85px;
+}
+
+.help-a :hover{
+  color: #ffffff;
+}
+
+.help-a a{
+  list-style: none;
+  text-decoration: none;
+  margin-top: 5px;
+  display: grid;
+  color: #000;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.contact{
+  margin-left: 250px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.contact h1{
+  font-size: 26px;
+}
+
+.contact-p1{
+  margin-top: -50px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.contact-p2{
+  margin-top: -40px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.social{
+  margin-left: 200px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.social h1{
+  font-size: 26px;
+}
+
+.social-icon{
+  display: flex;
+}
+
+.social-icon li{
+  list-style: none;
+  margin-right: 20px;
+  margin-top: -80px;
+}
+
+.social-icon a{
+  text-decoration: none;
+  color: #000;
+  font-size: 40px;
+}
+
+.social-icon a:hover{
+  color: #ffffff;
+}
+
+body{
   background-color: rgb(254, 254, 254);
 }
