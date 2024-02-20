@@ -1,0 +1,229 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="Productd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<style>
+  .mySlides {display:none;}
+  
+  .big-img span{
+    justify-content: space-between;
+    margin-left: 180px;
+    height: 40px;
+    width: 30px;
+    margin-top: 250px;
+  }
+  </style>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#"><img src="Project/image/FoodShare_Icon.png" alt="" width="55" height="55"></a>
+        </div>
+        <div class="menu">
+            <li><a href="">Onlineshop</a></li>
+            <li><a href="">Donations</a></li>
+        </div>
+        <div class="search">
+          <form action="" class="search-bar">
+            <li><a href="" i class="fa-solid fa-search"></a></li>
+            <input type="text" placeholder="Search" name="search">
+          </form>
+        </div>
+
+        <div class="account">
+            <li><a href="" i class="fa-solid fa-user"></a></li>
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="left">
+            <div class="big-img">
+                  <img class="mySlides" src="Project/image/pic_juice.png">
+                  <img class="mySlides" src="Project/image/pic_flour.png">
+                  <img class="mySlides" src="Project/image/pic_spaggetti.png">
+                  <img class="mySlides" src="Project/image/pic_juice.png">
+                  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                
+                
+            </div>
+            <div class="images">
+                <div class="small-img">
+                    <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                  <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
+              </div>
+            </div>
+        </div>
+
+        <h1>Oadaa Orange - Limonade</h1>
+        <div class="Brand">
+            <h2>Brand</h2>
+            <p>Oadaa</p>
+        </div>
+        
+        <div class="Category">
+            <h2>Category</h2>
+            <p>Drinks</p>
+        </div>
+
+        <div class="ProductNum">
+            <h2>productNumber</h2>
+            <p>D23454KL12</p>
+        </div>
+
+        <div class="Exp">
+            <h2>Expiry Date</h2>
+            <p>19-12-2023</p>
+        </div>
+        
+        <div class="Quality">
+            <h2>Quantity</h2>
+        </div>
+        <div class="Quality-s">
+            <select name="unit" id="unitsS">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+        </div>
+
+        <div class="Shop">
+            <h2>Shop</h2>
+            <h3>Shopname1</h3>
+            <p style="color: rgb(0, 0, 0)">
+                <br> 123 street 
+                <br>40000 city</p>
+            
+        </div>
+
+        <div class="Description">
+            <h2>Description</h2>
+            <p><br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+              <br>cascassaascscjkasdhkdkcsa
+            </p>
+        </div>
+        
+        <div class="Button">
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="Recent">
+        <h1>Recent Activities</h1>
+    </div>
+
+    <div class="container1">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="Project/image/pic_spaggetti.png" alt="Product Image">
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">Spaggetti</h2>
+          </div>
+          <div class="Card-info">ED:2023-12-28
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+          </div>
+        </div>
+  
+        <div class="product-card">
+          <div class="product-image">
+            <img src="Project/image/pic_flour.png" alt="Product Image">
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">Flour</h2>
+          </div>
+          <div class="Card-info">ED:2024-01-02
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+          </div>
+        </div>
+  
+        <div class="product-card">
+          <div class="product-image">
+            <img src="Project/image/pic_juice.png" alt="Product Image">
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">Oadaa Orange</h2>
+          </div>
+          <div class="Card-info">ED:2023-12-19
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+          </div>
+        </div>
+  
+        <div class="product-card">
+          <div class="product-image">
+            <img src="Project/image/pic_flour.png" alt="Product Image">
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">Flour</h2>
+          </div>
+          <div class="Card-info">ED:2024-01-02
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+          </div>
+        </div>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="end"></div>
+
+
+    <script>
+
+      let bigImg = document.querySelector('.big-img img');
+        function showImg(pic){
+            bigImg.src = pic;
+        }
+
+        var slideIndex = 1;
+
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+      
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+      }
+    </script>
+</body>
+</html>
