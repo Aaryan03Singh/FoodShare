@@ -1,0 +1,559 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Bahnschrift';
+  box-sizing: border-box;
+}
+
+.logo{
+  margin-left: 20px;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  outline: 1px;
+  height: 65px;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+  border-style: inset;
+  border-color: rgb(199, 201, 201);
+}
+
+.menu{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  text-decoration: none;
+}
+
+.menu li{
+  list-style: none;
+  margin-left: 120px;
+  padding-left: -220px;
+}
+
+.menu li a{
+  padding-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.menu a:hover{
+  color: rgb(136, 249, 162);
+}
+
+.search{
+  width: 40%;
+  min-height: 100vh;
+  padding: 5%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-bar{
+  width: 80%;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.71);
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-color: rgb(199, 199, 199);
+}
+
+.search-bar li{
+  list-style: none;
+  display: flex;
+}
+
+.search-bar li a{
+  text-decoration: none;
+  padding-right: 10px;
+  color: rgb(188, 188, 188);
+}
+
+.search-bar input{
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 20px 20px;
+  margin-left: -20px;
+  font-size: 16px;
+  color: #bbbaba(44, 44, 44);
+}
+
+.account{
+  display: flex;
+}
+
+.account li{
+  margin: 0 5px;
+  margin-right: 90px;
+  list-style: none;
+}
+
+.account li a{
+  color: black;
+  text-decoration: none;
+}
+
+  .Checkout h1{
+    position: relative;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+    font-size: 28px;
+  }
+
+  .container1{
+    display: flex;
+    background-color: rgb(240, 243, 243);
+    width: 52%;
+    height: 580px;
+    margin-left: 50px;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .container1 h1{
+    margin: 20px;
+    margin-left: 50px;
+    font-size: 23px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .Firstname h3, .Lastname h3, .Email h3, .Mobile h3, .Address h3, 
+  .Street h3, .Number h3, .zip h3, .Location h3{
+    font-size: 19px;
+  }
+
+  .Firstname{
+    margin: 70px 20px 20px 50px;
+  }
+
+  .Lastname{
+    margin: 70px 20px 20px 30px;
+  }
+
+  .Firstname input, .Lastname input{
+    width: 300px;
+    height: 35px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .Email{
+    margin: 150px 20px 20px -670px;
+  }
+
+  .Mobile{
+    margin: 230px 20px 20px -670px;
+  }
+
+  .Email input, .Mobile input{
+    width: 650px;
+    height: 35px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .Address h1{
+    margin: 310px 20px 20px -670px;
+  }
+
+  .Street{
+    margin: 360px 20px 20px -670px;
+  }
+
+  .Street input, .Location input{
+    width: 400px;
+    height: 35px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .Number{
+    margin: 360px 20px 20px 30px;
+  }
+
+  .zip{
+    margin: 440px 20px 20px -660px;
+  }
+
+  .Number input, .zip input{
+    width: 190px;
+    height: 35px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .Location{
+    margin: 440px 20px 20px 30px;
+  }
+
+  .save{
+    margin: 530px 20px 20px 50px;
+    position: absolute;
+  }
+
+  .container2{
+    display: flex;
+    background-color: rgb(240, 243, 243);
+    width: 39%;
+    height: 380px;
+    margin-left: 850px;
+    margin-top: -580px;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .container2 h1{
+    margin: 20px;
+    font-size: 23px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .first-item p{
+    margin: 20px;
+    margin-top: 80px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .first-item h5{
+    margin-left: 520px;
+    margin-top: 80px;
+    font-size: 18px;
+  }
+
+  .first-item span, .second-item span, .third-item span{
+    margin-left: 100px;
+  }
+
+  .second-item p{
+    margin: 20px;
+    margin-top: 120px;
+    margin-left: -532px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .second-item h5{
+    margin-left: -33px;
+    margin-top: 120px;
+    font-size: 18px;
+  }
+
+  .third-item p{
+    margin: 20px;
+    margin-left: -532px;
+    margin-top: 160px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .third-item h5{
+    margin-left: -33px;
+    margin-top: 160px;
+    font-size: 18px;
+  }
+
+  .line1 hr{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    width: 530px;
+    margin-top: 200px;
+    height: 2px;
+    margin-left: -530px;
+    margin-bottom: 10px;
+  }
+
+  .Subtotal h3{
+    margin: 20px;
+    margin-left: -532px;
+    margin-top: 220px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .Subtotal h5{
+    margin-left: -33px;
+    margin-top: 220px;
+    font-size: 18px;
+  }
+
+  .Shipping span{
+    margin: 20px;
+    margin-left: -532px;
+    margin-top: 250px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .Shipping h5{
+    margin-left: -33px;
+    margin-top: 250px;
+    font-size: 18px;
+  }
+
+  .Tax span{
+    margin: 20px;
+    margin-left: -532px;
+    margin-top: 280px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .Tax h5{
+    margin-left: -33px;
+    margin-top: 280px;
+    font-size: 18px;
+  }
+
+  .line2 hr{
+    border-bottom: 2px solid rgb(0, 0, 0);
+    width: 530px;
+    margin-top: 315px;
+    height: 2px;
+    margin-left: -530px;
+    margin-bottom: 10px;
+  }
+
+  .Total h3{
+    margin: 20px;
+    margin-left: -532px;
+    margin-top: 340px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .Total h5{
+    margin-left: -33px;
+    margin-top: 340px;
+    font-size: 18px;
+  }
+
+  .container3{
+    display: flex;
+    background-color: rgb(240, 243, 243);
+    width: 39%;
+    height: 180px;
+    margin-left: 850px;
+    margin-top: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .container3 h1{
+    margin: 20px;
+    font-size: 23px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .container3 h3{
+    margin-top: 60px;
+    margin-left: 20px;
+    font-size: 18px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .container3 p{
+    margin-top: 90px;
+    margin-left: 20px;
+    font-size: 14px;
+    width: 500px;
+    position: absolute;
+  }
+  
+  .container3 span{
+    margin-top: 90px;
+    margin-left: 100px;
+    font-size: 14px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .container3 h4{
+    margin-top: 140px;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 500px;
+    position: absolute;
+  }
+
+  .order-btn{
+    margin-top: 50px;
+    margin-left: 850px;
+  }
+
+  .order-btn button{
+    width: 200px;
+    height: 40px;
+    margin-left: -190px;
+    border-radius: 20px;
+    position: absolute;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 18px;
+    background-color: #acacac;
+  }
+
+  .order-btn button:hover{
+    background-color: #656565;
+    color: #ffffff;
+  }
+
+  .end{
+    background-color: #c6c6c6;
+    height: 250px;
+    width: 100%;
+    margin-top: 150px;
+    display: flex;
+    border-radius: 20px;
+  }
+  
+  .info{
+    position: relative;
+    display: grid;
+    margin: 20px;
+    margin-left: 60px;
+  }
+  
+  .info h1{
+    margin-top: 10px;
+    margin-bottom: -30px;
+    font-size: 26px;
+  }
+  
+  .info-a{
+    margin-top: 20px;
+  }
+  
+  .info-a :hover{
+    color: #ffffff;
+  }
+  
+  .info-a a{
+    list-style: none;
+    text-decoration: none;
+    margin-top: 5px;
+    display: grid;
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .help{
+    margin-left: 120px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .help h1{
+    font-size: 26px;
+  }
+  
+  .help-a{
+    margin-top: -85px;
+  }
+  
+  .help-a :hover{
+    color: #ffffff;
+  }
+  
+  .help-a a{
+    list-style: none;
+    text-decoration: none;
+    margin-top: 5px;
+    display: grid;
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .contact{
+    margin-left: 250px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .contact h1{
+    font-size: 26px;
+  }
+  
+  .contact-p1{
+    margin-top: -50px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .contact-p2{
+    margin-top: -40px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .social{
+    margin-left: 200px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .social h1{
+    font-size: 26px;
+  }
+  
+  .social-icon{
+    display: flex;
+  }
+  
+  .social-icon li{
+    list-style: none;
+    margin-right: 20px;
+    margin-top: -80px;
+  }
+  
+  .social-icon a{
+    text-decoration: none;
+    color: #000;
+    font-size: 40px;
+  }
+  
+  .social-icon a:hover{
+    color: #ffffff;
+  }
