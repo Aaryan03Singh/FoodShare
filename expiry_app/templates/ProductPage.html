@@ -3,26 +3,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Product Details Page</title>
     <link rel="stylesheet" href="Productd.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
-<style>
-  .mySlides {display:none;}
-  
-  .big-img span{
-    justify-content: space-between;
-    margin-left: 180px;
-    height: 40px;
-    width: 30px;
-    margin-top: 250px;
-  }
-  </style>
 <body>
     <nav>
         <div class="logo">
-            <a href="#"><img src="Project/image/FoodShare_Icon.png" alt="" width="55" height="55"></a>
+            <a href="#"><img src="Project/image/FoodShare_Icon_1.png" alt="" width="60" height="60"></a>
         </div>
         <div class="menu">
             <li><a href="">Onlineshop</a></li>
@@ -45,29 +33,22 @@
 
         <div class="left">
             <div class="big-img">
-                  <img class="mySlides" src="Project/image/pic_juice.png">
-                  <img class="mySlides" src="Project/image/pic_flour.png">
-                  <img class="mySlides" src="Project/image/pic_spaggetti.png">
-                  <img class="mySlides" src="Project/image/pic_juice.png">
-                  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                
-                
+                <img src="Project/image/pic_juice.png">
             </div>
             <div class="images">
-                <div class="small-img">
+                <div class="small-img1">
                     <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
                 </div>
-                <div class="small-img">
+                <div class="small-img2">
                     <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
                 </div>
-                <div class="small-img">
+                <div class="small-img3">
                     <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
                 </div>
-                <div class="small-img">
+                <div class="small-img4">
                     <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
                 </div>
-                <div class="small-img">
+                <div class="small-img5">
                   <img src="Project/image/pic_juice.png" onclick="showImg(this.src)">
               </div>
             </div>
@@ -196,34 +177,55 @@
         </div>
       </div>
   
-      <div class="end"></div>
+      <div class="end">
+        <div class="info">
+            <h1>Information</h1>
+            <div class="info-a">
+            <a href="">career</a>
+            <a href="">about us</a>
+            <a href="">privacy policy</a>
+            <a href="">terms of use</a>
+            <a href="">accessibility</a>
+            <a href="">contentrules & regulations</a>  
+            </div>
+        </div>
+        
+        <div class="help">
+            <h1>Help</h1>
+            <div class="help-a">
+            <a href="">FAQ</a>
+            <a href="">News</a>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h1>Contact</h1>
+            <div class="contact-p1">
+            <p>123 street</p>
+            <p>123456 city</p>
+            </div>
+            <div class="contact-p2">
+            <p>+91234567890</p>
+            <p>info@foodshare.com</p>
+            </div>
+        </div>
+
+        <div class="social">
+            <h1>Social Media</h1>
+            <div class="social-icon">
+            <li><a href="" class="fa-brands fa-instagram"></a></li>
+            <li><a href="" class="fa-brands fa-square-facebook"></a></li> 
+            <li><a href="" class="fa-brands fa-youtube"></a></li>
+            </div>
+        </div>
+    </div>
 
 
     <script>
-
-      let bigImg = document.querySelector('.big-img img');
+        let bigImg = document.querySelector('.big-img img');
         function showImg(pic){
             bigImg.src = pic;
         }
-
-        var slideIndex = 1;
-
-      showDivs(slideIndex);
-
-      function plusDivs(n) {
-        showDivs(slideIndex += n);
-      }
-      
-      function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
-        }
-        x[slideIndex-1].style.display = "block";  
-      }
     </script>
 </body>
 </html>
