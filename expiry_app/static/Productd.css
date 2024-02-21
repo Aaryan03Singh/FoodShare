@@ -108,12 +108,15 @@
   }
 
 .container{
-    background-color: rgb(240, 243, 243);
+    border-radius: 12px;
     margin: 20px;
-    border-radius: 20px;
+    width : 1400px;
     display: flex;
     flex-wrap: wrap;
     height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .left{
@@ -122,6 +125,7 @@
 .big-img{
     width: 450px;
     margin: 20px;
+    margin-left: 22px;
 }
 .big-img img{
     width: inherit;
@@ -131,6 +135,7 @@
     justify-content: space-between;
     width: 100%;
     margin-top: 15px; 
+    gap : 20px;
 }
 .small-img1, .small-img2, .small-img3,
 .small-img4, .small-img5{
@@ -165,7 +170,7 @@
 }
 .container h1{
     font-size: 25px;
-    margin-left: 70px;
+    margin-left: 200px;
     margin-top: 30px;
 }
 
@@ -239,17 +244,18 @@
 .Shop{
     display: contents;
     justify-content: space-between;
+
 }
 
-.Shop h2{
+/*.Shop h2{
     margin-top: 450px;
-    margin-left: -120px;
+    margin-left: -150px;
     font-size: 22px;
-}
+} */
 
 .Shop h3{
     margin-top: 450px;
-    margin-left: 120px;
+    margin-left: -125px;
     font-size: 22px;
 }
 
@@ -261,17 +267,17 @@
 
 .Description h2{
     margin-top: 620px;
-    margin-left: -250px;
+    margin-left: -88px;
     font-size: 22px;
 }
 
 .Description p{
   margin-top: 0px;
-  margin-left: -240px;
+  margin-left: -88px;
   font-size: 18px;
 }
 
-.Button{
+/*.Button{
     margin-top: 920px;
     width: 100px;
 }
@@ -290,11 +296,37 @@
 .Button button:hover{
   background-color: #656565;
   color: #ffffff;
+}*/
+
+.Button {
+  text-align: center;
+  background-color: black;
+  color : white;
+  border-width : 0;
+  border-radius : 6px;  /*rounded corners*/
+  padding : 12px 30px;
+  font-family : Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor : pointer; /*indicates interaction*/
+  transition: all .3s ease-in-out;
+  margin-right: 30px;
+  /*padding-right : 20px;*/
+  margin-top: 920px;
+  margin-left: -160px;
+}
+
+.Button:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .Recent h1{
     margin: 25px;
-    font-size: 22px;
+    margin-left: 100px;
+    margin-top: 50px;
+    font-size: 40px;
 }
 
 .container1{
@@ -314,6 +346,10 @@
     margin: -15px 10px 00px 0px;
     background-color: rgb(249, 249, 249);
     border-radius: 30px;
+  }
+
+  .product-card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   }
   
   .product-image {
@@ -366,7 +402,7 @@
     width: 100%;
     margin-top: 150px;
     display: flex;
-    border-radius: 20px;
+   
   }
   
   .info{
