@@ -1,12 +1,82 @@
-{% extends "layout.html" %} {% block content %}
-<h1>Home Page</h1>
+{% extends 'layout.html' %}
+{% block content %}
+        <img src="{{ url_for('static', filename='./images/charity_home_cover.png') }}" alt="icon" class="image-container">
+    <h4 style="display: flex; justify-content: center; padding-top: 10px;">It's too good to go</h4>
+    <div class="shop-list-container">
+    <ul class="shop-list">
+       {% for shop in shop_data %}
+        <li>
+             <div class="card shop-list-item" data-id="{{ shop.id }}">
+                 {% if shop.image_path %}
+                    <img class="card-img-top" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
+                {% else %}
+                    <img class="card-img-top" src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+                {% endif %}
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ shop.name }}</h6>
+                    <div class="shop-text">
+                        <img src="{{ url_for('static', filename='./images/location_pin.svg') }}" width="15" height="15">
+                        <p class="card-text" style="font-size: smaller">{{ shop.location }}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
-{% if current_user.is_authenticated %}
-<div>
-  <h1>{{ current_user.name}}</h1>
-  <h2>{{ current_user.location}}</h2>
-  <h2>{{current_user.contact_number}}</h2>
-  <h2>{{current_user.id}}</h2>
+    </div>
+        <div class="info-container">
+        <img src="{{ url_for('static', filename='./images/info_image.png') }}" alt="Card image cap" class="info-card-image">
+        <div class="right-text">
+            <h5>Information</h5>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+            <a href="#" class="btn btn-primary info-card-button">Read More</a>
+        </div>
+    </div>
+    <div class="card-deck">
+       <ul class="shop-list">
+       {% for item in stuff %}
+        <li>
+            <div class="card shop-list-item" style="border-radius: 15px">
+                <img class="card-img-top" src="{{ url_for('static', filename=item.image_file) }}" alt="Card image cap">
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ item.name }}</h6>
+                    <div class="shop-text">
+                        <div class="card-text" style="font-size: smaller">ED: {{ item.expiry_date }}</div>
+                        <img src="{{ url_for('static', filename='./images/cart2.svg') }}" width="15" height="15">
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
+    <script>
+        $(document).ready(function() {
+            $('.shop-list').on('click', '.shop-list-item', function() {
+                const shopData = {
+                    id: $(this).data('id'),
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/profile',
+                    data: JSON.stringify(shopData),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        // Handle success response if needed
+                        console.log(response);
+                        window.location.href = '/profile'; // Redirect to the profile page
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response if needed
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 
-{% endif %} {% endblock content %}
+{% endblock content %}

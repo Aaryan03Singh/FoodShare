@@ -1,18 +1,139 @@
-from flask import  render_template, url_for, flash, redirect, request, abort
+from flask import render_template, url_for, flash, redirect, request, abort, session, jsonify
 from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm, RequestForm
-from expiry_app.models import Users, Inventory, Requests
+from expiry_app.models import Users, Inventory, Requests, Locations
 from expiry_app import app, db, bcrypt
 from flask_login import login_user,current_user ,logout_user, login_required
 from sqlalchemy import func
 from datetime import datetime, timedelta
-
+stuff = [
+        {
+        'id': 10,
+           'name': 'Spaghetti',
+           'expiry_date': '07/11/2024',
+           'image_file': 'images/spagetti.png',
+        },
+        {
+            'id': 11,
+            'name': 'Flour',
+            'expiry_date': '07/11/2024',
+            'image_file': 'images/flour.png',
+        },
+        {
+            'id': 12,
+            'name': 'Soda',
+            'expiry_date': '07/11/2024',
+            'image_file': 'images/juice.png',
+        },
+        {
+            'id': 13,
+            'name': 'Spaghetti',
+            'expiry_date': '07/11/2024',
+            'image_file': 'images/spagetti.png',
+        },
+    {
+        'id':14,
+        'name': 'Flour',
+        'expiry_date': '07/11/2024',
+        'image_file': 'images/flour.png',
+    },
+    {
+        'id': 15,
+        'name': 'Soda',
+        'expiry_date': '07/11/2024',
+        'image_file': 'images/juice.png',
+    },
+    ]
 
 
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-     return render_template("home.html",title='Home')
+    if current_user.is_authenticated:
+        current_stores = Users.query.filter_by(role='Store').all()
+        store_data = []
+        #the following code just appends a location to the store for display remove if necessary
+        for user in current_stores:
+            user_data = {
+                'id': user.id,
+                'email': user.email,
+                'password': user.password,
+                'role': user.role,
+                'name': user.name,
+                'contact_number': user.contact_number,
+                'image_file': user.image_file,
+                'location': '123 Sample Street',
+            }
+            store_data.append(user_data)
+        #test_data
+        shops_data = [
+            {
+                'id': 1,
+                'email': '872364827364782',
+                'password':'723468723423',
+                'role': 'Store',
+                'name': 'Shop 2',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+            {
+                'id': 2,
+                'email': '872364827364782',
+                'password': '723468723423',
+                'role': 'Store',
+                'name': 'Shop 3',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+            {
+                'id': 3,
+                'email': '872364827364782',
+                'password': '723468723423',
+                'role': 'Store',
+                'name': 'Shop 4',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+            {
+                'id': 4,
+                'email': '872364827364782',
+                'password': '723468723423',
+                'role': 'Store',
+                'name': 'Shop 6',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+            {
+                'id': 5,
+                'email': '872364827364782',
+                'password': '723468723423',
+                'role': 'Store',
+                'name': 'Shop 7',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+            {
+                'id': 6,
+                'email': '872364827364782',
+                'password': '723468723423',
+                'role': 'Store',
+                'name': 'Shop 8',
+                'contact_number': '746478365836',
+                'image_path': 'profile_pictures/logo.png',
+                'location': '123 Sample Street'
+            },
+
+        ]
+
+        return render_template("home.html",shop_data=store_data, title='Home', stuff= stuff)
+    # enter url for landingpage here
+    # else:
+    #    return render_template("landing.html", title='Landing')
     
 
 
@@ -25,7 +146,7 @@ def all_products():
     expiry_threshold =datetime.utcnow() + timedelta(days=10)
     items_available = Inventory.query.filter_by(user_id=current_user.id)
     return render_template('all_products.html', title='All Products',inventory=items_available,expiry_threshold=expiry_threshold)
-    
+
 @app.route("/expiry_products", methods=['GET', 'POST'])
 @login_required
 def expiry_products():
@@ -163,3 +284,18 @@ def logout():
      return redirect(url_for('home'))
 
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    print('test')
+    if request.method == 'POST':
+        shop_data = request.get_json()
+        session['shop_data'] = shop_data
+        return jsonify(success=True)
+    else:
+        print('test')
+        shop_id = session.get('shop_data')['id']
+        shop_data = Users.query.filter_by(id=shop_id)
+        # location = Locations.query.filter_by(id=shop_id)
+        # items_available = Inventory.query.filter_by(user_id=shop_id) query call for later
+        active_items_of_shop = stuff
+        return render_template('profile.html', shop_data=shop_data, stuff = active_items_of_shop)
