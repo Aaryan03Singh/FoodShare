@@ -1,0 +1,497 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Bahnschrift";
+  box-sizing: border-box;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+.button-container {
+  display: flex; /* Use flexbox to align buttons horizontally */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  outline: 1px;
+  height: 65px;
+  align-items: center;
+  text-decoration: none;
+  border-style: inset;
+  border-color: rgb(199, 201, 201);
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: rgb(136, 249, 162);
+}
+
+.menu li {
+  list-style: none;
+  margin-left: 120px;
+  padding-left: -220px;
+}
+
+.menu li a {
+  padding-left: 20px;
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+
+.search {
+  width: 40%;
+  min-height: 100vh;
+  padding: 5%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  width: 80%;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.71);
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-color: rgb(199, 199, 199);
+}
+
+.search-bar li {
+  list-style: none;
+  display: flex;
+}
+
+.search-bar li a {
+  text-decoration: none;
+  padding-right: 10px;
+  color: rgb(188, 188, 188);
+}
+
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 20px 20px;
+  margin-left: -20px;
+  font-size: 16px;
+  color: #bbbaba(44, 44, 44);
+}
+
+.account {
+  display: flex;
+}
+
+.account li {
+  margin: 0 5px;
+  margin-right: 90px;
+  list-style: none;
+}
+
+.account li a {
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  background-color: rgb(240, 243, 243);
+  margin: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 1000px;
+}
+
+.container h1 {
+  position: static;
+}
+
+.left {
+  width: 35%;
+}
+.big-img {
+  width: 450px;
+  margin: 20px;
+}
+.big-img img {
+  width: inherit;
+}
+.images {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+}
+.small-img1,
+.small-img2,
+.small-img3,
+.small-img4,
+.small-img5 {
+  width: 80px;
+  overflow: hidden;
+  border: 1.5px solid black;
+  border-radius: 20px;
+  margin-left: 20px;
+  position: relative;
+}
+.small-img1 img,
+.small-img2 img,
+.small-img3 img,
+.small-img4 img,
+.small-img5 img {
+  width: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.small-img2 {
+  margin-left: -30px;
+}
+.small-img3 {
+  margin-left: -30px;
+  margin-right: -20px;
+}
+.small-img4 {
+  margin-left: -10px;
+  margin-right: -50px;
+}
+.small-img5 {
+  margin-right: 40px;
+}
+.small-img:hover img {
+  transform: scale(1.1);
+}
+.container h1 {
+  font-size: 25px;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+
+.Brand h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Brand p {
+  margin-top: -25px;
+  margin-left: 200px;
+  font-size: 18px;
+}
+
+.Category h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Category p {
+  margin-top: -25px;
+  margin-left: 200px;
+  font-size: 18px;
+}
+
+.ProductNum h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.ProductNum p {
+  margin-top: -25px;
+  margin-left: 250px;
+  font-size: 18px;
+}
+
+.Exp h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Exp p {
+  margin-top: -25px;
+  margin-left: 250px;
+  font-size: 18px;
+}
+
+.Quality h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Quality-s {
+  margin-top: 10px;
+  margin-left: 70px;
+}
+
+.Quality-s select {
+  height: 30px;
+  width: 120px;
+  border-radius: 10px;
+  padding-left: 7px;
+  font-size: 16px;
+}
+
+.Shop {
+  display: contents;
+  justify-content: space-between;
+}
+
+.Shop h2 {
+  margin-top: 40px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Shop h3 {
+  margin-top: -27px;
+  margin-left: 280px;
+  font-size: 22px;
+}
+
+.Shop p {
+  margin-top: 0px;
+  margin-left: 280px;
+  font-size: 18px;
+}
+
+.Description h2 {
+  margin-top: 30px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+
+.Description p {
+  margin-top: 0px;
+  margin-left: 70px;
+  font-size: 18px;
+}
+
+.Button {
+  margin-top: 120px;
+  margin-left: 300px;
+  position: relative;
+  width: 100px;
+}
+
+.Button button {
+  width: 200px;
+  height: 40px;
+  margin-left: -160px;
+  border-radius: 20px;
+  font-weight: 500;
+  position: absolute;
+  cursor: pointer;
+  background-color: #acacac;
+}
+
+.Button button:hover {
+  background-color: #656565;
+  color: #ffffff;
+}
+
+.Recent h1 {
+  margin: 25px;
+  font-size: 22px;
+}
+
+.container1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.product-card {
+  width: 250px;
+  height: 350px;
+  border-radius: 30px, 20px;
+  box-shadow: #bbbaba;
+  margin: -15px 10px 00px 0px;
+  background-color: rgb(249, 249, 249);
+  border-radius: 30px;
+}
+
+.product-image {
+  height: 280px;
+  width: 240px;
+  position: relative;
+  top: 20px;
+  padding: 10px;
+  margin-left: -45px;
+  margin-top: -20px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  margin-left: 50px;
+}
+
+.product-details {
+  padding: 20px;
+  margin-top: -0px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.Card-info {
+  font-size: 16px;
+  padding-top: 10px;
+  margin-top: -20px;
+  margin-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.Card-info li {
+  list-style: none;
+}
+
+.Card-info li a {
+  text-decoration: none;
+  color: black;
+}
+
+.end {
+  background-color: #c6c6c6;
+  height: 250px;
+  width: 100%;
+  margin-top: 150px;
+  display: flex;
+  border-radius: 20px;
+}
+
+.info {
+  position: relative;
+  display: grid;
+  margin: 20px;
+  margin-left: 60px;
+}
+
+.info h1 {
+  margin-top: 10px;
+  margin-bottom: -30px;
+  font-size: 26px;
+}
+
+.info-a {
+  margin-top: 20px;
+}
+
+.info-a :hover {
+  color: #ffffff;
+}
+
+.info-a a {
+  list-style: none;
+  text-decoration: none;
+  margin-top: 5px;
+  display: grid;
+  color: #000;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.help {
+  margin-left: 120px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.help h1 {
+  font-size: 26px;
+}
+
+.help-a {
+  margin-top: -85px;
+}
+
+.help-a :hover {
+  color: #ffffff;
+}
+
+.help-a a {
+  list-style: none;
+  text-decoration: none;
+  margin-top: 5px;
+  display: grid;
+  color: #000;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.contact {
+  margin-left: 250px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.contact h1 {
+  font-size: 26px;
+}
+
+.contact-p1 {
+  margin-top: -50px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.contact-p2 {
+  margin-top: -40px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.social {
+  margin-left: 200px;
+  margin-top: 30px;
+  display: grid;
+}
+
+.social h1 {
+  font-size: 26px;
+}
+
+.social-icon {
+  display: flex;
+}
+
+.social-icon li {
+  list-style: none;
+  margin-right: 20px;
+  margin-top: -80px;
+}
+
+.social-icon a {
+  text-decoration: none;
+  color: #000;
+  font-size: 40px;
+}
+
+.social-icon a:hover {
+  color: #ffffff;
+}

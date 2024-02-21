@@ -1,0 +1,151 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details Page</title>
+    <link rel="stylesheet" href="../static/Productd.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="#"
+          ><img src="../static/images/symbol.png" alt="" width="60" height="60"
+        /></a>
+      </div>
+      <div class="menu">
+        <li><a href="">Onlineshop</a></li>
+        <li><a href="">Donations</a></li>
+      </div>
+      <div class="search">
+        <form action="" class="search-bar">
+          <li><a href="" i class="fa-solid fa-search"></a></li>
+          <input type="text" placeholder="Search" name="search" />
+        </form>
+      </div>
+
+      <div class="account">
+        <li><a href="" i class="fa-solid fa-user"></a></li>
+        <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="left">
+        <div class="big-img">
+          <img
+            src="{{ url_for('static', filename='profile_pictures/' + product.image_file) }}"
+          />
+        </div>
+      </div>
+
+      <div class="container2">
+        <h1>{{product.name}}</h1>
+        <div class="Brand">
+          <h2>Brand</h2>
+          <p>{{product.brand}}</p>
+        </div>
+
+        <div class="Category">
+          <h2>Category</h2>
+          <p>{{product.category}}</p>
+        </div>
+
+        <div class="ProductNum">
+          <h2>ProductNumber</h2>
+          <p>{{product.id}}</p>
+        </div>
+
+        <div class="Exp">
+          <h2>Expiry Date</h2>
+          <p>{{product.expiry_date}}</p>
+        </div>
+        <div class="Exp">
+          <h2>Avaliable Quantity</h2>
+          <p>{{product.quantity}}</p>
+        </div>
+
+        <div class="Exp">
+          <h2>Status</h2>
+          <p>{{product.status}}</p>
+        </div>
+
+        <!-- <div class="Quality">
+            <h2>Quantity</h2>
+        </div> -->
+        <!-- <div class="Quality-s">
+            <select name="unit" id="unitsS">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+        </div> -->
+
+        <div class="Shop">
+          <h2>Shop</h2>
+          <h3>{{product.user_id}}</h3>
+          <p style="color: rgb(0, 0, 0)">
+            <br />
+            123 street mlkcmlsm <br />40000 city
+          </p>
+        </div>
+
+        <div class="Description">
+          <h2>Description</h2>
+          <p>{{product.desc}}</p>
+        </div>
+        {% if current_user.id != product.user_id %}
+        <div class="Button">
+          <button>Add to Cart</button>
+        </div>
+        {% endif %} {% if current_user.id == product.user_id %}
+
+        <!-- <div class="Button">
+          <a href="{{url_for('delete', inventory_id=product.id)}}">
+            <button>Delete</button>
+          </a>
+        </div>
+
+        <div class="Button">
+          <a href="{{url_for('donate', inventory_id=product.id)}}">
+            <button>Donate</button>
+          </a>
+        </div> -->
+        <div class="button-container">
+          <div class="Button">
+            <a href="{{url_for('delete', inventory_id=product.id)}}">
+              <button>Delete</button>
+            </a>
+          </div>
+          
+          <div class="Button">
+            <a href="{{url_for('donate', inventory_id=product.id)}}">
+              <button>Donate</button>
+            </a>
+          </div>
+        </div>
+        
+
+        {% endif %}
+      </div>
+    </div>
+
+    <script>
+      let bigImg = document.querySelector(".big-img img");
+      function showImg(pic) {
+        bigImg.src = pic;
+      }
+    </script>
+  </body>
+</html>

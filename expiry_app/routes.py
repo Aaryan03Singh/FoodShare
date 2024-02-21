@@ -75,7 +75,7 @@ def inventory():
           db.session.add(product)
           db.session.commit()
           flash(f'Inventory details were submitted successfully','success')
-     return render_template('inventory.html',title='Inventory',form=form)
+     return render_template('input.html',title='Inventory',form=form)
 
 
 @app.route('/inventory/<int:inventory_id>',methods=['GET','POST'])
@@ -88,9 +88,9 @@ def product(inventory_id):
           db.session.add(request)
           db.session.commit()
           flash(f'The request was  successfully added')
-          return render_template('home.html',title='Home')
+          return render_template('productd.html',title='Home')
 
-     return render_template('product.html',title=product.name,product=product,product_requests=product_requests,form=form)
+     return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
 @app.route('/delete/<int:inventory_id>',methods=['GET','POST'])
 def delete(inventory_id):
@@ -100,6 +100,16 @@ def delete(inventory_id):
      db.session.delete(product)
      db.session.commit()
      flash('Product was successfully deleted','success') 
+     return render_template('home.html',title='Home')
+
+@app.route('/donate/<int:inventory_id>',methods=['GET','POST'])
+def donate(inventory_id):
+     product= Inventory.query.get_or_404(inventory_id)
+     if product.user_id != current_user.id:
+          abort(404)
+     product.status = 'Donation'
+     db.session.commit()
+     flash('Product was put up for donation','success')
      return render_template('home.html',title='Home')
 
 # @app.route('/req/<int:inventory_id>',methods=['GET','POST'])
@@ -151,4 +161,5 @@ def login():
 def logout():
      logout_user()
      return redirect(url_for('home'))
-     
+
+

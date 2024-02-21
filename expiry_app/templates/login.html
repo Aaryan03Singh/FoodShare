@@ -1,50 +1,129 @@
-{% extends "layout.html" %} {% block content %}
-<div class="content-section">
-  <form method="POST" action="">
-    {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Log In</legend>
-      <div class="form-group">
-        {{ form.email.label(class="form-control-label") }} {% if
-        form.email.errors %} {{ form.email(class="form-control form-control-lg
-        is-invalid") }}
-        <div class="invalid-feedback">
-          {% for error in form.email.errors %}
-          <span>{{ error }}</span>
-          {% endfor %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="icon" href="../static/images/symbol.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../static/login.css" />
+  </head>
+
+  <body>
+    <div class="top">
+      <header class="header">
+        <div class="logo">
+          <img src="../static/images/symbol.png" alt="logo" />
         </div>
-        {% else %} {{ form.email(class="form-control form-control-lg") }} {%
-        endif %}
-      </div>
-      <div class="form-group">
-        {{ form.password.label(class="form-control-label") }} {% if
-        form.password.errors %} {{ form.password(class="form-control
-        form-control-lg is-invalid") }}
-        <div class="invalid-feedback">
-          {% for error in form.password.errors %}
-          <span>{{ error }}</span>
-          {% endfor %}
+
+        <div class="navigation">
+          <nav>
+            <a href="">Home</a>
+            <a href="">Contact Us</a>
+            <a href="">About Us</a>
+          </nav>
         </div>
-        {% else %} {{ form.password(class="form-control form-control-lg") }} {%
-        endif %}
-      </div>
-      <div class="form-check">
-        {{ form.remember(class="form-check-input") }} {{
-        form.remember.label(class="form-check-label") }}
-      </div>
-    </fieldset>
-    <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
+
+        <div class="start">
+          <a href="{{url_for('register')}}" class="btn">Get Started</a>
+        </div>
+      </header>
     </div>
-    <small class="text-muted ml-2">
-      <a href="#">Forgot Password?</a>
-    </small>
-  </form>
-</div>
-<div class="border-top pt-3">
-  <small class="text-muted">
-    Need An Account?
-    <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
-  </small>
-</div>
-{% endblock content %}
+
+    <section class="container" id="container">
+      <div class="title">
+        <h1>Login</h1>
+      </div>
+
+      <div class="form-box">
+        <form method="POST" action="">
+          {{ form.hidden_tag() }}
+          <div class="input-group">
+            
+            <i class="fa-solid fa-user"></i> {% if
+              form.email.errors %} {{ form.email(class="input-field",placeholder="Email") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %} {{ form.email(class="input-field",placeholder="Email") }} {%
+              endif %}
+            
+          </div>
+
+          <div class="input-group">
+            <i class="fa-solid fa-address-card"></i>
+            {% if form.password.errors %} {{ form.password(class="input-field",placeholder="Password") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %} {{ form.password(class="input-field",placeholder="Password") }} {%
+              endif %}
+          </div>
+
+          <div class="input-group">{{ form.submit(class="button") }}</div>
+        </form>
+        </form>
+
+      </div>
+    </section>
+
+    <script>
+      let signupBtn = document.getElementById("signupBtn");
+      let signinBtn = document.getElementById("signinBtn");
+      let nameField = document.getElementById("nameField");
+      let fpassword = document.getElementById("fpassword");
+      let cpassword = document.getElementById("cpassword");
+      let password = document.getElementById("password");
+      let Email = document.getElementById("Email");
+      let Location = document.getElementById("Location");
+      let Name = document.getElementById("Name");
+      let Role = document.getElementById("Role");
+      let Phone = document.getElementById("Phone");
+      let title = document.getElementById("title");
+      let Icon = document.getElementById("Icon");
+
+      signinBtn.onclick = function () {
+        nameField.style.maxHeight = "0";
+        fpassword.style.maxHeight = "60px";
+        Phone.style.maxHeight = "0";
+        Name.style.maxHeight = "0";
+        Location.style.maxHeight = "0";
+        cpassword.style.maxHeight = "0";
+        Role.style.maxHeight = "60px";
+        Email.style.maxHeight = "60px";
+        password.style.maxHeight = "60px";
+        Icon.style.maxHeight = "180px";
+        title.innerHTML = "Login";
+        signinBtn.classList.remove("disable");
+        signupBtn.classList.add("disable");
+      };
+
+      signupBtn.onclick = function () {
+        nameField.style.maxHeight = "40px";
+        fpassword.style.maxHeight = "0";
+        Phone.style.maxHeight = "40px";
+        Name.style.maxHeight = "40px";
+        Location.style.maxHeight = "40px";
+        cpassword.style.maxHeight = "40px";
+        Email.style.maxHeight = "40px";
+        password.style.maxHeight = "40px";
+        Role.style.maxHeight = "40px";
+        Icon.style.maxHeight = "0";
+        fpassword.style.maxHeight = "0";
+        title.innerHTML = "Register";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+      };
+
+      fpassword.style.maxHeight = "0";
+      Icon.style.maxHeight = "0";
+    </script>
+  </body>
+</html>

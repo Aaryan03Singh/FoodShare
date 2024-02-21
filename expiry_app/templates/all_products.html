@@ -1,48 +1,72 @@
-{% extends "layout.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalog.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/cat.css">
+  </head>
+  <body>
+    <nav>
+        <div class="logo">
+            <a href="#"><img src="../static/images/symbol.png" alt="" width="55" height="55"></a>
+        </div>
+        <div class="menu">
+            <li><a href="">Onlineshop</a></li>
+            <li><a href="">Donations</a></li>
+        </div>
+        <div class="search">
+          <form action="" class="search-bar">
+            <li><a href="" i class="fa-solid fa-search"></a></li>
+            <input type="text" placeholder="Search" name="search">
+          </form>
+        </div>
 
-<div>
-  <h1>All Products in inventory</h1>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Item Name</th>
-        <th>category</th>
-        <th>Expiry Date</th>
-        <th>Quantity</th>
-        <th>Brand</th>
-        <th>Desc</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for x in inventory %} {% if x.expiry_date <= expiry_threshold.date() %}
-      <tr style="background-color: red">
-        <td>
-          <a href="{{url_for('product',inventory_id=x.id)}}"
-            >{{ x.name }}</a
-          >
-        </td>
-        <td>{{ x.category }}</td>
-        <td>{{ x.expiry_date }}</td>
-        <td>{{ x.quantity }}</td>
-        <td>{{x.brand}}</td>
-        <td>{{x.desc}}</td>
-      </tr>
-      {% else %}
-      <tr style="background-color: greenyellow">
-        <td>
-          <a href="{{url_for('product',inventory_id=x.id)}}"
-            >{{ x.name }}</a
-          >
-        </td>
-        <td>{{ x.category}}</td>
-        <td>{{ x.expiry_date }}</td>
-        <td>{{ x.quantity }}</td>
-        <td>{{x.brand}}</td>
-        <td>{{x.desc}}</td>
-      </tr>
-      {% endif %} {% endfor %}
-    </tbody>
-  </table>
-</div>
+        <div class="account">
+            <li><a href="" i class="fa-solid fa-user"></a></li>
+            <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+    </nav>
 
-{% endblock content %}
+    <div class="shop">
+        <img src=" {{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="">
+        <h1>Shopname: {{current_user.name}} </h1>
+        <p>Location:</p>
+    </div>
+
+    <h3>Donated Products of {{current_user.name}}: </h3>
+
+    <div class="container">
+      
+
+
+      {% for x in inventory %}
+      
+      <div class="product-card">
+        <div class="product-image">
+          <a href="{{url_for('product',inventory_id=x.id)}}">
+          <img src=" {{ url_for('static', filename='profile_pictures/' + x.image_file) }}" alt="Product Image">
+          </a>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">{{x.name}}</h2>
+        </div>
+        {% if x.expiry_date >= expiry_threshold.date() %}
+        <div class="Card-info" style="color : red">ED:{{x.expiry_date}}
+          <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+        {% else %}
+        <div class="Card-info">ED:{{x.expiry_date}}
+          <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+{% endif %}
+      </div>
+      {% endfor %}
+           
+        </div>
+      </div>
+    </div>
+
+    <div class="end"></div>
+  
+  </body>
+</html>
