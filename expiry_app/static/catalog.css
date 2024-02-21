@@ -109,6 +109,7 @@ nav{
 
 .shop img{
   margin: 20px;
+  border : 0px;
 }
 
 .shop{
@@ -116,7 +117,7 @@ nav{
   margin: 0;
   height: 400px;
   background-color: rgb(235, 235, 235);
-  border-radius: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .shop h1{
