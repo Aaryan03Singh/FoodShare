@@ -22,7 +22,7 @@ stuff = [
             'id': 12,
             'name': 'Soda',
             'expiry_date': '07/11/2024',
-            'image_file': 'images/juice.png',
+            'image_file': '',
         },
         {
             'id': 13,

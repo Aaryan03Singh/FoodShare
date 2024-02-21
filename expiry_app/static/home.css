@@ -59,7 +59,7 @@
 .shop-list-item{
     width: 10rem;
     padding: 5px;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-right: 5px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -108,4 +108,9 @@
 }
 .shop-list::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.image-format{
+    height:31vh;
+    width:100%;
+    border-radius: 10px;
 }

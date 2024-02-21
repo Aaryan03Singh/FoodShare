@@ -8,9 +8,9 @@
         <li>
              <div class="card shop-list-item" data-id="{{ shop.id }}">
                  {% if shop.image_path %}
-                    <img class="card-img-top" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
+                    <img class="card-img-top image-format" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
                 {% else %}
-                    <img class="card-img-top" src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+                    <img class="card-img-top image-format"  src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
                 {% endif %}
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ shop.name }}</h6>
@@ -41,7 +41,12 @@
        {% for item in stuff %}
         <li>
             <div class="card shop-list-item" style="border-radius: 15px">
-                <img class="card-img-top" src="{{ url_for('static', filename=item.image_file) }}" alt="Card image cap">
+                {% if item.image_file %}
+                    <img class="card-img-top image-format" src="{{ url_for('static', filename=item.image_file) }}" alt="Card image cap">
+                {% else %}
+                    <img class="card-img-top image-format"  src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+                {% endif %}
+
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ item.name }}</h6>
                     <div class="shop-text">

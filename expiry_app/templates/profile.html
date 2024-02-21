@@ -28,11 +28,15 @@
        {% for item in stuff %}
         <li>
             <div class="card shop-list-item" style="border-radius: 15px">
-                <img class="card-img-top" src="{{ url_for('static', filename=item.image_path) }}" alt="Card image cap">
+                {% if item.image_file %}
+                    <img class="card-img-top image-format" src="{{ url_for('static', filename=item.image_file) }}" alt="Card image cap">
+                {% else %}
+                    <img class="card-img-top image-format"  src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+                {% endif %}
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ item.name }}</h6>
                     <div class="shop-text">
-                        <div class="card-text" style="font-size: smaller">ED: {{ item.exp_date }}</div>
+                        <div class="card-text" style="font-size: smaller">ED: {{ item.expiry_date }}</div>
                         <a href="#">
                             <img src="{{ url_for('static', filename='./images/cart2.svg') }}" width="15" height="15">
                         </a>
