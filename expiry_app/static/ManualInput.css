@@ -58,7 +58,6 @@
   
   .product-image img {
     width: 300px /* Maintains current image height */
-    object-fit: cover;
   }
   
   .shop-details {
