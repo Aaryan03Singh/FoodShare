@@ -3,7 +3,10 @@
 }
 
 .top {
-    background-color: #e3f9ed;
+    background-color: white;
+  margin: 0px;
+  padding: 0px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .header{
@@ -15,6 +18,7 @@
     width : 90%;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 .navigation {
@@ -27,7 +31,7 @@
 
 .navigation nav a {
     text-decoration: none;
-    color: #1f4d3a;
+    color:black;
     padding-right : 20px; /* each link - spacing*/
     text-align: center;  
     font-family: Inter, sans-serif;
@@ -47,10 +51,15 @@
     width : 180px;
 }
 
+.logo img {
+    width : 75px;
+    height: 75px;
+}
+
 .btn {
     text-align: center;
-    background-color: #1f4d3a;
-    color : #dff64d;
+    background-color: black;
+    color : white;
     border-width : 0;
     border-radius : 6px;  /*rounded corners*/
     padding : 12px 30px;
@@ -64,8 +73,9 @@
 }
 
 .btn:hover{
-    background-color: #dff64d;
-    color: #1f4d3a;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .container{
@@ -73,7 +83,7 @@
     padding-top: 70px;
     padding-bottom: 70px;
     position: relative;
-    background-color:#1f4d3a;
+    background-color:white;
     overflow: hidden;
     width: 100%;
 }
@@ -86,6 +96,7 @@
     margin : 0 auto;
     padding: 80px 50px 80px; 
     background: white;   
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     text-align: center;
     border-radius: 12px;
     margin-top: 30px;
@@ -148,9 +159,9 @@
     height: 35px;
     width: 358px;
     margin-left: 15px;
-    border: 1px solid #dff64d;
-    background-color: #dff64d;
-    color: #004b1a;
+    border: 1px solid #e3f9ed;
+    background-color: #e3f9ed;
+    color: black;
     border-radius: 6px;
     margin-bottom: 10px;
     padding: 10px 20px;
@@ -167,7 +178,7 @@
     box-sizing: border-box;
     text-align: center;
     margin-bottom: 40px;
-    color :#dff64d;
+    color : black;
 }
 
 .title h1 {
@@ -191,8 +202,8 @@
 .button {
     text-align: center;
     margin-top: 10px;
-    background-color: #1f4d3a;
-    color : #dff64d;
+    background-color: black;
+    color : white;
     border-width : 0;
     border-radius : 6px;  /*rounded corners*/
     padding : 12px 30px;
@@ -204,20 +215,21 @@
 }
 
 .button:hover {
-    background-color: #dff64d;
-    color: #1f4d3a;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .login {
     font-family: Inter, sans-serif;
-    color:#1f4d3a;
+    color:black;
     margin-top: 25px;
     font-size: 16px;
     font-weight: 500;
 }
 
 .login a {
-    color:#1f4d3a;
+    color:black;
     font-family: Inter, sans-serif;
 }
 
