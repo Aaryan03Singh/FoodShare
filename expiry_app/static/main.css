@@ -98,3 +98,19 @@ h6 {
 .navbar-styling{
   display:flex;
 }
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar-text {
+    display: flex;
+    justify-content: center;
+    color: white; /* Change color as needed */
+    font-size: 18px; /* Adjust font size as needed */
+    padding: 10px 0; /* Adjust padding as needed */
+    background-color: #6c757d; /* Change background color as needed */
+    width: 100%;
+    text-align: center;
+}

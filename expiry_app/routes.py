@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request, abort, jsonify
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify, session
 from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm, CheckoutForm
 from expiry_app.models import Users, Inventory 
 from expiry_app import app, db, bcrypt
@@ -46,44 +46,68 @@ def home():
     #  sample data replace with backend call
     shop_data = [
         {
+            'id': 1,
             'name': 'Shop 1',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_0.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 2,
             'name': 'Shop 2',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_1.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 3,
             'name': 'Shop 3',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_2.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 4,
             'name': 'Shop 4',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_3.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 5,
             'name': 'Shop 5',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_4.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 6,
             'name': 'Shop 6',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_5.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 7,
             'name': 'Shop 7',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_6.png',
+            'reward_level': 4,
+            'points': 425
         },
         {
+            'id': 8,
             'name': 'Shop 8',
             'address': '123 Samplestreet',
             'image_path': 'images/sample_shop_images/img_0.png',
+            'reward_level': 4,
+            'points': 425
         },
     ]
 
@@ -193,14 +217,21 @@ def logout():
      logout_user()
      return redirect(url_for('home'))
 
-@app.route("/profile", methods=['GET'])
+
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    if request.method == 'GET':
-        shop_data = request.args.to_dict()
-        return jsonify(shop_data)
+    print('test')
+    if request.method == 'POST':
+        shop_data = request.get_json()
+        session['shop_data'] = shop_data
+        return jsonify(success=True)
     else:
-        # Handle other HTTP methods if needed
-        return jsonify({'error': 'Method not allowed'}), 405
+        print('test')
+        # shop_id = session.get('shop_data')['id']
+        # shop_data = db.session.get(shop_id)
+        shop_data = session.get('shop_data')
+        active_items_of_shop = stuff
+        return render_template('profile.html', shop_data=shop_data, stuff = active_items_of_shop)
 
 
 @app.route("/checkout")
@@ -233,8 +264,7 @@ def checkout():
     if form.validate_on_submit():
         print('success')
     if current_user.is_authenticated:
-        return render_template('checkout.html', user= current_user, shop_data=shop_data, order_data=order_data,
-                               cost=calculate_final_amount(order_data), stuff=stuff)
+        return True
     else:
         return redirect(url_for('home'))
 

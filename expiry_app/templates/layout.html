@@ -21,34 +21,39 @@
   </head>
   <body>
   <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid navbar-styling">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+    <div class="container-fluid navbar-styling text-center">
         <a class="navbar-brand" href="{{url_for('home')}}">
             <img src="{{ url_for('static', filename='images/symbol.png') }}" alt="Bootstrap" width="30" height="30">
-            FoodShare
+            SustainLink
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if current_user.is_authenticated %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Onlineshop</a>
+                {% if current_user.role == 'Organization' %}
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Onlineshop</a>
+                     <ul class="dropdown-menu">
+                         <li><a class="nav-item nav-link" href="{{url_for('avaliable_products')}}">Available Products</a></li>
+                    </ul>
                 </li>
+                {% endif %}
+                {% if current_user.role == 'Store' %}
                 <li class="nav-item dropdown-center">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Donations
                     </a>
                     <ul class="dropdown-menu">
-                        {% if current_user.is_authenticated %}
-                            {% if current_user.role == 'Store' %}
-                                <li><a class="nav-item nav-link" href="{{url_for('inventory')}}">Inventory</a></li>
-                                <li><a class="nav-item nav-link" href="{{url_for('all_products')}}">All Products</a></li>
-                            {% endif %}
-                            {% if current_user.role == 'Organization' %}
-                                <li><a class="nav-item nav-link" href="{{url_for('avaliable_products')}}">Available Products</a></li>
-                            {% endif %}
+                        {% if current_user.role == 'Store' %}
+                            <li><a class="nav-item nav-link" href="{{url_for('inventory')}}">Inventory</a></li>
+                            <li><a class="nav-item nav-link" href="{{url_for('all_products')}}">All Products</a></li>
                         {% endif %}
                     </ul>
                 </li>
+                {% endif %}
             </ul>
+            {% endif %}
+            <div>DONATE . REUSE . TRANSFORM</div>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"aria-expanded="false">
@@ -73,7 +78,7 @@
         </div>
     </div>
 </nav>
-  </header>
+</header>
           {% block content %}{% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

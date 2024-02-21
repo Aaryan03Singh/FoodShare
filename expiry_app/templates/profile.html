@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="profile-header">Profile</div>
+
     <div style="display: flex; justify-content: center">
      <div class="profile-top-container">
         <img src="{{ url_for('static', filename=shop_data.image_path) }}" alt="Card image cap" class="profile-card-image">
@@ -31,8 +32,11 @@
                      <progress style="display:flex; width:auto" max=100 value={{ shop_data.points - ((shop_data.reward_level - 1)*100) }}></progress>
                  </div>
             </div>
+            {% if current_user.id == shop_data.id %}
              <a href="#" class="btn btn-outline-secondary edit-profile-button">Edit Profile</a>
+            {% endif %}
         </div>
+
     </div>
     </div>
     <div class="profile-header" style="padding-top:0px">Recent Activities</div>
@@ -56,5 +60,7 @@
         </li>
         {% endfor %}
     </ul>
+    </div>
+
 {% endblock content %}
 

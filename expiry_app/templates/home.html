@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}
-        <img src="{{ url_for('static', filename='./images/img.png') }}" alt="icon" class="image-container">
+        <img src="{{ url_for('static', filename='./images/charity_home_cover.png') }}" alt="icon" class="image-container">
     <h4 style="display: flex; justify-content: center; padding-top: 10px;">It's too good to go</h4>
+    <div class="shop-list-container">
     <ul class="shop-list">
        {% for shop in shop_data %}
         <li>
-            <div class="card shop-list-item" data-shop="{{ shop | tojson | safe }}">
+             <div class="card shop-list-item" data-id="{{ shop.id }}" data-name="{{ shop.name }}" data-address="{{ shop.address }}" data-image="{{ shop.image_path }}" data-reward-level="{{ shop.reward_level }}" data-points="{{ shop.points }}">
                 <img class="card-img-top" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
                 <div class="card-body" style="padding: 0">
                     <h6 class="shop-header">{{ shop.name }}</h6>
@@ -18,7 +19,10 @@
         </li>
         {% endfor %}
     </ul>
-    <div class="info-container">
+    <img src="{{ url_for('static', filename='./images/caret-right-fill.svg') }}" alt="Scroll Arrow" class="scroll-arrow" height="30" width="30">
+
+    </div>
+        <div class="info-container">
         <img src="{{ url_for('static', filename='./images/sample_shop_images/info_image.png') }}" alt="Card image cap" class="info-card-image">
         <div class="right-text">
             <h5>Information</h5>
@@ -48,25 +52,48 @@
     </ul>
 </div>
     <script>
-    $(document).ready(function() {
-        $('.shop-list-item').click(function() {
-            const shopData = $(this).data('shop');
-            console.log(shopData); // Log the data to see if it's correct
-            $.ajax({
-                type: 'GET',
-                url: '/profile',
-                data: shopData,
-                success: function(response) {
-                    // Handle success response if needed
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response if needed
-                    console.error(xhr.responseText);
-                }
+        $(document).ready(function() {
+            $('.shop-list').on('click', '.shop-list-item', function() {
+                const shopData = {
+                    id: $(this).data('id'),
+                    name: $(this).data('name'),
+                    address: $(this).data('address'),
+                    image_path: $(this).data('image'),
+                    reward_level: $(this).data('reward-level'),
+                    points: $(this).data('points')
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/profile',
+                    data: JSON.stringify(shopData),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        // Handle success response if needed
+                        console.log(response);
+                        window.location.href = '/profile'; // Redirect to the profile page
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response if needed
+                        console.error(xhr.responseText);
+                    }
+                });
             });
         });
+    </script>
+    <script>
+    $(document).ready(function() {
+    $('.shop-list-container').scroll(function() {
+        if ($(this).scrollLeft() > 0) {
+            $('.scroll-arrow').fadeIn();
+        } else {
+            $('.scroll-arrow').fadeOut();
+        }
     });
+
+    $('.scroll-arrow').click(function() {
+        $('.shop-list-container').animate({ scrollLeft: 0 }, 'slow');
+    });
+});
 </script>
 {% if current_user.is_authenticated %}
 <div>
@@ -76,5 +103,4 @@
   <h2>{{current_user.id}}</h2>
 </div>
 
-{% endif %}
-{% endblock content %}
+{% endif %} {% endblock content %}
