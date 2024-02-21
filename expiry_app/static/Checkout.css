@@ -240,6 +240,14 @@ nav{
     position: absolute;
   }
 
+  .container2 h5{
+    position: static;
+  }
+
+  .con2-2{
+    position: absolute;
+  }
+
   .first-item p{
     margin: 20px;
     margin-top: 80px;
@@ -249,41 +257,44 @@ nav{
   }
 
   .first-item h5{
-    margin-left: 520px;
+    margin-left: 480px;
     margin-top: 80px;
     font-size: 18px;
+    position: absolute;
   }
 
   .first-item span, .second-item span, .third-item span{
     margin-left: 100px;
+    position: relative;
   }
 
   .second-item p{
     margin: 20px;
     margin-top: 120px;
-    margin-left: -532px;
+    margin-left: 20px;
     font-size: 18px;
     width: 500px;
     position: absolute;
   }
 
   .second-item h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 120px;
     font-size: 18px;
+    position: absolute;
   }
 
   .third-item p{
     margin: 20px;
-    margin-left: -532px;
     margin-top: 160px;
+    margin-left: 20px;
     font-size: 18px;
     width: 500px;
     position: absolute;
   }
 
   .third-item h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 160px;
     font-size: 18px;
   }
@@ -293,13 +304,14 @@ nav{
     width: 530px;
     margin-top: 200px;
     height: 2px;
-    margin-left: -530px;
+    margin-left: 20px;
     margin-bottom: 10px;
+    position: absolute;
   }
 
   .Subtotal h3{
     margin: 20px;
-    margin-left: -532px;
+    margin-left: 20px;
     margin-top: 220px;
     font-size: 18px;
     width: 500px;
@@ -307,14 +319,15 @@ nav{
   }
 
   .Subtotal h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 220px;
     font-size: 18px;
+    position: absolute;
   }
 
   .Shipping span{
     margin: 20px;
-    margin-left: -532px;
+    margin-left: 20px;
     margin-top: 250px;
     font-size: 18px;
     width: 500px;
@@ -322,14 +335,15 @@ nav{
   }
 
   .Shipping h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 250px;
     font-size: 18px;
+    position: absolute;
   }
 
   .Tax span{
     margin: 20px;
-    margin-left: -532px;
+    margin-left: 20px;
     margin-top: 280px;
     font-size: 18px;
     width: 500px;
@@ -337,9 +351,10 @@ nav{
   }
 
   .Tax h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 280px;
     font-size: 18px;
+    position: absolute;
   }
 
   .line2 hr{
@@ -347,13 +362,14 @@ nav{
     width: 530px;
     margin-top: 315px;
     height: 2px;
-    margin-left: -530px;
+    margin-left: 20px;
     margin-bottom: 10px;
+    position: absolute;
   }
 
   .Total h3{
     margin: 20px;
-    margin-left: -532px;
+    margin-left: 20px;
     margin-top: 340px;
     font-size: 18px;
     width: 500px;
@@ -361,9 +377,10 @@ nav{
   }
 
   .Total h5{
-    margin-left: -33px;
+    margin-left: 480px;
     margin-top: 340px;
     font-size: 18px;
+    position: absolute;
   }
 
   .container3{
