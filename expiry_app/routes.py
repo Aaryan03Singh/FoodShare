@@ -69,6 +69,27 @@ def all_products():
         item.image_file = os.path.basename(item.image_file)
     return render_template('all_products.html', title='All Products',inventory=items_available,expiry_threshold=expiry_threshold)
 
+
+@app.route("/all_requests",methods=["GET", "POST"])
+@login_required
+def all_requests():
+    requests = Requests.query.filter_by(user_id=current_user.id)
+    requests_with_users = []
+    for request in requests:
+        requester = Users.query.get(request.user_id)
+        product = Inventory.query.get(request.product_id)
+        product_owner = Users.query.get(product.user_id)
+        requests_with_users.append({
+            'request': request,
+            'requester_name': requester.name,
+            'product_owner_name': product_owner.name,
+            'product_name': product.name,
+            'product_img': product.image_file
+        })
+    for x in requests_with_users:
+        x['product_img'] = os.path.basename(x['product_img'])
+    return render_template('request.html', title='All Requests', requests_with_users=requests_with_users)
+
 @app.route("/expiry_products", methods=['GET', 'POST'])
 @login_required
 def expiry_products():

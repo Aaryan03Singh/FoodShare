@@ -4,7 +4,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details Page</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Productd.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='Productd.css') }}"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,7 +19,11 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='home.css') }}"
+    />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../static/main.css" />
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
@@ -50,6 +58,7 @@
                     >Available Products</a
                   >
                 </li>
+                <li><a class="nav-item nav-link" href="{{url_for('all_requests')}}">Requests</a></li>
               </ul>
             </li>
             {% endif %} {% if current_user.role == 'Store' %}
@@ -140,55 +149,44 @@
     </nav>
   </head>
   <body>
-   <div class="container" style="height:auto;width: 80vw;">
-        <div class="left">
-            <div>
-                <img class="big-img"
+    <div class="container" style="height: auto; width: 80vw">
+      <div class="left">
+        <div>
+          <img
+            class="big-img"
             src="{{ url_for('static', filename='uploads/' + product.image_file) }}"
           />
-            </div>
         </div>
-       <div class="right">
-           <div class="info-box">
-           <h2>{{product.name}}</h2>
-           </div>
+      </div>
+      <div class="right">
         <div class="info-box">
-            <p style="font-weight:bold">Brand</p>
-            <p>{{product.brand}}</p>
+          <h2>{{product.name}}</h2>
         </div>
         <div class="info-box">
-            <p style="font-weight:bold">Category</p>
-            <p>{{ product.category }}</p>
+          <p style="font-weight: bold">Brand</p>
+          <p>{{product.brand}}</p>
         </div>
-       <div class="info-box">
-            <p style="font-weight:bold">Expiry Date</p>
-            <p>{{ product.expiry_date }}</p>
+        <div class="info-box">
+          <p style="font-weight: bold">Category</p>
+          <p>{{ product.category }}</p>
+        </div>
+        <div class="info-box">
+          <p style="font-weight: bold">Expiry Date</p>
+          <p>{{ product.expiry_date }}</p>
         </div>
 
         <div class="info-box">
-            <p style="font-weight:bold">Quantity</p>
-            <p>{{ product.quantity }}</p>
+          <p style="font-weight: bold">Quantity</p>
+          <p>{{ product.quantity }}</p>
         </div>
+        
+        {% if current_user.id == product.user_id%}
         <div class="info-box">
-            <p style="font-weight:bold">Select Quantity</p>
-            <select class="select-box" name="unit" id="unitsS">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+          <p style="font-weight: bold">Status</p>
+          <p>{{ product.status }}</p>
         </div>
-       <div class="info-box">
-           <p style="font-weight:bold">Shop</p>
-            <p>{{ product.name }}</p>
-        </div>
-       {% if current_user.id != product.user_id %}
+        {% endif %}
+        {% if current_user.id != product.user_id %}
         <form method="POST" action="">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
@@ -223,59 +221,64 @@
         </form>
 
         {% endif %}
-           <div>
-                {% if current_user.id == product.user_id %}
-                    <div class="info-box">
-            <p style="font-weight:bold">Description</p>
-            <p>{{ product.description }}
-            </p>
-        </div>
-        <div class="button-container">
-          <div>
-            <a href="{{url_for('delete', inventory_id=product.id)}}">
-              <button class="Button">Delete</button>
-            </a>
+        <div>
+          {% if current_user.id == product.user_id %}
+          <div class="info-box">
+            <p style="font-weight: bold">Description</p>
+            <p>{{ product.description }}</p>
           </div>
-          {% if product.status != 'Donation'%}
-          <div>
-            <a href="{{url_for('donate', inventory_id=product.id)}}">
-              <button class="Button">Donate</button>
-            </a>
+          <div class="button-container">
+            <div>
+              <a href="{{url_for('delete', inventory_id=product.id)}}">
+                <button class="Button">Delete</button>
+              </a>
+            </div>
+            {% if product.status != 'Donation'%}
+            <div>
+              <a href="{{url_for('donate', inventory_id=product.id)}}">
+                <button class="Button">Donate</button>
+              </a>
+            </div>
+            {% endif %}
           </div>
           {% endif %}
         </div>
-        {% endif %}
-           </div>
+      </div>
     </div>
-       </div>
-   <ul class="shop-list">
-   {% if product.user_id == current_user.id %} {% for req in
-        product_requests %}
-        <li>
-            <div class="card shop-list-item" style="width: auto; padding: 5px" data-id="{{ req.id }}" style="border-radius: 15px">
-                <div class="card-body" style="padding: 0">
-                    <h6 class="shop-header">User: {{ req.id }}</h6>
-                    <h6 class="shop-header">Quantity: {{ req.quantity }}</h6>
-                    <h6 class="shop-header"> Description:{{ req.desc }}</h6>
-                    <div class="shop-text">
-                        <form  style="margin-right: 5px"
-                      action="{{url_for('manage_req', request_id=req.id,action=1)}}"
-                      method="POST"
-                    >
-                      <input class="btn btn-danger" type="submit" value="Accept" />
-                    </form>
-                    <form
-                      action="{{url_for('manage_req', request_id=req.id,action=0)}}"
-                      method="POST"
-                    >
-                      <input class="btn btn-danger" type="submit" value="Decline" />
-                    </form>
-                    </div>
-                </div>
+    <ul class="shop-list">
+      {% if product.user_id == current_user.id %} {% for req in product_requests
+      %}
+      <li>
+        <div
+          class="card shop-list-item"
+          style="width: auto; padding: 5px"
+          data-id="{{ req.id }}"
+          style="border-radius: 15px"
+        >
+          <div class="card-body" style="padding: 0">
+            <h6 class="shop-header">User: {{ req.id }}</h6>
+            <h6 class="shop-header">Quantity: {{ req.quantity }}</h6>
+            <h6 class="shop-header">Description:{{ req.desc }}</h6>
+            <div class="shop-text">
+              <form
+                style="margin-right: 5px"
+                action="{{url_for('manage_req', request_id=req.id,action=1)}}"
+                method="POST"
+              >
+                <input class="btn btn-danger" type="submit" value="Accept" />
+              </form>
+              <form
+                action="{{url_for('manage_req', request_id=req.id,action=0)}}"
+                method="POST"
+              >
+                <input class="btn btn-danger" type="submit" value="Decline" />
+              </form>
             </div>
-        </li>
-     {% endfor %} {% endif %}
-   </ul>
+          </div>
+        </div>
+      </li>
+      {% endfor %} {% endif %}
+    </ul>
 
     <script>
       let bigImg = document.querySelector(".big-img img");
