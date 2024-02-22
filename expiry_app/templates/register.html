@@ -99,7 +99,7 @@
           <div class="input-group">
             <i class="fa-solid fa-phone"></i> {% if form.contact_number.errors
             %} {{
-            form.contact_number(class="input-field",placeholder='Contact_Number')
+            form.contact_number(class="input-field",placeholder='Contact Number')
             }}
             <div class="invalid-feedback">
               {% for error in form.contact_number.errors %}
@@ -107,7 +107,7 @@
               {% endfor %}
             </div>
             {% else %} {{
-            form.contact_number(class="input-field",placeholder='Contact_Number')
+            form.contact_number(class="input-field",placeholder='Contact Number')
             }} {% endif %}
           </div>
           <div class="input-group">
@@ -122,10 +122,10 @@
             form.password(class="input-field",placeholder="Password") }} {%
             endif %}
           </div>
-          <div class="input-group">
+          <div class="input-group" >
             <i class="fa-solid fa-address-card"></i>
             {% if form.confirm_password.errors %} {{
-            form.confirm_password(class="input-field",placeholder="Confirm_Password")
+            form.confirm_password(class="input-field",placeholder="Confirm Password")
             }}
             <div class="invalid-feedback">
               {% for error in form.confirm_password.errors %}
@@ -133,7 +133,7 @@
               {% endfor %}
             </div>
             {% else %} {{
-            form.confirm_password(class="input-field",placeholder="Confirm_Password")
+            form.confirm_password(class="input-field",placeholder="Confirm Password")
             }} {% endif %}
           </div>
           <div class="input-group">

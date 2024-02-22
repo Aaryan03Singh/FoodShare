@@ -13,7 +13,7 @@
 
   </head>
 
-  <body>
+  <body style="overflow-x:hidden">
     <div class="top">
      <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
@@ -74,8 +74,7 @@
     </div>
 </nav>
 </header>
-    </div>
-
+    <img src="{{ url_for('static', filename='./images/manual_input_cover.png') }}" style="width: 100%; height:40vh; margin-top:10vh" alt="icon" class="image-container">
     <div class="manual-input">
       <div class="heading">
         <h2 class="centered-heading">Manual Input of Groceries</h2>
@@ -87,78 +86,37 @@
             </div>
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-        <div class="product-details">
-          <label id="name" for="product-name">{{form.name.label}}</label>
+        <div class="product-details-input">
+          <label id="name" for="product-name" style="font-weight: bold">{{form.name.label}}</label>
           <!-- <input type="text" id="product-name" name="product_name" required /> -->
           {{form.name()}}
-          <label id="brand" for="product-brand">{{form.brand.label}}</label>
+          <label id="brand" for="product-brand" style="font-weight: bold">{{form.brand.label}}</label>
           <!-- <input type="text" id="product-brand" name="product_brand" /> -->
-          {{form.brand()}}
+            {{form.brand()}}
 
-          <div class="product-quantity">
-            <label id="expiry_date" for="expiry-date">{{form.expiry_date.label}}</label>
-            {{form.expiry_date()}}
-            <label id="quantity" for="product-quantity">{{form.quantity.label}}</label>
-            <!-- <input
-              type="number"
-              id="product-quantity"
-              name="product_quantity"
-              min="1"
-            /> -->
+          <div class="product-quantity-input" style="align-items:center">
+            <label id="expiry_date" for="expiry-date" style="font-weight: bold">{{form.expiry_date.label}}</label>
+        {{form.expiry_date()}}
+            <label id="quantity" for="product-quantity" style="font-weight: bold">{{form.quantity.label}}</label>
             {{form.quantity()}}
-            <!-- <label for="product-unit">Unit:</label>
-        <select name="product_unit">
-          <option value=""></option> 
-          <option value="kilograms">Kilograms (kg)</option>
-        <option value="grams">Grams (g)</option>
-        <option value="litres">Litres (L)</option>
-        <option value="box">Milliliters (mL)</option>
-        <option value="box">Pieces (pcs)</option>
-        <option value="box">Dozens (dz)</option>
-        <option value="box">Units (u)</option>
-        <option value="box">Other</option>
-      </select> -->
           </div>
 
-          <label id="category"for="product-category">{{form.category.label}}</label>
-          <!-- <select name="product_category">
-            <option value=""></option>
-            <option value="fruits">Fruits</option>
-            <option value="vegetables">Vegetables</option>
-            <option value="grains">Grains</option>
-            <option value="others">Others</option>
-          </select>
-        </div>
-      </div> -->
+          <label id="category"for="product-category" style="font-weight: bold">{{form.category.label}}</label>
       {{form.category()}}
             <div class="product-image-upload" onchange="previewImage(event)">
-            <label id="image" for="product-image">{{ form.file_image.label }}</label>
+            <label id="image" for="product-image" style="font-weight: bold">{{ form.file_image.label }}  </label>
                 {{ form.file_image() }}
             </div>
-      <div class="description">
-        <label id="description" for="product-description">{{form.desc.label}}</label>
-        <!-- <textarea
-          id="product-description"
-          name="product_description"
-        ></textarea> -->
+      <div class="description-input">
+        <label id="description" for="product-description" style="font-weight: bold">{{form.desc.label}}</label>
         {{form.desc()}}
-        <!-- <button type="submit">Add Item</button> -->
-        <div class="input-group">{{ form.submit(class="button") }}</div>
+        <div class="input-group-form">{{ form.submit(class="button") }}</div>
       </div>
+        </div>
     </form>
     </div>
-    <div class="col-md-8">
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+
       {% block content %}
-    </div>
           <script>
             function previewImage(event) {
                 var input = event.target;

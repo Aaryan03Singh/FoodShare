@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details Page</title>
-    <link rel="stylesheet" href="../static/Productd.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Productd.css') }}">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,6 +15,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../static/main.css" />
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
@@ -139,61 +140,55 @@
     </nav>
   </head>
   <body>
-    <div class="container">
-      <div class="left">
-        <div class="big-img">
-          <img
+   <div class="container" style="height:auto;width: 80vw;">
+        <div class="left">
+            <div>
+                <img class="big-img"
             src="{{ url_for('static', filename='uploads/' + product.image_file) }}"
           />
+            </div>
         </div>
-      </div>
-
-      <div class="container2">
-        <h1>{{product.name}}</h1>
-        <div class="Brand">
-          <h2>Brand</h2>
-          <p>{{product.brand}}</p>
+       <div class="right">
+           <div class="info-box">
+           <h2>{{product.name}}</h2>
+           </div>
+        <div class="info-box">
+            <p style="font-weight:bold">Brand</p>
+            <p>{{product.brand}}</p>
         </div>
-
-        <div class="Category">
-          <h2>Category</h2>
-          <p>{{product.category}}</p>
+        <div class="info-box">
+            <p style="font-weight:bold">Category</p>
+            <p>{{ product.category }}</p>
         </div>
-
-        <div class="ProductNum">
-          <h2>ProductNumber</h2>
-          <p>{{product.id}}</p>
-        </div>
-
-        <div class="Exp">
-          <h2>Expiry Date</h2>
-          <p>{{product.expiry_date}}</p>
-        </div>
-        <div class="Exp">
-          <h2>Avaliable Quantity</h2>
-          <p>{{product.quantity}}</p>
+       <div class="info-box">
+            <p style="font-weight:bold">Expiry Date</p>
+            <p>{{ product.expiry_date }}</p>
         </div>
 
-        <div class="Exp">
-          <h2>Status</h2>
-          <p>{{product.status}}</p>
+        <div class="info-box">
+            <p style="font-weight:bold">Quantity</p>
+            <p>{{ product.quantity }}</p>
         </div>
-
-        <div class="Shop">
-          <h2>Shop</h2>
-          <h3>{{product.user_id}}</h3>
-          <p style="color: rgb(0, 0, 0)">
-            <br />
-            123 street mlkcmlsm <br />40000 city
-          </p>
+        <div class="info-box">
+            <p style="font-weight:bold">Select Quantity</p>
+            <select class="select-box" name="unit" id="unitsS">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
         </div>
-
-        <div class="Description">
-          <h2>Description</h2>
-          <p>{{product.desc}}</p>
+       <div class="info-box">
+           <p style="font-weight:bold">Shop</p>
+            <p>{{ product.name }}</p>
         </div>
-
-        {% if current_user.id != product.user_id %}
+       {% if current_user.id != product.user_id %}
         <form method="POST" action="">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
@@ -227,45 +222,60 @@
           </div>
         </form>
 
-        {% endif %} {% if current_user.id == product.user_id %}
+        {% endif %}
+           <div>
+                {% if current_user.id == product.user_id %}
+                    <div class="info-box">
+            <p style="font-weight:bold">Description</p>
+            <p>{{ product.description }}
+            </p>
+        </div>
         <div class="button-container">
-          <div class="Button">
+          <div>
             <a href="{{url_for('delete', inventory_id=product.id)}}">
-              <button>Delete</button>
+              <button class="Button">Delete</button>
             </a>
           </div>
           {% if product.status != 'Donation'%}
-          <div class="Button">
+          <div>
             <a href="{{url_for('donate', inventory_id=product.id)}}">
-              <button>Donate</button>
+              <button class="Button">Donate</button>
             </a>
           </div>
           {% endif %}
         </div>
-        {% endif %} {% if product.user_id == current_user.id %} {% for req in
-        product_requests %}
-        <h2>Id - {{req.id}}</h2>
-        <h2>Product_id - {{req.product_id}}</h2>
-        <h2>User - {{req.user_id}}</h2>
-        <h2>quantity - {{req.quantity}}</h2>
-        <h2>desc - {{req.desc}}</h2>
-        <h2>status - {{req.status}}</h2>
-        <form
-          action="{{url_for('manage_req', request_id=req.id,action=1)}}"
-          method="POST"
-        >
-          <input class="btn btn-danger" type="submit" value="Accept" />
-        </form>
-        <form
-          action="{{url_for('manage_req', request_id=req.id,action=0)}}"
-          method="POST"
-        >
-          <input class="btn btn-danger" type="submit" value="Decline" />
-        </form>
-        <br />
-        {% endfor %} {% endif %}
-      </div>
+        {% endif %}
+           </div>
     </div>
+       </div>
+   <ul class="shop-list">
+   {% if product.user_id == current_user.id %} {% for req in
+        product_requests %}
+        <li>
+            <div class="card shop-list-item" style="width: auto; padding: 5px" data-id="{{ req.id }}" style="border-radius: 15px">
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">User: {{ req.id }}</h6>
+                    <h6 class="shop-header">Quantity: {{ req.quantity }}</h6>
+                    <h6 class="shop-header"> Description:{{ req.desc }}</h6>
+                    <div class="shop-text">
+                        <form  style="margin-right: 5px"
+                      action="{{url_for('manage_req', request_id=req.id,action=1)}}"
+                      method="POST"
+                    >
+                      <input class="btn btn-danger" type="submit" value="Accept" />
+                    </form>
+                    <form
+                      action="{{url_for('manage_req', request_id=req.id,action=0)}}"
+                      method="POST"
+                    >
+                      <input class="btn btn-danger" type="submit" value="Decline" />
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </li>
+     {% endfor %} {% endif %}
+   </ul>
 
     <script>
       let bigImg = document.querySelector(".big-img img");
