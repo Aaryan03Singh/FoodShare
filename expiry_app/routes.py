@@ -75,7 +75,9 @@ def expiry_products():
 @login_required
 def avaliable_products():
      expiry_threshold =datetime.utcnow() + timedelta(days=10)
-     items_available = Inventory.query.filter(Inventory.expiry_date <= expiry_threshold)
+     items_available = Inventory.query.filter(
+    Inventory.expiry_date <= expiry_threshold,
+    Inventory.status == "Donation").all()
      for item in items_available:
          item.image_file = os.path.basename(item.image_file)
      return render_template('avaliable_products.html',title='Avaliable Products',inventory=items_available)
@@ -174,7 +176,7 @@ def manage_req(request_id,action):
           req.status = 'Accepted'
           db.session.commit()
      else:
-          req.status = 'Declined'
+          db.session.delete(req)
           db.session.commit()
 
      return render_template('home.html',title='Home')
