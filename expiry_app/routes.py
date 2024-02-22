@@ -131,6 +131,8 @@ def home():
         ]
 
         return render_template("home.html",shop_data=store_data, title='Home', stuff= stuff)
+    else:
+        return render_template("home.html", title="Home")
     # enter url for landingpage here
     # else:
     #    return render_template("landing.html", title='Landing')
