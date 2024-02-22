@@ -97,6 +97,8 @@ def store_products(store_id):
 @login_required
 def available_products():
     products = Inventory.query.filter(Inventory.status == 'Donation').all()
+    for item in products:
+         item.image_file = os.path.basename(item.image_file)
     return render_template('available_products.html',products=products)
 
 

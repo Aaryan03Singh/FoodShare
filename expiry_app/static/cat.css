@@ -105,6 +105,17 @@ nav {
   color: black;
 }
 
+.all-available-products {
+  width: 100%;
+  text-align: center;
+}
+
+.all-available-products h1 {
+  margin: 20px;
+  font-size: 30px;
+}
+
+
 .shop img {
   width: auto;
   max-width: 250px;
