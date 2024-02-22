@@ -1,0 +1,6 @@
+{% extends "layout.html" %} {% block content %} {% for x in products %}
+<h1>{{x.name}}</h1>
+<h2>{{x.status}}</h2>
+<h2>{{x.user_id}}</h2>
+<h2>{{x.expiry_date}}</h2>
+{% endfor %} {% endblock %}
