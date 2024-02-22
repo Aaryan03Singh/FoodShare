@@ -1,6 +1,7 @@
 .image-container{
     height: 50vh;
     width: 100%;
+    margin-top:10vh;
 }
 .shop-list{
     display:flex;
@@ -57,6 +58,13 @@
     display: none; /* Initially hide the arrow */
 }
 .shop-list-item{
+    width: 10rem;
+    padding: 5px;
+    border-radius: 15px;
+    margin-right: 5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.shop-list-item-stuff {
     width: 10rem;
     padding: 5px;
     border-radius: 15px;

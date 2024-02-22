@@ -48,7 +48,7 @@
                 {% endif %}
             </ul>
             {% endif %}
-            <div>DONATE . REUSE . TRANSFORM</div>
+            <div style="margin-left: -13vw">DONATE . REUSE . TRANSFORM</div>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"aria-expanded="false">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="manual-input">
-      <div class="heading" style="margin-top: 3vh">
+      <div class="heading">
         <h2 class="centered-heading">Manual Input of Groceries</h2>
       </div>
 
@@ -88,17 +88,17 @@
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
         <div class="product-details">
-          <label for="product-name">{{form.name.label}}</label>
+          <label id="name" for="product-name">{{form.name.label}}</label>
           <!-- <input type="text" id="product-name" name="product_name" required /> -->
           {{form.name()}}
-          <label for="product-brand">{{form.brand.label}}</label>
+          <label id="brand" for="product-brand">{{form.brand.label}}</label>
           <!-- <input type="text" id="product-brand" name="product_brand" /> -->
           {{form.brand()}}
 
           <div class="product-quantity">
-            <label for="expiry-date">{{form.expiry_date.label}}</label>
+            <label id="expiry_date" for="expiry-date">{{form.expiry_date.label}}</label>
             {{form.expiry_date()}}
-            <label for="product-quantity">{{form.quantity.label}}</label>
+            <label id="quantity" for="product-quantity">{{form.quantity.label}}</label>
             <!-- <input
               type="number"
               id="product-quantity"
@@ -120,7 +120,7 @@
       </select> -->
           </div>
 
-          <label for="product-category">{{form.category.label}}</label>
+          <label id="category"for="product-category">{{form.category.label}}</label>
           <!-- <select name="product_category">
             <option value=""></option>
             <option value="fruits">Fruits</option>
@@ -132,11 +132,11 @@
       </div> -->
       {{form.category()}}
             <div class="product-image-upload" onchange="previewImage(event)">
-            <label for="product-image">{{ form.file_image.label }}</label>
+            <label id="image" for="product-image">{{ form.file_image.label }}</label>
                 {{ form.file_image() }}
             </div>
       <div class="description">
-        <label for="product-description">{{form.desc.label}}</label>
+        <label id="description" for="product-description">{{form.desc.label}}</label>
         <!-- <textarea
           id="product-description"
           name="product_description"

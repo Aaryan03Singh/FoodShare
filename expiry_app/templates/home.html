@@ -40,7 +40,7 @@
        <ul class="shop-list">
        {% for item in stuff %}
         <li>
-            <div class="card shop-list-item" style="border-radius: 15px">
+            <div class="card shop-list-item-stuff" data-id="{{ item.id }}" style="border-radius: 15px">
                 {% if item.image_file %}
                     <img class="card-img-top image-format" src="{{ url_for('static', filename='./uploads/' + item.image_file) }}" alt="Card image cap">
                 {% else %}
@@ -61,27 +61,50 @@
 </div>
     <script>
         $(document).ready(function() {
-            $('.shop-list').on('click', '.shop-list-item', function() {
-                const shopData = {
+            $('.shop-list').on('click', '.shop-list-item, .shop-list-item-stuff', function() {
+                const itemData = {
                     id: $(this).data('id'),
                 };
-                $.ajax({
-                    type: 'POST',
-                    url: '/profile',
-                    data: JSON.stringify(shopData),
-                    contentType: 'application/json',
-                    success: function(response) {
-                        // Handle success response if needed
-                        console.log(response);
-                        window.location.href = '/profile'; // Redirect to the profile page
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error response if needed
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
+                console.log(itemData.id);
+
+                if ($(this).hasClass('shop-list-item')) {
+                    // Handle click on shop-list-item
+                    $.ajax({
+                        type: 'POST',
+                        url: '/profile',
+                        data: JSON.stringify(itemData),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            // Handle success response if needed
+                            console.log(response);
+                            window.location.href = '/profile'; // Redirect to the profile page
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else if ($(this).hasClass('shop-list-item-stuff')) {
+                    // Handle click on shop-list-item-stuff
+                    $.ajax({
+                        type: 'POST',
+                        url: '/inventory/' + itemData.id,
+                        data: JSON.stringify(itemData),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            // Handle success response if needed
+                            console.log(response);
+                            window.location.href = '/inventory/' + itemData.id; // Redirect to the inventory page
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            })
         });
+
     </script>
 
 {% endblock content %}

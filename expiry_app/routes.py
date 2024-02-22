@@ -157,6 +157,8 @@ def home():
 def all_products():
     expiry_threshold =datetime.utcnow() + timedelta(days=10)
     items_available = Inventory.query.filter_by(user_id=current_user.id)
+    for item in items_available:
+        item.image_file = os.path.basename(item.image_file)
     return render_template('all_products.html', title='All Products',inventory=items_available,expiry_threshold=expiry_threshold)
 
 @app.route("/expiry_products", methods=['GET', 'POST'])
@@ -164,6 +166,8 @@ def all_products():
 def expiry_products():
      expiry_threshold =datetime.utcnow() + timedelta(days=10)
      items_available = Inventory.query.filter(Inventory.expiry_date <= expiry_threshold).filter_by(user_id=current_user.id)
+     for item in items_available:
+         item.image_file = os.path.basename(item.image_file)
      return render_template('expiry_products.html',title='Expiry Products',inventory=items_available)
 
 
@@ -174,6 +178,8 @@ def expiry_products():
 def avaliable_products():
      expiry_threshold =datetime.utcnow() + timedelta(days=10)
      items_available = Inventory.query.filter(Inventory.expiry_date <= expiry_threshold)
+     for item in items_available:
+         item.image_file = os.path.basename(item.image_file)
      return render_template('avaliable_products.html',title='Avaliable Products',inventory=items_available)
 
 
@@ -218,17 +224,17 @@ def inventory():
 
 @app.route('/inventory/<int:inventory_id>',methods=['GET','POST'])
 def product(inventory_id):
-     product = Inventory.query.get_or_404(inventory_id)
-     product_requests = product.req
-     form = RequestForm()
-     if form.validate_on_submit():
-          request = Requests(status='Requested',product_id=inventory_id,desc=form.desc.data,user_id=current_user.id,quantity=form.quantity.data)
-          db.session.add(request)
-          db.session.commit()
-          flash(f'The request was  successfully added')
-          return render_template('productd.html',title='Home')
-
-     return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
+    product = Inventory.query.get_or_404(inventory_id)
+    product_requests = product.req
+    form = RequestForm()
+    if form.validate_on_submit():
+      request = Requests(status='Requested',product_id=inventory_id,desc=form.desc.data,user_id=current_user.id,quantity=form.quantity.data)
+      db.session.add(request)
+      db.session.commit()
+      flash(f'The request was  successfully added')
+      return render_template('productd.html',title='Home')
+    product.image_file=os.path.basename(product.image_file)
+    return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
 @app.route('/delete/<int:inventory_id>',methods=['GET','POST'])
 def delete(inventory_id):
@@ -303,16 +309,14 @@ def logout():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    print('test')
     if request.method == 'POST':
         shop_data = request.get_json()
         session['shop_data'] = shop_data
         return jsonify(success=True)
     else:
-        print('test')
         shop_id = session.get('shop_data')['id']
-        shop_data = Users.query.filter_by(id=shop_id)
-        # location = Locations.query.filter_by(id=shop_id)
-        # items_available = Inventory.query.filter_by(user_id=shop_id) query call for later
-        active_items_of_shop = stuff
-        return render_template('profile.html', shop_data=shop_data, stuff = active_items_of_shop)
+        shop_data = Users.query.get_or_404(shop_id)
+        items_available = Inventory.query.filter_by(user_id=shop_id)
+        for item in items_available:
+            item.image_file = os.path.basename(item.image_file)
+        return render_template('profile.html', shop_data=shop_data, stuff = items_available)

@@ -5,7 +5,6 @@
     max-width: 750px; /* Modify this value as needed */
     margin: 0 auto; /* Centers the entire component */
     padding: 20px;
-    margin-top: 20px;
     align-items: center;
     justify-content: center;
 
@@ -35,11 +34,7 @@
   .description {
     display: flex;
     flex-direction: column;
-    margin: 10px; /* Adds 10px space around the div */
-    margin-top: 10px; /* Adds 10px space above the div */
-    margin-bottom: 10px; /* Adds 10px space below the div */
-    margin-left: 10px; /* Adds 10px space to the left of the div */
-    margin-right: 10px;
+
     font-family: Inter, sans-serif;
     font-size: 15px;
     color :#094535;
