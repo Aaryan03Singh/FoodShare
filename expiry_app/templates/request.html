@@ -177,6 +177,13 @@
               Req Quantity: {{data.request.quantity}}
             </p>
           </div>
+          {% if data.request.status == 'Accepted' %}
+          <div class="reqbutton">
+            <a href="{{url_for('manage_req', request_id=data.request.id,action=2)}}">
+            <button>Confirm</button>
+            </a>
+          </div>
+          {% endif %}
         </div>
         {% endfor %}
       </div>

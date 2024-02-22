@@ -33,7 +33,7 @@ def home():
         #test_data
         expiry_threshold = datetime.utcnow() + timedelta(days=10)
         soon_to_expire_products = Inventory.query \
-            .filter(Inventory.expiry_date <= expiry_threshold) \
+            .filter(Inventory.status == 'Donation') \
             .order_by(Inventory.expiry_date.asc()) \
             .limit(8)
         for item in soon_to_expire_products:
@@ -201,9 +201,13 @@ def manage_req(request_id,action):
      if action == 1:
           req.status = 'Accepted'
           db.session.commit()
-     else:
+     elif action == 0:
           db.session.delete(req)
           db.session.commit()
+     else:
+         req.status = 'Confirmed'
+         db.session.commit()
+         return redirect(url_for('all_requests'))
 
      return redirect(url_for('product',inventory_id=req.product_id))
           
