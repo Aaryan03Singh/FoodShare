@@ -312,8 +312,9 @@
   transition: all .3s ease-in-out;
   margin-right: 30px;
   /*padding-right : 20px;*/
-  margin-top: 920px;
+  margin-top: 820px;
   margin-left: -160px;
+  margin-bottom: 0px;
 }
 
 .Button:hover{
