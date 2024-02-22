@@ -11,6 +11,9 @@
 
     /*border: 1px solid orange;*/
   }
+  body {
+    padding-top: 70px; /* Adjust this value as needed */
+  }
   
   .content{
     display: flex;
