@@ -70,10 +70,12 @@
     
 
     <div class="shop">
-        <img src=" {{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="">
+        <img src=" {{ url_for('static', filename='uploads/' + current_user.image_file) }}" alt="">
+        <div class="shop-details">
         <h1>Shopname: {{current_user.name}} </h1>
         <p>Location:</p>
-    </div>
+        </div>
+      </div>
 
     <h3>Donated Products of {{current_user.name}}: </h3>
 
@@ -86,7 +88,7 @@
       <div class="product-card">
         <div class="product-image">
           <a href="{{url_for('product',inventory_id=x.id)}}">
-          <img src=" {{ url_for('static', filename='profile_pictures/' + x.image_file) }}" alt="Product Image">
+          <img src=" {{ url_for('static', filename='./uploads/' + x.image_file) }}" alt="Product Image">
           </a>
         </div>
         <div class="product-details">
