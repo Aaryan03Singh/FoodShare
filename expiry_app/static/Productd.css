@@ -298,7 +298,7 @@
   color: #ffffff;
 }*/
 
-.Button {
+.Button-1 {
   text-align: center;
   background-color: black;
   color : white;
@@ -313,11 +313,36 @@
   margin-right: 30px;
   /*padding-right : 20px;*/
   margin-top: 820px;
-  margin-left: -160px;
+  margin-left: -230px;
   margin-bottom: 0px;
 }
 
-.Button:hover{
+.Button-1:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.Button-2 {
+  text-align: center;
+  background-color: black;
+  color : white;
+  border-width : 0;
+  border-radius : 6px;  /*rounded corners*/
+  padding : 12px 30px;
+  font-family : Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor : pointer; /*indicates interaction*/
+  transition: all .3s ease-in-out;
+  margin-right: 30px;
+  /*padding-right : 20px;*/
+  margin-top: 820px;
+  margin-left: -10px;
+  margin-bottom: 0px;
+}
+
+.Button-2:hover{
   background-color: white;
   color: black;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);

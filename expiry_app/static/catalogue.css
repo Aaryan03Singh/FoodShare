@@ -135,6 +135,8 @@
   
   h3{
     margin: 20px 30px;
+    margin-left: 280px;
+    margin-top: 20px;
     font-size: 30px;
   }
   
@@ -206,9 +208,41 @@
   }
   
   .Card-info a:hover{
-    color: #dff64d;
+    color: grey;
   }
   
+  /* for close to expiry products - change class="Card-info-exp" and date in <p>
+
+  .Card-info-exp{
+    font-size: 16px;
+    padding-top: 10px;
+    margin-top: -20px;
+    margin-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    display: flex;
+  }
+  
+  .Card-info-exp li{
+    list-style: none;
+    
+  }
+  
+  .Card-info-exp li a{
+    text-decoration: none;
+    color: red;
+  }
+  
+  .Card-info-exp a:hover{
+    color: grey;
+  }
+
+.Card-info-exp p {
+  color:red;
+  text-decoration :underline;
+}
+*/
+
   .end{
     background-color: #c6c6c6;
     height: 250px;
