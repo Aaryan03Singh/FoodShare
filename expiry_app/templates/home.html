@@ -42,7 +42,7 @@
         <li>
             <div class="card shop-list-item" style="border-radius: 15px">
                 {% if item.image_file %}
-                    <img class="card-img-top image-format" src="{{ url_for('static', filename=item.image_file) }}" alt="Card image cap">
+                    <img class="card-img-top image-format" src="{{ url_for('static', filename='./uploads/' + item.image_file) }}" alt="Card image cap">
                 {% else %}
                     <img class="card-img-top image-format"  src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
                 {% endif %}

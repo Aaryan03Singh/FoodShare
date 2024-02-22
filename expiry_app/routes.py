@@ -1,4 +1,8 @@
+import os
+
 from flask import render_template, url_for, flash, redirect, request, abort, session, jsonify
+from werkzeug.utils import secure_filename
+
 from expiry_app.forms import RegistrationForm, LoginForm, InventoryForm, RequestForm
 from expiry_app.models import Users, Inventory, Requests, Locations
 from expiry_app import app, db, bcrypt
@@ -129,8 +133,14 @@ def home():
             },
 
         ]
-
-        return render_template("home.html",shop_data=store_data, title='Home', stuff= stuff)
+        expiry_threshold = datetime.utcnow() + timedelta(days=10)
+        soon_to_expire_products = Inventory.query \
+            .filter(Inventory.expiry_date <= expiry_threshold) \
+            .order_by(Inventory.expiry_date.asc()) \
+            .limit(8)
+        for item in soon_to_expire_products:
+            item.image_file= os.path.basename(item.image_file)
+        return render_template("home.html",shop_data=store_data, title='Home', stuff=soon_to_expire_products)
     else:
         return render_template("home.html", title="Home")
     # enter url for landingpage here
@@ -192,9 +202,14 @@ def register():
 @app.route('/inventory', methods=['GET', 'POST'])
 def inventory():
      form = InventoryForm()
+     print('test')
      if form.validate_on_submit():
           u_id = current_user.id
-          product = Inventory(name=form.name.data,category=form.category.data,expiry_date=form.expiry_date.data,quantity=form.quantity.data,user_id=u_id,status='InStock',desc=form.desc.data,brand=form.brand.data)
+          file = form.file_image.data
+          filename = secure_filename(file.filename)
+          file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+          file.save(file_path)
+          product = Inventory(name=form.name.data,category=form.category.data,expiry_date=form.expiry_date.data,quantity=form.quantity.data,user_id=u_id,status='InStock',desc=form.desc.data,brand=form.brand.data, image_file=file_path)
           db.session.add(product)
           db.session.commit()
           flash(f'Inventory details were submitted successfully','success')
