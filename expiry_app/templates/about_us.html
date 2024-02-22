@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/AboutUs.css">
+  <link rel="stylesheet" href="../static/about_us.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>About Us</title>
 </head>
@@ -12,21 +12,23 @@
     <header class = "header">
            
         <div class="logo">
-            <img src="../static/images/logo.webp" alt="logo"/>
+            <img src="../static/images/symbol.png" alt="logo"/>
         </div>
 
         <div class="navigation">
             <nav>
               
-                <a href="">Home</a>
-                <a href="">Contact Us</a>
+                <a href="{{url_for('home')}}">Home</a>
+                <a href="{{url_for('contact_us')}}">Contact Us</a>
                 <a href="">About Us</a>
               
             </nav>
         </div>
 
         <div class="start">
+            <a href="{{url_for('register')}}">
            <button class="btn" >Get Started</button>
+           </a>
         </div>
 
         </header>
