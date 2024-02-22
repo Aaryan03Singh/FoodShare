@@ -179,24 +179,6 @@
           <p>{{product.status}}</p>
         </div>
 
-        <!-- <div class="Quality">
-            <h2>Quantity</h2>
-        </div> -->
-        <!-- <div class="Quality-s">
-            <select name="unit" id="unitsS">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-        </div> -->
-
         <div class="Shop">
           <h2>Shop</h2>
           <h3>{{product.user_id}}</h3>
@@ -210,38 +192,78 @@
           <h2>Description</h2>
           <p>{{product.desc}}</p>
         </div>
+
         {% if current_user.id != product.user_id %}
-        <div class="Button">
-          <button>Add to Cart</button>
-        </div>
+        <form method="POST" action="">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <div class="form-group">
+              {{ form.desc.label(class="form-control-label") }} {% if
+              form.desc.errors %} {{ form.desc(class="form-control
+              form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.desc.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %} {{ form.desc(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.quantity.label(class="form-control-label") }} {% if
+              form.quantity.errors %} {{ form.quantity(class="form-control
+              form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.quantity.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %} {{ form.quantity(class="form-control form-control-lg")
+              }} {% endif %}
+            </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+        </form>
+
         {% endif %} {% if current_user.id == product.user_id %}
-
-        <!-- <div class="Button">
-          <a href="{{url_for('delete', inventory_id=product.id)}}">
-            <button>Delete</button>
-          </a>
-        </div>
-
-        <div class="Button">
-          <a href="{{url_for('donate', inventory_id=product.id)}}">
-            <button>Donate</button>
-          </a>
-        </div> -->
         <div class="button-container">
           <div class="Button">
             <a href="{{url_for('delete', inventory_id=product.id)}}">
               <button>Delete</button>
             </a>
           </div>
-
+          {% if product.status != 'Donation'%}
           <div class="Button">
             <a href="{{url_for('donate', inventory_id=product.id)}}">
               <button>Donate</button>
             </a>
           </div>
+          {% endif %}
         </div>
-
-        {% endif %}
+        {% endif %} {% if product.user_id == current_user.id %} {% for req in
+        product_requests %}
+        <h2>Id - {{req.id}}</h2>
+        <h2>Product_id - {{req.product_id}}</h2>
+        <h2>User - {{req.user_id}}</h2>
+        <h2>quantity - {{req.quantity}}</h2>
+        <h2>desc - {{req.desc}}</h2>
+        <h2>status - {{req.status}}</h2>
+        <form
+          action="{{url_for('manage_req', request_id=req.id,action=1)}}"
+          method="POST"
+        >
+          <input class="btn btn-danger" type="submit" value="Accept" />
+        </form>
+        <form
+          action="{{url_for('manage_req', request_id=req.id,action=0)}}"
+          method="POST"
+        >
+          <input class="btn btn-danger" type="submit" value="Decline" />
+        </form>
+        <br />
+        {% endfor %} {% endif %}
       </div>
     </div>
 
