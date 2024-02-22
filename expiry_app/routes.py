@@ -40,12 +40,22 @@ def home():
             item.image_file= os.path.basename(item.image_file)
         return render_template("home.html",shop_data=store_data, title='Home', stuff=soon_to_expire_products)
     else:
-        return render_template("home.html", title="Home")
+        return redirect(url_for('landingpage'))
     # enter url for landingpage here
     # else:
     #    return render_template("landing.html", title='Landing')
     
+@app.route("/landingpage", methods=["GET", "POST"])
+def landingpage():
+    return render_template("landing_page.html")
 
+@app.route("/about_us", methods=["GET", "POST"])
+def about_us():
+    return render_template("about_us.html")
+
+@app.route("/contact_us", methods=["GET", "POST"])
+def contact_us():
+    return render_template("contact_us.html")
 
 
 
@@ -132,7 +142,7 @@ def product(inventory_id):
       db.session.add(request)
       db.session.commit()
       flash(f'The request was  successfully added')
-      return render_template('productd.html',title='Home')
+      return redirect(url_for('product',inventory_id=inventory_id))
     product.image_file=os.path.basename(product.image_file)
     return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
@@ -144,7 +154,7 @@ def delete(inventory_id):
      db.session.delete(product)
      db.session.commit()
      flash('Product was successfully deleted','success') 
-     return render_template('home.html',title='Home')
+     return redirect(url_for('all_products'))
 
 @app.route('/donate/<int:inventory_id>',methods=['GET','POST'])
 def donate(inventory_id):
@@ -154,20 +164,8 @@ def donate(inventory_id):
      product.status = 'Donation'
      db.session.commit()
      flash('Product was put up for donation','success')
-     return render_template('home.html',title='Home')
+     return redirect(url_for('product',inventory_id=inventory_id))
 
-# @app.route('/req/<int:inventory_id>',methods=['GET','POST'])
-# def req(inventory_id):
-#      form = RequestForm()
-#      product = Inventory.query.get_or_404(inventory_id)
-#      if product.user_id == current_user.id:
-#           abort(404)
-#      if form.validate_on_submit():
-#           request = Requests(status='Requested',product_id=inventory_id,desc=form.desc.data,user_id=current_user.id,quantity=form.quantity.data)
-#           db.session.add(request)
-#           db.session.commit()
-#           flash(f'The request was  successfully added')
-#      return render_template('home.html',title='Home')
 
 @app.route('/manage_req/<int:request_id>/<int:action>',methods=['GET','POST'])
 def manage_req(request_id,action):
@@ -179,7 +177,7 @@ def manage_req(request_id,action):
           db.session.delete(req)
           db.session.commit()
 
-     return render_template('home.html',title='Home')
+     return redirect(url_for('product',inventory_id=req.product_id))
           
      
 
