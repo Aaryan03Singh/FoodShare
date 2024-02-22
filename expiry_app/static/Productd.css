@@ -4,6 +4,9 @@
   font-family: "Bahnschrift";
   box-sizing: border-box;
 }
+body {
+  padding-top: 70px; /* Adjust this value as needed */
+}
 
 .logo {
   margin-left: 20px;
