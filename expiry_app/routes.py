@@ -81,13 +81,13 @@ def expiry_products():
 
  
     
-@app.route("/avaliable_products", methods=['GET', 'POST'])
+@app.route("/avaliable_products/<int:store_id>", methods=['GET', 'POST'])
 @login_required
-def avaliable_products():
+def avaliable_products(store_id):
+     store= Users.query.get_or_404(store_id)
      expiry_threshold =datetime.utcnow() + timedelta(days=10)
      items_available = Inventory.query.filter(
-    Inventory.expiry_date <= expiry_threshold,
-    Inventory.status == "Donation").all()
+    Inventory.status == "Donation").filter_by(user_id=store_id).all()
      for item in items_available:
          item.image_file = os.path.basename(item.image_file)
      return render_template('avaliable_products.html',title='Avaliable Products',inventory=items_available)

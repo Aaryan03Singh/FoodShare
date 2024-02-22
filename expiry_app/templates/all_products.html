@@ -94,12 +94,18 @@
         <div class="product-details">
           <h2 class="product-title">{{x.name}}</h2>
         </div>
-        {% if x.expiry_date >= expiry_threshold.date() %}
+        {% if x.expiry_date <= expiry_threshold.date() and x.status != 'Donation' %}
         <div class="Card-info" style="color : red">ED:{{x.expiry_date}}
           <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
         </div>
-        {% else %}
-        <div class="Card-info">ED:{{x.expiry_date}}
+        {% endif %}
+        {% if x.status == 'Donation' %}
+        <div class="Card-info" style="color : greenyellow">ED:{{x.expiry_date}}
+          <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
+        </div>
+        {% endif %}
+        {% if x.status != 'Donation' and x.expiry_date > expiry_threshold.date() %}
+        <div class="Card-info" >ED:{{x.expiry_date}}
           <li><a href="" i class="fa-solid fa-cart-shopping"></a></li>
         </div>
 {% endif %}
