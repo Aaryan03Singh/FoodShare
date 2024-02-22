@@ -9,45 +9,6 @@ from expiry_app import app, db, bcrypt
 from flask_login import login_user,current_user ,logout_user, login_required
 from sqlalchemy import func
 from datetime import datetime, timedelta
-stuff = [
-        {
-        'id': 10,
-           'name': 'Spaghetti',
-           'expiry_date': '07/11/2024',
-           'image_file': 'images/spagetti.png',
-        },
-        {
-            'id': 11,
-            'name': 'Flour',
-            'expiry_date': '07/11/2024',
-            'image_file': 'images/flour.png',
-        },
-        {
-            'id': 12,
-            'name': 'Soda',
-            'expiry_date': '07/11/2024',
-            'image_file': '',
-        },
-        {
-            'id': 13,
-            'name': 'Spaghetti',
-            'expiry_date': '07/11/2024',
-            'image_file': 'images/spagetti.png',
-        },
-    {
-        'id':14,
-        'name': 'Flour',
-        'expiry_date': '07/11/2024',
-        'image_file': 'images/flour.png',
-    },
-    {
-        'id': 15,
-        'name': 'Soda',
-        'expiry_date': '07/11/2024',
-        'image_file': 'images/juice.png',
-    },
-    ]
-
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -70,69 +31,6 @@ def home():
             }
             store_data.append(user_data)
         #test_data
-        shops_data = [
-            {
-                'id': 1,
-                'email': '872364827364782',
-                'password':'723468723423',
-                'role': 'Store',
-                'name': 'Shop 2',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-            {
-                'id': 2,
-                'email': '872364827364782',
-                'password': '723468723423',
-                'role': 'Store',
-                'name': 'Shop 3',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-            {
-                'id': 3,
-                'email': '872364827364782',
-                'password': '723468723423',
-                'role': 'Store',
-                'name': 'Shop 4',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-            {
-                'id': 4,
-                'email': '872364827364782',
-                'password': '723468723423',
-                'role': 'Store',
-                'name': 'Shop 6',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-            {
-                'id': 5,
-                'email': '872364827364782',
-                'password': '723468723423',
-                'role': 'Store',
-                'name': 'Shop 7',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-            {
-                'id': 6,
-                'email': '872364827364782',
-                'password': '723468723423',
-                'role': 'Store',
-                'name': 'Shop 8',
-                'contact_number': '746478365836',
-                'image_path': 'profile_pictures/logo.png',
-                'location': '123 Sample Street'
-            },
-
-        ]
         expiry_threshold = datetime.utcnow() + timedelta(days=10)
         soon_to_expire_products = Inventory.query \
             .filter(Inventory.expiry_date <= expiry_threshold) \

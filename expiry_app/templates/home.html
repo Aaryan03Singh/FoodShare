@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 {% block content %}
+    {% if current_user.role == 'Organization' %}
         <img src="{{ url_for('static', filename='./images/charity_home_cover.png') }}" alt="icon" class="image-container">
-    <h4 style="display: flex; justify-content: center; padding-top: 10px;">It's too good to go</h4>
+        <h4 style="display: flex; justify-content: center; padding-top: 10px;">It's too good to go</h4>
     <div class="shop-list-container">
     <ul class="shop-list">
        {% for shop in shop_data %}
@@ -59,6 +60,96 @@
         {% endfor %}
     </ul>
 </div>
+    {% endif %}
+    {% if current_user.role == 'Store' %}
+        <img src="{{ url_for('static', filename='./images/pic_cover.png') }}" alt="icon" class="image-container">
+         <section class="container2" id="container2">
+
+            <div class="choices">
+
+                <div class="scan">
+                 <h3>Scan Groceries</h3>
+                 <p>details of how we go about doing this for the stores</p>
+                 <img src="{{ url_for('static', filename='./images/scan.png') }}" alt="qr code">
+                 <div class="click">
+                    <button class="scan-button" >Scan</button>
+                 </div>
+                </div>
+
+                <div class="manual-input">
+
+                    <h3>Manual-Input of Groceries</h3>
+                    <p>details of how we go about doing this for the stores</p>
+                    <img src="{{ url_for('static', filename='./images/input.png') }}" alt="qr code">
+                    <div class="click">
+                       <a type="button" class="input-button" href="inventory" >Add</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="some">
+                <div class="text">
+                 <h3>What are we doing?</h3>
+                 <p>SustainLink is a visionary platform designed to combat waste and enhance community welfare by connecting individuals in need with stores holding near-expiry perishable products.
+
+This inclusive platform goes beyond food items, encompassing a wide range of perishable goods.
+By efficiently tracking expiration dates and fostering real-time connections,SustainLink aims to create a collaborative ecosystem where surplus essentialsfind purpose, benefitting both businesses and communities. </p>
+                 <div class="click">
+                    <button class="read_more" >Read More</button>
+                 </div>
+                </div>
+                <div class="image">
+                    <img src="{{ url_for('static', filename='./images/Rectangle29.png') }}" alt="image">
+                </div>
+            </div>
+            </section>
+         <div class="end">
+                <div class="info">
+                    <h1>Information</h1>
+                    <div class="info-a">
+                    <a href="">career</a>
+                    <a href="">about us</a>
+                    <a href="">privacy policy</a>
+                    <a href="">terms of use</a>
+                    <a href="">accessibility</a>
+                    <a href="">contentrules & regulations</a>
+                    </div>
+                </div>
+
+                <div class="help">
+                    <h1>Help</h1>
+                    <div class="help-a">
+                    <a href="">FAQ</a>
+                    <a href="">News</a>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <h1>Contact</h1>
+                    <div class="contact-p1">
+                    <p>123 street</p>
+                    <p>123456 city</p>
+                    </div>
+                    <div class="contact-p2">
+                    <p>+91234567890</p>
+                    <p>info@foodshare.com</p>
+                    </div>
+                </div>
+
+                <div class="social">
+                    <h1>Social Media</h1>
+                    <div class="social-icon">
+                    <a href="" class="fa-brands fa-instagram"></a>
+                    <a href="" class="fa-brands fa-square-facebook"></a>
+                    <a href="" class="fa-brands fa-youtube"></a>
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+
+
     <script>
         $(document).ready(function() {
             $('.shop-list').on('click', '.shop-list-item, .shop-list-item-stuff', function() {
