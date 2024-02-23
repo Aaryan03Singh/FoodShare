@@ -78,14 +78,14 @@
     
 
     <div class="shop">
-        <img src=" {{ url_for('static', filename='uploads/' + current_user.image_file) }}" alt="">
+        <img src=" {{ url_for('static', filename='uploads/' + store.image_file) }}" alt="">
         <div class="shop-details">
-        <h1>Shopname: {{current_user.name}} </h1>
+        <h1>Shopname: {{store.name}} </h1>
         <p>Location:</p>
         </div>
       </div>
 
-    <h3>Donated Products of {{current_user.name}}: </h3>
+    <h3>Donated Products of {{store.name}}: </h3>
 
     <div class="container">
       

@@ -13,23 +13,13 @@
     {% for shop in shop_data %}
     <li>
       <div class="card shop-list-item" data-id="{{ shop.id }}">
-        {% if shop.image_path %}
         <a href="{{url_for('store_products',store_id=shop.id)}}">
           <img
             class="card-img-top image-format"
-            src="{{ url_for('static', filename=shop.image_path) }}"
+            src="{{ url_for('static', filename='uploads/' + shop.image_file) }}"
             alt="Card image cap"
           />
         </a>
-        {% else %}
-        <a href="{{url_for('store_products',store_id=shop.id)}}">
-          <img
-            class="card-img-top image-format"
-            src="{{ url_for('static', filename='./images/default_image.png') }}"
-            alt="Default Image"
-          />
-        </a>
-        {% endif %}
         <div class="card-body" style="padding: 0">
           <h6 class="shop-header">{{ shop.name }}</h6>
           <div class="shop-text">

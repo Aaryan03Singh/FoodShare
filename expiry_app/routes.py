@@ -38,6 +38,8 @@ def home():
             .limit(8)
         for item in soon_to_expire_products:
             item.image_file= os.path.basename(item.image_file)
+        for x in current_stores:
+            x.image_file= os.path.basename(x.image_file)
         return render_template("home.html",shop_data=store_data, title='Home', stuff=soon_to_expire_products)
     else:
         return redirect(url_for('landingpage'))
@@ -111,7 +113,7 @@ def store_products(store_id):
     Inventory.status == "Donation").filter_by(user_id=store_id).all()
      for item in items_available:
          item.image_file = os.path.basename(item.image_file)
-     return render_template('store_products.html',title='Avaliable Products',inventory=items_available)
+     return render_template('store_products.html',title='Avaliable Products',inventory=items_available,store=store)
 
 
 @app.route("/available_products", methods=['GET', 'POST'])
