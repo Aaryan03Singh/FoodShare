@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="profile-header">Profile</div>
+
+    <div style="display: flex; justify-content: center">
+     <div class="profile-top-container">
+     {% if shop_data.image_path %}
+        <img class="card-img-top" style="height:50vh; width:20vw; border-radius:15px; padding: 10px" src="{{ url_for('static', filename=shop.image_path) }}" alt="Card image cap">
+    {% else %}
+        <img class="card-img-top" style="height:50vh; width:20vw; border-radius:15px; padding: 10px"src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+    {% endif %}
+               <div class="right-text-profile">
+            <div style="font-weight: bold; font-size: large">{{ shop_data.name }}</div>
+            <div class="profile-info-text">
+                <div>Address</div>
+            <div style="font-weight: bold; margin-left: 10px">123 Sample Street</div>
+            </div>
+            {% if current_user.id == shop_data.id %}
+             <a href="#" class="btn btn-outline-secondary edit-profile-button">Edit Profile</a>
+            {% endif %}
+        </div>
+
+    </div>
+    </div>
+    <div class="profile-header" style="padding-top:0px">Recent Postings</div>
+    <div class="card-deck">
+       <ul class="shop-list">
+       {% for item in stuff %}
+        <li>
+            <div class="card shop-list-item" data-id="{{ item.id }}" style="border-radius: 15px">
+                {% if item.image_file %}
+                    <img class="card-img-top image-format" src="{{ url_for('static', filename='uploads/' + item.image_file) }}" alt="Card image cap">
+                {% else %}
+                    <img class="card-img-top image-format"  src="{{ url_for('static', filename='./images/default_image.png') }}" alt="Default Image">
+                {% endif %}
+                <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ item.name }}</h6>
+                    <div class="shop-text">
+                        <div class="card-text" style="font-size: smaller">ED: {{ item.expiry_date }}</div>
+                        <a href="#">
+                            <img src="{{ url_for('static', filename='./images/cart2.svg') }}" width="15" height="15">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.shop-list').on('click', '.shop-list-item', function() {
+                const itemData = {
+                    id: $(this).data('id'),
+                };
+                console.log(itemData.id);
+
+                if ($(this).hasClass('shop-list-item')) {
+                    // Handle click on shop-list-item
+                    $.ajax({
+                        type: 'POST',
+                        url: '/inventory/'+ itemData.id,
+                        data: JSON.stringify(itemData),
+                        contentType: 'application/json',
+                        success: function (response) {
+                            // Handle success response if needed
+                            console.log(response);
+                            window.location.href = '/inventory/'+itemData.id; // Redirect to the profile page
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error response if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            })
+        });
+
+    </script>
+
+{% endblock content %}

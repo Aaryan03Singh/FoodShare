@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manual Input Component</title>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='input.css') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+  </head>
+
+  <body style="overflow-x:hidden">
+    <div class="top">
+     <header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+    <div class="container-fluid navbar-styling text-center">
+        <a class="navbar-brand" href="{{url_for('home')}}">
+            <img src="{{ url_for('static', filename='images/symbol.png') }}" alt="Bootstrap" width="30" height="30">
+            SustainLink
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if current_user.is_authenticated %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if current_user.role == 'Organization' %}
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Onlineshop</a>
+                     <ul class="dropdown-menu">
+                         <li><a class="nav-item nav-link" href="{{url_for('available_products')}}">Available Products</a></li>
+                         <li><a class="nav-item nav-link" href="{{url_for('all_requests')}}">Requests</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if current_user.role == 'Store' %}
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Donations
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if current_user.role == 'Store' %}
+                            <li><a class="nav-item nav-link" href="{{url_for('inventory')}}">Inventory</a></li>
+                            <li><a class="nav-item nav-link" href="{{url_for('all_products')}}">All Products</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+            <div style="margin-left: -13vw">DONATE . REUSE . TRANSFORM</div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"aria-expanded="false">
+                        <img src="{{ url_for('static', filename='images/person.svg') }}" alt="dropdown-toggle" height="20" width="20">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% if current_user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('all_products')}}">Profile</a></li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="{{url_for('login')}}">Login</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('register')}}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" role="button" >
+                        <img src="{{ url_for('static', filename='images/cart2.svg') }}" alt="dropdown-toggle" height="20" width="20">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</header>
+    <img src="{{ url_for('static', filename='./images/manual_input_cover.png') }}" style="width: 100%; height:40vh; margin-top:10vh" alt="icon" class="image-container">
+    <div class="manual-input">
+      <div class="heading">
+        <h2 class="centered-heading">Manual Input of Groceries</h2>
+      </div>
+
+      <div class="content">
+          <div class="product-image">
+              <img id="selected-image" style="height:31vh; width:100%; border-radius: 10px;" src="../static/images/default_image.png" alt="Product Image" />
+            </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+        <div class="product-details-input">
+          <label id="name" for="product-name" style="font-weight: bold">{{form.name.label}}</label>
+          <!-- <input type="text" id="product-name" name="product_name" required /> -->
+          {{form.name()}}
+          <label id="brand" for="product-brand" style="font-weight: bold">{{form.brand.label}}</label>
+          <!-- <input type="text" id="product-brand" name="product_brand" /> -->
+            {{form.brand()}}
+
+          <div class="product-quantity-input" style="align-items:center">
+            <label id="expiry_date" for="expiry-date" style="font-weight: bold">{{form.expiry_date.label}}</label>
+        {{form.expiry_date()}}
+            <label id="quantity" for="product-quantity" style="font-weight: bold">{{form.quantity.label}}</label>
+            {{form.quantity()}}
+          </div>
+
+          <label id="category"for="product-category" style="font-weight: bold">{{form.category.label}}</label>
+      {{form.category()}}
+            <div class="product-image-upload" onchange="previewImage(event)">
+            <label id="image" for="product-image" style="font-weight: bold">{{ form.file_image.label }}  </label>
+                {{ form.file_image() }}
+            </div>
+      <div class="description-input">
+        <label id="description" for="product-description" style="font-weight: bold">{{form.desc.label}}</label>
+        {{form.desc()}}
+        <div class="input-group-form">{{ form.submit(class="button") }}</div>
+      </div>
+        </div>
+    </form>
+    </div>
+
+      {% block content %}
+          <script>
+            function previewImage(event) {
+                var input = event.target;
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var dataURL = reader.result;
+                    var img = document.getElementById('selected-image');
+                    img.src = dataURL;
+                    document.getElementById('hidden-file-image').value = dataURL;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  </body>
+{% endblock %}
+</html>

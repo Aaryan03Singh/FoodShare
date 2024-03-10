@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField,DateField, FloatField, RadioField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField, DateField, \
+    FloatField, RadioField, FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange, ValidationError, Optional
 from expiry_app.models import Users
 from flask_login import current_user
@@ -43,6 +44,7 @@ class InventoryForm(FlaskForm):
     category = StringField('Type',validators=[DataRequired()])
     expiry_date = DateField('Expiry Date',validators=[DataRequired()])
     quantity = IntegerField('Quantity',validators=[DataRequired()])
+    file_image = FileField('Product Image')
     desc = StringField('Description',validators=[DataRequired()])
     brand = StringField('Brand',validators=[DataRequired()])
     submit = SubmitField('Submit')
@@ -56,3 +58,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class RequestForm(FlaskForm):
+    desc = TextAreaField('Description')
+    quantity = IntegerField('Quantity',validators=[DataRequired()])
+    submit = SubmitField('Send Request')

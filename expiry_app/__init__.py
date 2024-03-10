@@ -7,6 +7,9 @@ from flask_login import LoginManager
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AARYAN'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+UPLOAD_FOLDER = 'expiry_app/static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
    
 

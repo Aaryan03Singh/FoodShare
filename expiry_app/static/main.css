@@ -3,7 +3,6 @@
 body {
   background: #fefefe;
   color: #202a25;
-  margin-top: 5rem;
 }
 
 h1,
@@ -33,18 +32,16 @@ h6 {
 /* Add this to your main.css file */
 
 .site-header .navbar-brand {
-  color: #202a25;
-  font-size: 40; /* Brand (Journal) text color */
+  color: #202a25; /* Brand (Journal) text color */
 }
 
 /* .site-header .navbar-toggler-icon {
     background-color: black; /* Navbar toggle icon color */
-*/ .site-header .navbar-nav .nav-link {
-  color: #26f0f1; /* Navbar links color */
+ .site-header .navbar-nav .nav-link { /* Navbar links color */
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #26f0f1; /* Navbar links hover color */
+ /* Navbar links hover color */
 }
 
 .site-header .navbar-nav .nav-item.active .nav-link {
@@ -94,4 +91,26 @@ h6 {
 
 .padding-container {
   padding: 3em;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+.navbar-styling{
+  display:flex;
+}
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar-text {
+    display: flex;
+    justify-content: center;
+    color: white; /* Change color as needed */
+    font-size: 18px; /* Adjust font size as needed */
+    padding: 10px 0; /* Adjust padding as needed */
+    background-color: #6c757d; /* Change background color as needed */
+    width: 100%;
+    text-align: center;
 }

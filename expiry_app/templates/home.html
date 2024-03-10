@@ -1,12 +1,299 @@
-{% extends "layout.html" %} {% block content %}
-<h1>Home Page</h1>
-
-{% if current_user.is_authenticated %}
-<div>
-  <h1>{{ current_user.name}}</h1>
-  <h2>{{ current_user.location}}</h2>
-  <h2>{{current_user.contact_number}}</h2>
-  <h2>{{current_user.id}}</h2>
+{% extends 'layout.html' %} {% block content %} {% if current_user.role ==
+'Organization' %}
+<img
+  src="{{ url_for('static', filename='./images/charity_home_cover.png') }}"
+  alt="icon"
+  class="image-container"
+/>
+<h4 style="display: flex; justify-content: center; padding-top: 10px">
+  It's too good to go
+</h4>
+<div class="shop-list-container">
+  <ul class="shop-list">
+    {% for shop in shop_data %}
+    <li>
+      <div class="card shop-list-item" data-id="{{ shop.id }}">
+        <a href="{{url_for('store_products',store_id=shop.id)}}">
+          <img
+            class="card-img-top image-format"
+            src="{{ url_for('static', filename='uploads/' + shop.image_file) }}"
+            alt="Card image cap"
+          />
+        </a>
+        <div class="card-body" style="padding: 0">
+          <h6 class="shop-header">{{ shop.name }}</h6>
+          <div class="shop-text">
+            <img
+              src="{{ url_for('static', filename='./images/location_pin.svg') }}"
+              width="15"
+              height="15"
+            />
+            <p class="card-text" style="font-size: smaller">
+              {{ shop.location }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
 </div>
+<div class="info-container">
+  <img
+    src="{{ url_for('static', filename='./images/info_image.png') }}"
+    alt="Card image cap"
+    class="info-card-image"
+  />
+  <div class="right-text">
+    <h5>Information</h5>
+    <p>
+      SustainLink is a visionary platform designed to combat waste and enhance community welfare by connecting individuals in need with stores holding near-expiry perishable products.
+    </p>
+    <a href="#" class="btn btn-primary info-card-button">Read More</a>
+  </div>
+</div>
+<div class="card-deck">
+  <ul class="shop-list">
+    {% for item in stuff %}
+    <li>
+      <div
+        class="card shop-list-item-stuff"
+        data-id="{{ item.id }}"
+        style="border-radius: 15px"
+      >
+        {% if item.image_file %}
+        <a href="{{url_for('product',inventory_id=item.id)}}">
+          <img
+            class="card-img-top image-format"
+            src="{{ url_for('static', filename='./uploads/' + item.image_file) }}"
+            alt="Card image cap"
+          />
+        </a>
+        {% else %}
+        <a href="{{url_for('product',inventory_id=item.id)}}">
+          <img
+            href="{{url_for('product',inventory_id=item.id)}}"
+            class="card-img-top image-format"
+            src="{{ url_for('static', filename='./images/default_image.png') }}"
+            alt="Default Image"
+          />
+        </a>
+        {% endif %}
 
-{% endif %} {% endblock content %}
+        <div class="card-body" style="padding: 0">
+          <h6 class="shop-header">{{ item.name }}</h6>
+          <div class="shop-text">
+            <div class="card-text" style="font-size: smaller">
+              ED: {{ item.expiry_date }}
+            </div>
+            <img
+              src="{{ url_for('static', filename='./images/cart2.svg') }}"
+              width="15"
+              height="15"
+            />
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="end">
+  <div class="info">
+    <h1>Information</h1>
+    <div class="info-a">
+      <a href="">career</a>
+      <a href="">about us</a>
+      <a href="">privacy policy</a>
+      <a href="">terms of use</a>
+      <a href="">accessibility</a>
+      <a href="">contentrules & regulations</a>
+    </div>
+  </div>
+
+  <div class="help">
+    <h1>Help</h1>
+    <div class="help-a">
+      <a href="">FAQ</a>
+      <a href="">News</a>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h1>Contact</h1>
+    <div class="contact-p1">
+      <p>123 street</p>
+      <p>123456 city</p>
+    </div>
+    <div class="contact-p2">
+      <p>+91234567890</p>
+      <p>info@foodshare.com</p>
+    </div>
+  </div>
+
+  <div class="social">
+    <h1>Social Media</h1>
+    <div class="social-icon">
+      <a href="" class="fa-brands fa-instagram"></a>
+      <a href="" class="fa-brands fa-square-facebook"></a>
+      <a href="" class="fa-brands fa-youtube"></a>
+    </div>
+  </div>
+</div>
+{% endif %} {% if current_user.role == 'Store' %}
+<img
+  src="{{ url_for('static', filename='./images/pic_cover.png') }}"
+  alt="icon"
+  class="image-container"
+/>
+<section class="container2" id="container2">
+  <div class="choices">
+    <div class="scan">
+      <h3>Scan</h3>
+      <p>
+        Easy and fast! Add a new product to your store effortlessly by scanning
+        a QR code.
+      </p>
+      <img
+        src="{{ url_for('static', filename='./images/scan.png') }}"
+        alt="qr code"
+      />
+      <div class="click">
+        <button class="scan-button">Scan</button>
+      </div>
+    </div>
+
+    <div class="manual-input">
+      <h3>Manual Input</h3>
+      <p>
+        No QR-Code? Add a new product to your store by entering all the
+        necessary details manually.
+      </p>
+      <img
+        src="{{ url_for('static', filename='./images/input.png') }}"
+        alt="qr code"
+      />
+      <div class="click">
+        <a type="button" class="input-button" href="inventory">Add</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="some">
+    <div class="text">
+      <h3>What are we doing?</h3>
+      <p style="text-align: start">
+        SustainLink is a visionary platform designed to combat waste and enhance
+        community welfare by connecting individuals in need with stores holding
+        near-expiry perishable products. This inclusive platform goes beyond
+        food items, encompassing a wide range of perishable goods. By
+        efficiently tracking expiration dates and fostering real-time
+        connections,SustainLink aims to create a collaborative ecosystem where
+        surplus essentialsfind purpose, benefitting both businesses and
+        communities.
+      </p>
+      <div class="click">
+        <button class="read_more">Read More</button>
+      </div>
+    </div>
+    <div class="image">
+      <img
+        src="{{ url_for('static', filename='./images/Rectangle29.png') }}"
+        alt="image"
+      />
+    </div>
+  </div>
+</section>
+<div class="end">
+  <div class="info">
+    <h1>Information</h1>
+    <div class="info-a">
+      <a href="">career</a>
+      <a href="">about us</a>
+      <a href="">privacy policy</a>
+      <a href="">terms of use</a>
+      <a href="">accessibility</a>
+      <a href="">contentrules & regulations</a>
+    </div>
+  </div>
+
+  <div class="help">
+    <h1>Help</h1>
+    <div class="help-a">
+      <a href="">FAQ</a>
+      <a href="">News</a>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h1>Contact</h1>
+    <div class="contact-p1">
+      <p>123 street</p>
+      <p>123456 city</p>
+    </div>
+    <div class="contact-p2">
+      <p>+91234567890</p>
+      <p>info@foodshare.com</p>
+    </div>
+  </div>
+
+  <div class="social">
+    <h1>Social Media</h1>
+    <div class="social-icon">
+      <a href="" class="fa-brands fa-instagram"></a>
+      <a href="" class="fa-brands fa-square-facebook"></a>
+      <a href="" class="fa-brands fa-youtube"></a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- <script>
+        $(document).ready(function() {
+            $('.shop-list').on('click', '.shop-list-item, .shop-list-item-stuff', function() {
+                const itemData = {
+                    id: $(this).data('id'),
+                };
+                console.log(itemData.id);
+
+                if ($(this).hasClass('shop-list-item')) {
+                    // Handle click on shop-list-item
+                    $.ajax({
+                        type: 'POST',
+                        url: '/profile',
+                        data: JSON.stringify(itemData),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            // Handle success response if needed
+                            console.log(response);
+                            window.location.href = '/profile'; // Redirect to the profile page
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else if ($(this).hasClass('shop-list-item-stuff')) {
+                    // Handle click on shop-list-item-stuff
+                    $.ajax({
+                        type: 'POST',
+                        url: '/inventory/' + itemData.id,
+                        data: JSON.stringify(itemData),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            // Handle success response if needed
+                            console.log(response);
+                            window.location.href = '/inventory/' + itemData.id; // Redirect to the inventory page
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            })
+        });
+
+    </script> -->
+
+{% endblock content %}

@@ -50,7 +50,7 @@ class Inventory(db.Model):
     req = db.relationship('Requests',backref='request',lazy=False)
 
     def __repr__(self):
-        return f"Product('{self.item_name}','{self.expiry_date}')"
+        return f"Product('{self.name}','{self.expiry_date}')"
     
 class Locations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
