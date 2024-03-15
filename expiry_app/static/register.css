@@ -3,7 +3,7 @@
 }
 
 .top {
-    background-color: #e3f9ed;
+    background-color: red;
 }
 
 .header{
@@ -49,8 +49,8 @@
 
 .btn {
     text-align: center;
-    background-color: #1f4d3a;
-    color : #dff64d;
+    background-color: black;
+    color : white;
     border-width : 0;
     border-radius : 6px;  /*rounded corners*/
     padding : 12px 30px;
@@ -64,12 +64,12 @@
 }
 
 .btn:hover{
-    background-color: #dff64d;
-    color: #1f4d3a;
+    background-color: white;
+    color: black;
+
 }
 
 .container{
-    background-color: red;
     min-height : 100vh;
     padding-top: 70px;
     padding-bottom: 70px;
