@@ -1,5 +1,6 @@
 *{
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 .top {
@@ -49,8 +50,8 @@
 
 .btn {
     text-align: center;
-    background-color: #1f4d3a;
-    color : #dff64d;
+    background-color: black;
+    color : white;
     border-width : 0;
     border-radius : 6px;  /*rounded corners*/
     padding : 12px 30px;
@@ -64,11 +65,13 @@
 }
 
 .btn:hover{
-    background-color: #dff64d;
-    color: #1f4d3a;
+    background-color: white;
+    color: black;
+    
 }
 
 .container{
+    /*display: block;*/
     min-height : 100vh;
     padding-top: 70px;
     padding-bottom: 70px;
@@ -76,6 +79,7 @@
     background-color:#1f4d3a;
     overflow: hidden;
     width: 100%;
+    margin: 0px;
 }
 
 .form-box{
@@ -123,8 +127,7 @@
 }
 
 .input-group{
-    display: block;
-    box-sizing: border-box;
+    
     align-items: center;
     margin-bottom: 20px;
     display: flex;
