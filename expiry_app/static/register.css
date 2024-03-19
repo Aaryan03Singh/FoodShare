@@ -148,7 +148,9 @@
 }
 
 .input-field {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     height: 35px;
     width: 358px;
     margin-left: 15px;
@@ -156,7 +158,6 @@
     background-color: #dff64d;
     color: #004b1a;
     border-radius: 6px;
-    margin: 0 auto;
     margin-bottom: 10px;
     padding: 10px 20px;
     padding-left: 50px;
