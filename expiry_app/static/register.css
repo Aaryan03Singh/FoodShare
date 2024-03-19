@@ -49,8 +49,8 @@
 
 .btn {
     text-align: center;
-    background-color: #black;
-    color : white;
+    background-color: #1f4d3a;
+    color : #dff64d;
     border-width : 0;
     border-radius : 6px;  /*rounded corners*/
     padding : 12px 30px;
@@ -84,7 +84,7 @@
     max-width: 500px;
     position: relative;
     margin : 0 auto;
-    padding: 50px;
+    padding: 80px 50px 80px; 
     background: white;   
     text-align: center;
     border-radius: 12px;
