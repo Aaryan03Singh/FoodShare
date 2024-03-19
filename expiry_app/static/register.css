@@ -127,7 +127,8 @@
 }
 
 .input-group{
-    
+    display: block;
+    box-sizing: border-box;
     align-items: center;
     margin-bottom: 20px;
     display: flex;
