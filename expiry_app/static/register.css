@@ -1,10 +1,9 @@
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
 }
 
 .top {
-    background-color: #e3f9ed;
+    background-color: red;
 }
 
 .header{
@@ -67,11 +66,10 @@
 .btn:hover{
     background-color: white;
     color: black;
-    
+
 }
 
 .container{
-    display: block;
     min-height : 100vh;
     padding-top: 70px;
     padding-bottom: 70px;
@@ -79,7 +77,6 @@
     background-color:#1f4d3a;
     overflow: hidden;
     width: 100%;
-    margin: 0px;
 }
 
 .form-box{
@@ -127,6 +124,7 @@
 }
 
 .input-group{
+    display: block;
     box-sizing: border-box;
     align-items: center;
     margin-bottom: 20px;
