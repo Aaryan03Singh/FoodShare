@@ -127,11 +127,10 @@
 }
 
 .input-group{
-    display: flex;
-    flex-direction: row;
+    box-sizing: border-box;
     align-items: center;
-    justify-content: start;
     margin-bottom: 20px;
+    display: flex;
     overflow: hidden;
     text-align: center;
     /*background: rgba(242, 242, 242, 0.684);
