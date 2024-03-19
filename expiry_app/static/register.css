@@ -131,10 +131,10 @@
     box-sizing: border-box;
     align-items: center;
     margin-bottom: 20px;
-    display: flex;
-    overflow: hidden;
+
+    /*overflow: hidden;
     text-align: center;
-    /*background: rgba(242, 242, 242, 0.684);
+    background: rgba(242, 242, 242, 0.684);
     border-radius: 20px;
     max-height: 40px; */
 }
@@ -156,6 +156,7 @@
     background-color: #dff64d;
     color: #004b1a;
     border-radius: 6px;
+    margin: 0 auto;
     margin-bottom: 10px;
     padding: 10px 20px;
     padding-left: 50px;
