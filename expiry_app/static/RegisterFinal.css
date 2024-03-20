@@ -45,6 +45,13 @@
     padding-left: 5px;
     align-items: center;
     width : 180px;
+    width: 75px;
+    height: 75px;
+}
+
+.logo img {
+    width: 75px;
+    height: 75px;
 }
 
 .btn {
