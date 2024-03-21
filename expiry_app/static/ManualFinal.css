@@ -208,6 +208,11 @@ select {
     width : 180px;
 }
 
+.logo img {
+  width: 75px;
+  height: 75px;
+}
+
 .btn {
     text-align: center;
     background-color:white;
