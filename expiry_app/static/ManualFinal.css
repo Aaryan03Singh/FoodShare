@@ -85,7 +85,7 @@
   font-size: 15px;
 }
 
-  .product-details {
+  .product-details-input {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -93,6 +93,11 @@
     font-family: Inter, sans-serif;
     color :#094535;
     font-size: 15px;
+  }
+
+  /*idk*/
+  #name {
+    background-color: red;
   }
   
   .product-quantity {
