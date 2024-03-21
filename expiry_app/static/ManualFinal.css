@@ -95,10 +95,6 @@
     font-size: 15px;
   }
 
-  /*idk*/
-  #name {
-    background-color: red;
-  }
   
   .product-quantity {
     display: flex;
@@ -123,7 +119,8 @@
 input {
     color:#004b1a;
     border: 1px solid #e3f9ed;
-    background-color: #e3f9ed;
+    background-color: red;
+    /*background-color: #e3f9ed;*/
     border-radius: 6px;
     margin-bottom: 10px;
     padding: 10px 20px;
