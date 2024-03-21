@@ -41,30 +41,32 @@
           <div class="product-image">
               <img id="selected-image"  src="../static/images/default_image.png" alt="Product Image" />
             </div>
-            
+
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
         <div class="product-details-input">
-          <label id="name" for="product-name" style="font-weight: bold">{{form.name.label}}</label>
+          <label id="name" for="product-name" >{{form.name.label}}</label>
           <!-- <input type="text" id="product-name" name="product_name" required /> -->
           {{form.name()}}
-          <label id="brand" for="product-brand" style="font-weight: bold">{{form.brand.label}}</label>
+          <label id="brand" for="product-brand" >{{form.brand.label}}</label>
           <!-- <input type="text" id="product-brand" name="product_brand" /> -->
             {{form.brand()}}
 
-          <div class="product-quantity-input" style="align-items:center">
-            <label id="expiry_date" for="expiry-date" style="font-weight: bold">{{form.expiry_date.label}}</label>
+          <div class="product-quantity-input">
+            <label id="expiry_date" for="expiry-date" >{{form.expiry_date.label}}</label>
         {{form.expiry_date()}}
-            <label id="quantity" for="product-quantity" style="font-weight: bold">{{form.quantity.label}}</label>
+            <label id="quantity" for="product-quantity">{{form.quantity.label}}</label>
             {{form.quantity()}}
           </div>
 
-          <label id="category"for="product-category" style="font-weight: bold">{{form.category.label}}</label>
+          <label id="category"for="product-category">{{form.category.label}}</label>
       {{form.category()}}
+
             <div class="product-image-upload" onchange="previewImage(event)">
-            <label id="image" for="product-image" style="font-weight: bold">{{ form.file_image.label }}  </label>
+            <label id="image" for="product-image">{{ form.file_image.label }}  </label>
                 {{ form.file_image() }}
             </div>
+
       <div class="description-input">
         <label id="description" for="product-description" style="font-weight: bold">{{form.desc.label}}</label>
         {{form.desc()}}
@@ -72,6 +74,7 @@
       </div>
         </div>
     </form>
+    
     </div>
 
       {% block content %}

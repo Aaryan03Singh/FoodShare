@@ -29,7 +29,7 @@
     font-weight: 500;
   }
   
-  .description {
+  .description-input {
     display: flex;
     flex-direction: column;
     margin: 10px; /* Adds 10px space around the div */
@@ -96,7 +96,7 @@
   }
 
   
-  .product-quantity {
+  .product-quantity-input {
     display: flex;
     flex-direction: row; /* Aligns quantity and unit horizontally */
     gap: 5px;
@@ -119,8 +119,7 @@
 input {
     color:#004b1a;
     border: 1px solid #e3f9ed;
-    background-color: red;
-    /*background-color: #e3f9ed;*/
+    background-color: #e3f9ed;
     border-radius: 6px;
     margin-bottom: 10px;
     padding: 10px 20px;
