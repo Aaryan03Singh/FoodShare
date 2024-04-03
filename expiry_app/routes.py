@@ -160,6 +160,8 @@ def inventory():
           db.session.add(product)
           db.session.commit()
           flash(f'Inventory details were submitted successfully','success')
+          return redirect(url_for('all_products'))
+
      return render_template('input.html',title='Inventory',form=form)
 
 
