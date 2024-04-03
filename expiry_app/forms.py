@@ -47,7 +47,7 @@ class InventoryForm(FlaskForm):
     file_image = FileField('Product Image')
     desc = StringField('Description',validators=[DataRequired()])
     brand = StringField('Brand',validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Add Item')
 
                                  
 
