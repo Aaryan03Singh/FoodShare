@@ -153,7 +153,8 @@ def inventory():
           u_id = current_user.id
           file = form.file_image.data
           filename = secure_filename(file.filename)
-          file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+          #file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+          file_path = f"{app.config['UPLOAD_FOLDER']}/{filename}"
           file.save(file_path)
           product = Inventory(name=form.name.data,category=form.category.data,expiry_date=form.expiry_date.data,quantity=form.quantity.data,user_id=u_id,status='InStock',desc=form.desc.data,brand=form.brand.data, image_file=file_path)
           db.session.add(product)
