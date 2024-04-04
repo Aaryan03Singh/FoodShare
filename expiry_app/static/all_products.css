@@ -1,10 +1,85 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Cursive;
   box-sizing: border-box;
 }
 
+
+.top {
+  background-color: #094535;
+  margin: 0px;
+  padding: 0px;
+}
+
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /*equal horizontal distribution of elements*/
+    align-items: center;  /*equal vertical distribution*/
+    padding : 5px;
+    width : 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    padding : 13px;
+    }
+
+.navigation nav a {
+    text-decoration: none;
+    color:#dff64d;
+    padding-right : 20px; /* each link - spacing*/
+    text-align: center;  
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor : pointer;
+    transition: color .3s ease-in-out
+}
+
+.navigation nav a:hover {
+    text-decoration : underline;
+}
+
+.logo {
+    padding-left: 5px;
+    align-items: center;
+    width : 180px;
+}
+
+.logo img {
+  width: 75px;
+  height: 75px;
+}
+
+.btn {
+    text-align: center;
+    background-color:white;
+    color :#094535;
+    border-width : 0;
+    border-radius : 6px;  /*rounded corners*/
+    padding : 12px 30px;
+    font-family : Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor : pointer; /*indicates interaction*/
+    transition: all .3s ease-in-out;
+    margin-right: 30px;
+    /*padding-right : 20px;*/
+}
+
+.btn:hover{
+    background-color:#094535;
+    color:#dff64d;
+}
+
+
+/*
 .logo {
   margin-left: 20px;
 }
@@ -104,6 +179,9 @@ nav {
 .account li a {
   color: black;
 }
+*/
+
+
 
 .all-available-products {
   width: 100%;
@@ -133,9 +211,17 @@ nav {
 .shop {
   display: flex;
   align-items: flex-start;
-  margin: 20px;
-  background-color: rgb(235, 235, 235);
-  border-radius: 30px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color:#dff64d;
+  border-radius: 12px;
+  width: 900px;
+  font-family: Fraunces, sans-serif;
+}
+
+.inv-heading {
+  display: flex;
+  justify-content: center;
 }
 
 .shop-details h1,
@@ -162,23 +248,32 @@ h3 {
 .product-card {
   width: 250px;
   height: 350px;
-  border-radius: 30px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 10px 20px 0; 
-  background-color: rgb(249, 249, 249);
+  background-color: #e3f9ed;
+  color :#094535;
 }
 
 .product-image {
   height: 200px;
-  width: 100%;
+  width: 90%;
   position: relative;
+  margin: 0 auto;
+  margin-top: 5px;
 }
 
 .product-image img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.product-image:hover {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
 }
 
 .product-details {
@@ -188,16 +283,40 @@ h3 {
   text-align: center;
 }
 
+.product-details h2 {
+  font-size: 25px;
+}
+
+.product-details h5 {
+  margin-top: 24px;
+  font-size: 18px;
+  text-align: left;
+}
+
 .Card-info {
-  font-size: 16px;
-  padding-top: 10px;
+  font-size: 18px;
+  padding-top: 5px;
   margin-top: -20px;
   margin-left: 20px;
   padding-right: 20px;
   justify-content: space-between;
   display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
+.donation {
+  background-color: #dff64d;
+  border-radius: 3px;
+  width: 55px;
+}
+.donation h6 {
+  font-size: 15px;
+  display: flex;
+  justify-items: start;
+  margin-left: 0px;
+  text-align: left;
+}
 .Card-info li {
   list-style: none;
 }
