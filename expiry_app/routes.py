@@ -59,6 +59,9 @@ def about_us():
 def contact_us():
     return render_template("contact_us.html")
 
+@app.route("/layout", methods=["GET", "POST"])
+def layout():
+    return render_template("layout.html")
 
 
 
@@ -218,9 +221,6 @@ def manage_req(request_id,action):
           
      
 
-     
-
-
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -231,10 +231,34 @@ def login():
             if user and bcrypt.check_password_hash(user.password, form.password.data):
                  login_user(user, remember=form.remember.data)
                  next_page = request.args.get('next')
-                 return redirect(next_page) if next_page else redirect(url_for('home'))
+                 if next_page:
+                    return redirect(next_page)
+                 else:
+                    if user.role == 'Store':
+                        return redirect(url_for('layout'))
+                    elif user.role == 'Organization':
+                         return redirect(url_for('home'))
+                    else:
+                         return redirect(url_for('home'))
             else:
                  flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
+     
+
+
+#@app.route("/login", methods=['GET', 'POST'])
+#def login():
+   # if current_user.is_authenticated:
+    #    return redirect(url_for('home'))
+    #form = LoginForm()
+    #       user = Users.query.filter_by(email=form.email.data).first()
+     #       if user and bcrypt.check_password_hash(user.password, form.password.data):
+      #           login_user(user, remember=form.remember.data)
+       #          next_page = request.args.get('next')
+        #         return redirect(next_page) if next_page else redirect(url_for('home'))
+         #   else:
+          #       flash('Login Unsuccessful. Please check email and password', 'danger')
+    #return render_template('login.html', title='Login', form=form)
 
 @app.route("/logout")
 def logout():
