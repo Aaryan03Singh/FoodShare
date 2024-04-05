@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Store Homepage</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/OrgMainStyle.css" />
+  </head>
+
+  <body>
+
+    <div class="top">
+        <header class = "header">
+                 
+          <div class="logo">
+              <img src="../static/images/logo.png" alt="logo"/>
+          </div>
+      
+          <div class="navigation">
+              <nav>
+                
+                  <a href="">Home</a>
+                  <a href="/available_products">Available Products</a>
+                  <a href="/all_requests">Track Requests</a>
+                  <a href="/contact_us">Contact Us</a>
+                  <a href="/about_us">About Us</a>
+                
+              </nav>
+          </div>
+      
+
+          <div class="start">
+            <a href="{{url_for('profile')}}" class="btn">Profile</a>
+          </div>
+      
+          </header>
+        </div>
+
+        <section class="container1" id="container1">
+
+            <div class="color1"></div>
+            <div class="color2"></div>
+
+            <div class="content">
+            <img class ="design01" src ="../static/images/design1.svg" alt="design">
+            <img class ="design02" src ="../static/images/design02.svg" alt="design">
+
+            <div class="intro">
+
+                <h6 class="tagline">A tagline here!</h6>
+                <h1 class="title">Elevate your user experience with <span class="text-primary-2">SustainLink</span></h1>
+
+                <div class="image">
+                    <img src="../static/images/storeMain.jpg" alt="cover image"> 
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <div class="shop-list-container">
+            <ul class="shop-list">
+              {% for shop in shop_data %}
+              <li>
+                <div class="card shop-list-item" data-id="{{ shop.id }}">
+                  <a href="{{url_for('store_products',store_id=shop.id)}}">
+                    <img
+                      class="card-img-top image-format"
+                      src="{{ url_for('static', filename='uploads/' + shop.image_file) }}"
+                      alt="Card image cap"
+                    />
+                  </a>
+                  <div class="card-body" style="padding: 0">
+                    <h6 class="shop-header">{{ shop.name }}</h6>
+                    <div class="shop-text">
+                      <img
+                        src="{{ url_for('static', filename='./images/location_pin.svg') }}"
+                        width="15"
+                        height="15"
+                      />
+                      <p class="card-text" style="font-size: smaller">
+                        {{ shop.location }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+</body>
+
+    <script src="" async defer></script>
+
+</html>

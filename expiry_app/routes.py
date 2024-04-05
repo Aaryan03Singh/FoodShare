@@ -63,6 +63,9 @@ def contact_us():
 def layout():
     return render_template("layout.html")
 
+@app.route("/orglayout", methods=["GET", "POST"])
+def orglayout():
+    return render_template("org-layout.html")
 
 
 @app.route("/all_products", methods=['GET', 'POST'])
@@ -182,6 +185,8 @@ def product(inventory_id):
     product.image_file=os.path.basename(product.image_file)
     return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
+    return redirect(url_for('available_products'))
+
 @app.route('/delete/<int:inventory_id>',methods=['GET','POST'])
 def delete(inventory_id):
      product= Inventory.query.get_or_404(inventory_id)
@@ -237,7 +242,7 @@ def login():
                     if user.role == 'Store':
                         return redirect(url_for('layout'))
                     elif user.role == 'Organization':
-                         return redirect(url_for('abc'))
+                         return redirect(url_for('orglayout'))
                     else:
                          return redirect(url_for('home'))
             else:

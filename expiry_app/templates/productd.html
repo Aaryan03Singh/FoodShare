@@ -31,9 +31,16 @@
             </nav>
         </div>
     
+      {% if current_user.id == product.user_id%}   
         <div class="start">
-           <button class="btn" href="./all_products.html" >Profile</button>
+          <a href="{{url_for('all_products')}}" class="btn">Profile</a>
         </div>
+      {% endif %}
+      {% if current_user.id != product.user_id%}   
+        <div class="start">
+          <a href="{{url_for('profile')}}" class="btn">Profile</a>
+        </div>
+      {% endif %}
     
         </header>
       </div>
@@ -77,13 +84,15 @@
           <p class="ele">{{ product.desc }}</p>
         </div>
         
-        {% if current_user.id == product.user_id%}
+        <!-- checks if this is Store -->
+        {% if current_user.id == product.user_id%}   
         <div class="info-box">
           <p style="font-weight: bold">Status:</p>
           <p class="ele">{{ product.status }}</p>
         </div>
         {% endif %}
         
+        <!-- checks if it is org -->
         {% if current_user.id != product.user_id %}
         <form method="POST" action="">
           {{ form.hidden_tag() }}
@@ -91,25 +100,25 @@
             <div class="form-group">
               {{ form.desc.label(class="form-control-label") }} {% if
               form.desc.errors %} {{ form.desc(class="form-control
-              form-control-lg is-invalid") }}
+              form-control-lg custom-style is-invalid") }}
               <div class="invalid-feedback">
                 {% for error in form.desc.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
-              {% else %} {{ form.desc(class="form-control form-control-lg") }}
+              {% else %} {{ form.desc(class="form-control form-control-lg custom-style") }}
               {% endif %}
             </div>
             <div class="form-group">
               {{ form.quantity.label(class="form-control-label") }} {% if
               form.quantity.errors %} {{ form.quantity(class="form-control
-              form-control-lg is-invalid") }}
+              form-control-lg custom-style is-invalid") }}
               <div class="invalid-feedback">
                 {% for error in form.quantity.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
               </div>
-              {% else %} {{ form.quantity(class="form-control form-control-lg")
+              {% else %} {{ form.quantity(class="form-control form-control-lg custom-style")
               }} {% endif %}
             </div>
           </fieldset>
@@ -142,19 +151,22 @@
     </div>
   </div>  
 
+  
     <ul class="shop-list">
       {% if product.user_id == current_user.id %} {% for req in product_requests
       %}
+       <h3 class="req-head">Requests</h3>
       <li>
+        <div class="box">
         <div
-          class="card shop-list-item"
-          style="width: auto; padding: 5px"
+          class="card_shop-list-item"
+          
           data-id="{{ req.id }}"
           style="border-radius: 15px"
         >
           <div class="card-body" style="padding: 0">
-            <h6 class="shop-header">User: {{ req.id }}</h6>
-            <h6 class="shop-header">Quantity: {{ req.quantity }}</h6>
+            <h6 class="shop-header">User: {{       req.id }}</h6>
+            <h6 class="shop-header">Quantity: {{   req.quantity }}</h6>
             <h6 class="shop-header">Description:{{ req.desc }}</h6>
             <div class="shop-text">
               <form
@@ -173,6 +185,7 @@
             </div>
           </div>
         </div>
+      </div>
       </li>
       {% endfor %} {% endif %}
     </ul>
