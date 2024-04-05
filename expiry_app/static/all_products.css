@@ -70,6 +70,7 @@
     cursor : pointer; /*indicates interaction*/
     transition: all .3s ease-in-out;
     margin-right: 30px;
+    text-decoration: none;
     /*padding-right : 20px;*/
 }
 

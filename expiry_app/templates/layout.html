@@ -4,88 +4,101 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='organizationStyle.css') }}">
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile.css') }}">
 
-    <title></title>
+    <title>Store Homepage</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="../static/storeMainStyle.css" />
   </head>
-  <body>
-   <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
-    <div class="container-fluid navbar-styling text-center">
-        <a class="navbar-brand" href="{{url_for('home')}}">
-            <img src="{{ url_for('static', filename='images/symbol.png') }}" alt="Bootstrap" width="30" height="30">
-            SustainLink
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {% if current_user.is_authenticated %}
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% if current_user.role == 'Organization' %}
-                <li class="nav-item dropdown-center">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Onlineshop</a>
-                     <ul class="dropdown-menu">
-                         <li><a class="nav-item nav-link" href="{{url_for('available_products')}}">Available Products</a></li>
-                         <li><a class="nav-item nav-link" href="{{url_for('all_requests')}}">Requests</a></li>
-                    </ul>
-                </li>
-                {% endif %}
-                {% if current_user.role == 'Store' %}
-                <li class="nav-item dropdown-center">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Donations
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% if current_user.role == 'Store' %}
-                            <li><a class="nav-item nav-link" href="{{url_for('inventory')}}">Inventory</a></li>
-                            <li><a class="nav-item nav-link" href="{{url_for('all_products')}}">All Products</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
-                {% endif %}
-            </ul>
-            {% endif %}
-            <div style="margin-left:-13vw">DONATE . REUSE . TRANSFORM</div>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"aria-expanded="false">
-                        <img src="{{ url_for('static', filename='images/person.svg') }}" alt="dropdown-toggle" height="20" width="20">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        {% if current_user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('all_products')}}">Profile</a></li>
-                        {% else %}
-                            <li><a class="dropdown-item" href="{{url_for('login')}}">Login</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('register')}}">Register</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" role="button" >
-                        <img src="{{ url_for('static', filename='images/cart2.svg') }}" alt="dropdown-toggle" height="20" width="20">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-</header>
 
-          {% block content %}{% endblock %}
+  <body>
+
+    <div class="top">
+        <header class = "header">
+                 
+          <div class="logo">
+              <img src="../static/images/logo.png" alt="logo"/>
+          </div>
+      
+          <div class="navigation">
+              <nav>
+                
+                  <a href="/home">Home</a>
+                  <a href="/all_products">Inventory</a>
+                  <a href="/contact_us">Contact Us</a>
+                  <a href="/about_us">About Us</a>
+                
+              </nav>
+          </div>
+      
+          <div class="start">
+            <a href="/all_products" class="btn">Profile</a>
+             
+          </div>
+      
+          </header>
+        </div>
+
+        <section class="container1" id="container1">
+
+            <div class="color1"></div>
+            <div class="color2"></div>
+
+            <div class="content">
+            <img class ="design01" src ="../static/images/design1.svg" alt="design">
+            <img class ="design02" src ="../static/images/design02.svg" alt="design">
+
+            <div class="intro">
+
+                <h6 class="tagline">A tagline here!</h6>
+                <h1 class="title">Elevate your user experience with <span class="text-primary-2">SustainLink</span></h1>
+
+                <div class="image">
+                    <img src="../static/images/storeMain.jpg" alt="cover image"> 
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <section class="container2" id="container2">
+
+            <div class="choices">
+                
+                <div class="scan">
+                 <h4>Scan Groceries</h4>
+                 <h6>Easy and fast! Add a new product to your store effortlessly by scanning a QR code.</h6>
+                 <img src="../static/images/scan.png" alt="qr code">
+                 <div class="click">
+                    <button class="scan-button" >Scan</button>
+                 </div> 
+                </div>
+
+                <div class="manual-input">
+                   
+                    <h4>Manual-Input of Groceries</h4>
+                    <h6>No QR-Code? Add a new product to your store by entering all the necessary details manually.</h6>
+                    <img src="../static/images/input.png" alt="qr code">
+                    <div class="click">
+                        <a href="/inventory" class="input-button">Add Product</a>
+
+                       
+                    </div> 
+
+                </div>
+
+            </div>
+
+            <div class="information">
+                
+            </div>
+        </section>
+
 
     
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   
 </body>
 
     <script src="" async defer></script>
