@@ -1,7 +1,8 @@
 *{
     margin: 0px;
     padding: 0;
-    /* font-family: 'Bahnschrift'; */
+    font-family: Fraunces, sans-serif;
+    color:#094535;
   }
   .header{
     display: flex;
@@ -46,9 +47,11 @@
 }
 
 .logo img {
-    width: 75px;
-    height: 75px;
+  margin-top: 5px;
+  width: 55px;
+  height: 60px;
 }
+
 
 .btn {
     text-align: center;

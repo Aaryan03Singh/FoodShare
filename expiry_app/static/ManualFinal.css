@@ -229,9 +229,11 @@ select {
 }
 
 .logo img {
-  width: 75px;
-  height: 75px;
+  margin-top: 5px;
+  width: 55px;
+  height: 60px;
 }
+
 
 .btn {
     text-align: center;
