@@ -20,6 +20,8 @@
         </div>
     
         <div class="navigation">
+
+          {% if current_user.id == product.user_id%}
             <nav>
               
                 <a href="/layout">Home</a>
@@ -29,6 +31,18 @@
                 <a href="/about_us">About Us</a>
               
             </nav>
+          {% endif %}
+          {% if current_user.id != product.user_id%}
+            <nav>
+              
+                <a href="/orglayout">Home</a>
+                <a href="/available_products">Available Products</a>
+                <a href="/all_requests">Track Requests</a>
+                <a href="/contact_us">Contact Us</a>
+                <a href="/about_us">About Us</a>
+              
+            </nav>
+          {% endif %}
         </div>
     
       {% if current_user.id == product.user_id%}   
@@ -38,7 +52,7 @@
       {% endif %}
       {% if current_user.id != product.user_id%}   
         <div class="start">
-          <a href="{{url_for('profile')}}" class="btn">Profile</a>
+          <a href="{{url_for('logout')}}" class="btn">Logout</a>
         </div>
       {% endif %}
     
