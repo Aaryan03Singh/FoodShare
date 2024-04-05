@@ -65,7 +65,7 @@ def contact_us():
 @app.route("/all_products", methods=['GET', 'POST'])
 @login_required
 def all_products():
-    expiry_threshold =datetime.utcnow() + timedelta(days=10)
+    expiry_threshold =datetime.utcnow() + timedelta(days=90)
     items_available = Inventory.query.filter_by(user_id=current_user.id)
     for item in items_available:
         item.image_file = os.path.basename(item.image_file)
@@ -197,7 +197,7 @@ def donate(inventory_id):
      product.status = 'Donation'
      db.session.commit()
      flash('Product was put up for donation','success')
-     return redirect(url_for('product',inventory_id=inventory_id))
+     return redirect(url_for('all_products',inventory_id=inventory_id))
 
 
 @app.route('/manage_req/<int:request_id>/<int:action>',methods=['GET','POST'])
