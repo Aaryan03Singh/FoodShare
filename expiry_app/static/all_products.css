@@ -220,6 +220,7 @@ nav {
 }
 
 .inv-heading {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -247,7 +248,7 @@ h3 {
 
 .product-card {
   width: 250px;
-  height: 350px;
+  height: 430px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 10px 20px 0; 
@@ -255,9 +256,13 @@ h3 {
   color :#094535;
 }
 
+.product-card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .product-image {
-  height: 200px;
-  width: 90%;
+  height: 280px;
+  width: 230px;
   position: relative;
   margin: 0 auto;
   margin-top: 5px;
@@ -288,7 +293,7 @@ h3 {
 }
 
 .product-details h5 {
-  margin-top: 24px;
+  margin-top: 20px;
   font-size: 18px;
   text-align: left;
 }
@@ -329,9 +334,8 @@ h3 {
 .end {
   height: 200px;
   width: 100%;
-  background-color: rgb(195, 195, 195);
+  background-color: white;
   margin-top: 100px;
-  border-radius: 20px;
 }
 
 body {
