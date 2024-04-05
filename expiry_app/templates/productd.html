@@ -23,6 +23,7 @@
             <nav>
               
                 <a href="/home">Home</a>
+                <a href="/all_products">Inventory</a>
                 <a href="/inventory">Manual Input</a>
                 <a href="/contact_us">Contact Us</a>
                 <a href="/about_us">About Us</a>
@@ -31,50 +32,58 @@
         </div>
     
         <div class="start">
-           <button class="btn" >Get Started</button>
+           <button class="btn" href="./all_products.html" >Profile</button>
         </div>
     
         </header>
       </div>
 
     <div class="bg">
-    <div class="container" style="height: auto; width: 80vw">
+    <div class="container">
       <div class="left">
         <div>
           <img
             class="big-img"
             src="{{ url_for('static', filename='uploads/' + product.image_file) }}"
           />
+          <img class="design" src="../static/images/design03.svg"/>
         </div>
       </div>
+
       <div class="right">
         <div class="info-box">
           <h2>{{product.name}}</h2>
         </div>
         <div class="info-box">
-          <p style="font-weight: bold">Brand</p>
-          <p>{{product.brand}}</p>
+          <p style="font-weight: bold">Brand:</p>
+          <p class="ele">{{product.brand}}</p>
         </div>
         <div class="info-box">
-          <p style="font-weight: bold">Category</p>
-          <p>{{ product.category }}</p>
+          <p style="font-weight: bold">Type:</p>
+          <p class="ele">{{ product.category }}</p>
         </div>
         <div class="info-box">
-          <p style="font-weight: bold">Expiry Date</p>
-          <p>{{ product.expiry_date }}</p>
+          <p style="font-weight: bold">Expiry Date:</p>
+          <p class="ele">{{ product.expiry_date }}</p>
         </div>
 
         <div class="info-box">
-          <p style="font-weight: bold">Quantity</p>
-          <p>{{ product.quantity }}</p>
+          <p style="font-weight: bold">Quantity:</p>
+          <p class="ele">{{ product.quantity }}</p>
+        </div>
+
+        <div class="info-box">
+          <p style="font-weight: bold">Description:</p>
+          <p class="ele">{{ product.desc }}</p>
         </div>
         
         {% if current_user.id == product.user_id%}
         <div class="info-box">
-          <p style="font-weight: bold">Status</p>
-          <p>{{ product.status }}</p>
+          <p style="font-weight: bold">Status:</p>
+          <p class="ele">{{ product.status }}</p>
         </div>
         {% endif %}
+        
         {% if current_user.id != product.user_id %}
         <form method="POST" action="">
           {{ form.hidden_tag() }}
@@ -112,10 +121,7 @@
         {% endif %}
         <div>
           {% if current_user.id == product.user_id %}
-          <div class="info-box">
-            <p style="font-weight: bold">Description</p>
-            <p>{{ product.description }}</p>
-          </div>
+          
           <div class="button-container">
             <div>
               <a href="{{url_for('delete', inventory_id=product.id)}}">
@@ -125,7 +131,7 @@
             {% if product.status != 'Donation'%}
             <div>
               <a href="{{url_for('donate', inventory_id=product.id)}}">
-                <button class="Button">Donate</button>
+                <button class="ButtonD">Donate</button>
               </a>
             </div>
             {% endif %}
@@ -135,7 +141,7 @@
       </div>
     </div>
   </div>  
-  
+
     <ul class="shop-list">
       {% if product.user_id == current_user.id %} {% for req in product_requests
       %}

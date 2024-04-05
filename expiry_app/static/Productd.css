@@ -78,49 +78,63 @@
     color:#094535;
 }
 
+/*
 .bg {
   min-height : 100vh;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    position: relative;
-    background-color:white;
-    overflow: hidden;
-    width: 100%;
-}
+  padding-bottom: 70px;
+  position: relative;
+  background-color:white;
+  overflow: hidden;
+  width: 100%;
+} */
 
 .container {
-  width: 900px;
+  width: 1100px;
   border-radius: 20px;
-  margin-top: 11vh;
+  margin-top: 50px;
   padding: 30px;
   display: flex;
-  flex-wrap: wrap;
-  height: 1000px;
+  height: 450px;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-  background-color:#094535;
+  background-color:#dff64d;
   color:#e3f9ed;
+  flex-direction: row;
 }
 
 .left {
   display: flex;
-  width: 35%;
+  flex-direction: column;
+  width: 45%;
 }
 .right {
-  width: 65%;
+  width: 75%;
   padding: 20px;
   flex-direction: column;
+  color :#094535;
 }
+
 .big-img {
-  width: 20vw;
-  border-radius: 15px;
+  width: 300px;
+  border-radius: 16px;
+  margin-top: 100px;
   margin: 20px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
+
 .big-img img {
-  width: inherit;
+  margin-top: 100px;
 }
+
+.design {
+  z-index: 1;
+    position: absolute;
+    top: 165px;
+    bottom: auto;
+    left: auto;
+    right: 950px;
+}
+
 .images {
   display: flex;
   justify-content: space-between;
@@ -128,17 +142,40 @@
   margin-top: 15px;
   gap: 20px;
 }
+
 .container h1 {
   font-size: 25px;
   margin-left: 200px;
   margin-top: 30px;
+
 }
 
 .info-box {
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
+}
+
+.info-box h2 {
+  font-family: Fraunces, sans-serif;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 180px;
+}
+
+.info-box p {
+  font-family: Fraunces, sans-serif;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.ele {
+  font-family: Fraunces, sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+  color :#094535;
+  margin-right: 90px;
 }
 
 .select-box {
@@ -210,13 +247,14 @@
   justify-content: space-between;
 }
 .Button {
+  margin-top: 30px;
   text-align: center;
-  background-color: black;
-  color: white;
+  background-color:#094535;
+  color:white;
   border-width: 0;
   border-radius: 6px;
   padding: 12px 30px;
-  font-family: Inter, sans-serif;
+  font-family: Fraunces, sans-serif;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer; /*indicates interaction*/
@@ -226,7 +264,30 @@
 
 .Button:hover {
   background-color: white;
-  color: black;
+  color:#094535;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ButtonD {
+  margin-top: 30px;
+  margin-right: 90px;
+  text-align: center;
+  background-color:#094535;
+  color:white;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 12px 30px;
+  font-family: Fraunces, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer; /*indicates interaction*/
+  transition: all 0.3s ease-in-out;
+  /*padding-right : 20px;*/
+}
+
+.ButtonD:hover {
+  background-color: white;
+  color:#094535;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
