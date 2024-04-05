@@ -237,7 +237,7 @@ def login():
                     if user.role == 'Store':
                         return redirect(url_for('layout'))
                     elif user.role == 'Organization':
-                         return redirect(url_for('home'))
+                         return redirect(url_for('abc'))
                     else:
                          return redirect(url_for('home'))
             else:
