@@ -1,5 +1,6 @@
 * {
     margin : 0px;
+    font-family: Fraunces, sans-serif;
 }
 
 
@@ -412,3 +413,123 @@
     background:red ;
 }
 */
+
+.end{
+    background-color: #e3f9ed;
+    height: 250px;
+    width: 100%;
+    margin-top: 150px;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .info{
+    position: relative;
+    display: grid;
+    margin: 20px;
+    margin-left: 60px;
+  }
+  
+  .info h1{
+    margin-top: 10px;
+    margin-bottom: -30px;
+    font-size: 26px;
+  }
+  
+  .info-a{
+    margin-top: 20px;
+  }
+  
+  .info-a :hover{
+    color: #ffffff;
+  }
+  
+  .info-a a{
+    list-style: none;
+    text-decoration: none;
+    margin-top: 5px;
+    display: grid;
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .help{
+    margin-left: 120px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .help h1{
+    font-size: 26px;
+  }
+  
+  .help-a{
+    margin-top: -85px;
+  }
+  
+  .help-a :hover{
+    color: #ffffff;
+  }
+  
+  .help-a a{
+    list-style: none;
+    text-decoration: none;
+    margin-top: 5px;
+    display: grid;
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .contact{
+    margin-left: 250px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .contact h1{
+    font-size: 26px;
+  }
+  
+  .contact-p1{
+    margin-top: -50px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .contact-p2{
+    margin-top: -40px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  
+  .social{
+    margin-left: 200px;
+    margin-top: 30px;
+    display: grid;
+  }
+  
+  .social h1{
+    font-size: 26px;
+  }
+  
+  .social-icon{
+    display: flex;
+  }
+  
+  .social-icon li{
+    list-style: none;
+    margin-right: 20px;
+    margin-top: -80px;
+  }
+  
+  .social-icon a{
+    text-decoration: none;
+    color: #000;
+    font-size: 40px;
+  }
+  
+  .social-icon a:hover{
+    color: #ffffff;
+  }

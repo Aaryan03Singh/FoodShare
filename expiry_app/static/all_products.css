@@ -339,10 +339,12 @@ h3 {
 .end {
   height: 200px;
   width: 100%;
-  background-color: white;
+  background-color:#094535;
   margin-top: 100px;
+  color:white;
 }
 
 body {
   background-color: rgb(254, 254, 254);
 }
+
