@@ -274,7 +274,7 @@ def logout():
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if request.method == 'POST':
-        shop_data = request.get_json()
+        shop_data = request.get_json() 
         session['shop_data'] = shop_data
         return jsonify(success=True)
     else:

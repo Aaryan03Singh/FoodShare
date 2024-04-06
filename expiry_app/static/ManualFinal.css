@@ -123,6 +123,7 @@ input {
     color:#004b1a;
     border: 1px solid #e3f9ed;
     background-color: #e3f9ed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -132,6 +133,7 @@ input {
     line-height: 1.6em;
     transition: border-color .3s ease-in-out;
 }
+
 
 .file-upload-button {
   text-align: center;
