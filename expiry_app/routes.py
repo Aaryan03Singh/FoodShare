@@ -181,7 +181,7 @@ def product(inventory_id):
       db.session.add(request)
       db.session.commit()
       flash(f'The request was  successfully added')
-      return redirect(url_for('product',inventory_id=inventory_id))
+      return redirect(url_for('all_requests',inventory_id=inventory_id))
     product.image_file=os.path.basename(product.image_file)
     return render_template('productd.html',title=product.name,product=product,product_requests=product_requests,form=form)
 
