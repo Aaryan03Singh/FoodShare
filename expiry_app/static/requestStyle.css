@@ -178,17 +178,17 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 1.5em;
-  background-color: black;
-  color: white;
+  background-color:#094535;
+  color:#dff64d;
   border-radius: 6px;
   margin-bottom: 10px;
   padding: 2px 8px;
 }
 
 .receiver:hover {
-  color: black;
+  color:#e3f9ed;
   text-decoration: underline;
-  background: white;
+  background:#094535;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -235,6 +235,28 @@
   background-color: white;
   color: black;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.bt {
+  text-align: center;
+  background-color:#094535;
+  color :#dff64d;
+  border-width : 0;
+  border-radius : 6px;  /*rounded corners*/
+  padding : 12px 30px;
+  font-family : Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor : pointer; /*indicates interaction*/
+  transition: all .3s ease-in-out;
+  margin-right: 30px;
+  text-decoration: none;
+  /*padding-right : 20px;*/
+}
+
+.bt:hover{
+  background-color:#e3f9ed;
+  color:#094535;
 }
 
 .end {

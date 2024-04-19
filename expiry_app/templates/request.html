@@ -65,7 +65,7 @@
           {% if data.request.status == 'Accepted' %}
           <div class="reqbutton">
             <a href="{{url_for('manage_req', request_id=data.request.id,action=2)}}">
-            <button>Confirm</button>
+            <button class="bt">Confirm</button>
             </a>
           </div>
           {% endif %}
